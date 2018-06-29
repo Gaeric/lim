@@ -1,7 +1,7 @@
 ;;; -*- coding: utf-8 -*-
 ;;; lim.el -- Ligthly Input Architecture for lantian-xixi input method
 
-;; Compatibility: Emacs 24
+;; Compatibility: Emacs 26
 ;; Copyright 2018
 ;; Author: lantian
 ;; version 0.01
@@ -668,7 +668,11 @@ Return the input string."
 (defun lim-handle-string ()
   (if (and (functionp lim-stop-function)
            (funcall   lim-stop-function))
+      ;; (if (> (length lim-current-string) 2)
+      ;;     (not (member (char-to-string last-command-event) lim-possible-char))
+      ;;   (> (length lim-current-string) 5))
       (progn
+        (message "success")
         (setq unread-command-events
               (list (aref lim-current-string (1- (length lim-current-string)))))
         ;; lim-current-encode :: 已经输入的编码
@@ -685,5 +689,51 @@ Return the input string."
 ;; ==============================================================================
 (provide 'lim-core)
 
-;; ==============================================================================
 
+
+(defun lim-overflow ()
+   (interactive)
+   (if (> (length lim-current-string) 2)
+       (not (member (char-to-string last-command-event) lim-possible-char))
+     (> (length lim-current-string) 5)))
+
+ (setq lim-stop-function 'lim-overflow)
+
+
+;; ==============================================================================
+(defsubst lim-delete-line ()
+  (delete-region (line-beginning-position) (min (+ (line-end-position) 1)
+                                                (point-max))))
+
+(defun lim-bulid-table ()
+  (interactive)
+  (save-restriction
+    (let ((table (lim-section-region "Table"))
+          (param (lim-section-region "Parameter"))
+          (lastw "")
+          first-char total-char currw)
+      (narrow-to-region (car table) (cdr table))
+      (perform-replace "[ \t]+$" "" nil t nil nil nil (point-min) (point-max))
+      (sort-lines nil (point-min) (point-max))
+      (goto-char (point-min))
+      (while (not (eobp))
+        (if (looking-at "^[ \t]*$")
+            (lim-delete-line)
+          (setq currw (lim-encode-at-point))
+          (add-to-list 'first-char (aref currw 0))
+          (mapc (lambda (c) (add-to-list 'total-char c)) (append currw nil))
+          (if (string= currw lastw)
+              (delete-region (1- (point)) (+ (point) (length currw))))
+          (setq lastw currw)
+          (forward-line 1)))
+      (narrow-to-region (car param) (cdr param))
+      (goto-char (point-min))
+      (insert "first-char=" (concat first-char) "\n"
+              "total-char=" (concat total-char) "\n")
+      (while (not (eobp))
+        (if (or (looking-at "^first-char=")
+                (looking-at "^total-char="))
+            (lim-delete-line)
+          (forward-line 1)))
+      (if (looking-at "^$")
+          (delete-backward-char 1)))))

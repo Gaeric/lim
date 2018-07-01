@@ -1,5 +1,4 @@
 #+TITLE: lim layer
-
 # The maximum height of the logo should be 200 pixels.
 # TOC links should be GitHub style anchors.
 * Table of Contents                                        :TOC_4_gh:noexport:
@@ -26,9 +25,7 @@
       - [[#delete-last-char][delete-last-char]]
 
 * Description
-This layer adds support for chinese Table input;
-Fork from 
-
+  This is Lim, lightly input method.
 ** Features:
 
 * Install

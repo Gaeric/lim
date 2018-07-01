@@ -45,16 +45,21 @@ Fork from
 *** TODO Features
 **** TODO [#B] 完善回显功能
      输入法minibuffer总是会打印出上一条完成或未完成的提示,这不是我所期望的结果,需要找到代码中相应的部分然后改正
+     
      version :: 0.03
 **** TODO [#A] 完善标点符号输入
      可能需要引入完整的history功能
+     
      version :: 0.05
 **** TODO [#A] 尝试使用 overlay
      使用overlay以获得更加展示功能
+     
      version :: 0.03
 **** TODO 构建个人词库模块,加块搜索,提供供自造词
+     
      version :: 0.06
 **** TODO 完善补全功能
+     
      version :: 0.04
 *** TODO [#A] Buglist
 **** TODO 兼容性改善

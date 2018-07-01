@@ -14,3 +14,4 @@
  "淅淅" "淅淅顶功输入法" "lim-xixi.txt")
 
 (provide 'lim-xixi)
+

@@ -256,121 +256,6 @@ active-func 为每次切换至输入法时调用的相关函数。"
 	(kill-local-variable 'input-method-function))
 
 ;; ------------------------------------------------------------------------------
-;; Create and define keymap by `lim-mode-map'
-;; Decided to switch actions
-;; Find the corresponding entry in char list by `lim-entry-command'
-;; Choose the default term by `lim-select-current-term'
-;; Delete the last char by `lim-delete-last-char'
-;; Exit this translation and insert the entered code by `lim-quit-reserved'
-;; Exit this translation and clear the entered code by `lim-quit-clear'
-;; Terminate this translation by `lim-terminate-translation'
-
-(defvar lim-mode-map
-  (let ((map (make-sparse-keymap))
-        ;; make-sparse-keymap :: Construct and return a new sparse keymap.
-        (i ?\ ))
-    ;; i :: 将i设置为32
-    (while (< i 127)
-      (define-key map (char-to-string i) 'lim-entry-command)
-      (setq i (1+ i)))
-    (setq i 128)
-    (while (< i 256)
-      (define-key map (vector i) 'lim-entry-command)
-      ;; vector :: set vertor to lim-entry-command
-      (setq i (1+ i)))
-    (dolist (i (number-sequence ?1 ?9))
-      (define-key map (char-to-string i) 'lim-entry-command))
-    (define-key map " "         'lim-select-current-term)
-    (define-key map [backspace] 'lim-delete-last-char)
-    (define-key map [delete]    'lim-delete-last-char)
-    (define-key map "\177"      'lim-delete-last-char)
-    (define-key map "\C-m"      'lim-quit-reserved)
-    (define-key map "\C-c"      'lim-quit-clear)
-    (define-key map "\C-g"      'lim-quit-clear)
-    map)
-  "Keymap")
-
-(defun lim-entry-command ()
-  "Find the corresponding entry in char list.
-otherwise stop the conversion,then insert the corresponding character.
-在char列表中找到相应的条目，否则停止转换，然后插入相应的字符。"
-  (interactive "*")
-  ;; (message "%s" (current-buffer))
-  (if (if (string-empty-p lim-current-string)
-          (member last-command-event lim-first-char)
-        ;; lim-first-char :: 局部变量中，值为word-file中的参数
-        ;; note :: 判断第一个输入字符是否在first-char列表中
-        (member last-command-event lim-total-char))
-      ;; note :: 判断输入字符是否在total-char列表中
-      (progn
-        (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
-        (funcall lim-handle-function))
-    (setq lim-current-word (char-to-string last-command-event))
-    (message "return word: %s" lim-current-word)
-    ;; 处理(插入)不经转译的字符
-    (lim-insert-current-word)
-    (lim-terminate-translation)))
-
-(defun lim-select-current-term ()
-  "Choose the default term.
-提请插入当前默认的词条，视情况处理字符串，这个函数默认绑定在空格上，绑定关系见 lim-mode-map"
-  (interactive)
-  (if (string-empty-p lim-current-string)
-      ;; lim-current-string 为空 :: 直接转为空格，然后赋给lim-current-word
-      (setq lim-current-word (char-to-string last-command-event))
-    (if (null (car lim-optional-result))
-        ;; lim-current-string :: 可选词条为空，则置空值赋给lim-current-word
-        ;; 然后插入lim-current-word
-        ;; 如果不为空，则不管
-        (setq lim-current-word "")))
-    (lim-insert-current-word))
-
-      ;; (null (car lim-optional-result))
-      ;; t :: lim-optional-result中CAR部分为空
-      ;; note :: 即默认词条为空
-  ;; (setq lim-current-word "")
-  ;; (setq lim-current-string "")
-
-(defun lim-insert-current-word ()
-  (unless (string-empty-p lim-current-word)
-    ;; 只有当 lim-current-word 不为空时，执行插入操作
-      (insert lim-current-word))
-  ;; terminate :: 插入结束后，重新开始转译
-  (lim-terminate-translation))
-
-(defun lim-delete-last-char ()
-  "如果lim-current-string值不存在时，直接返回相应的 (list key)
-系统本身会对字符进行处理"
-  (interactive)
-  (if (> (length lim-current-string) 1)
-      (progn
-        (setq lim-current-string (substring lim-current-string 0 -1))
-        (funcall lim-handle-function))
-    (setq lim-current-string "")
-    (lim-terminate-translation)))
-
-(defun lim-quit-reserved ()
-  "Exit this translation and insert the entered code."
-  (interactive)
-  (setq lim-current-word lim-current-string)
-  (insert lim-current-word)
-  (lim-terminate-translation))
-
-(defun lim-quit-clear ()
-  "Exit this translation and clear the entered code."
-  (interactive)
-  (setq lim-current-word "")
-  (lim-terminate-translation))
-
-(defun lim-terminate-translation ()
-  "Terminate this translation."
-  (setq lim-translate-status nil)
-  (setq lim-optional-result nil)
-  (setq lim-current-word "")
-  (setq lim-current-string ""))
-  ;; (lim-deactivate)
-
-;; ------------------------------------------------------------------------------
 ;; load directory file
 ;; Decompose the current row by `lim-line-content'.
 ;; Gets positions of a section by `lim-section-region'
@@ -557,11 +442,116 @@ The function emms-delete-if has some Bug."
                 (lim-history))))))
 
 ;; ------------------------------------------------------------------------------
+;; Create and define keymap by `lim-mode-map'
+;; Decided to switch actions
+;; Find the corresponding entry in char list by `lim-entry-command'
+;; Choose the default term by `lim-select-current-term'
+;; Delete the last char by `lim-delete-last-char'
+;; Exit this translation and insert the entered code by `lim-quit-reserved'
+;; Exit this translation and clear the entered code by `lim-quit-clear'
+;; Terminate this translation by `lim-terminate-translation'
+
+
+
+(defvar lim-mode-map
+  (let ((map (make-sparse-keymap))
+        ;; make-sparse-keymap :: Construct and return a new sparse keymap.
+        (i ?\ ))
+    ;; i :: 将i设置为32
+    (while (< i 127)
+      (define-key map (char-to-string i) 'lim-entry-command)
+      (setq i (1+ i)))
+    (setq i 128)
+    (while (< i 256)
+      (define-key map (vector i) 'lim-entry-command)
+      ;; vector :: set vertor to lim-entry-command
+      (setq i (1+ i)))
+    (dolist (i (number-sequence ?1 ?9))
+      (define-key map (char-to-string i) 'lim-entry-command))
+    (define-key map " "         'lim-select-current-term)
+    (define-key map [backspace] 'lim-delete-last-char)
+    (define-key map [delete]    'lim-delete-last-char)
+    (define-key map "\177"      'lim-delete-last-char)
+    (define-key map "\C-m"      'lim-quit-reserved)
+    (define-key map "\C-c"      'lim-quit-clear)
+    (define-key map "\C-g"      'lim-quit-clear)
+    map)
+  "Keymap")
+
+(defun lim-entry-command ()
+  "Find the corresponding entry in char list.
+otherwise stop the conversion,then insert the corresponding character.
+在char列表中找到相应的条目，否则停止转换，然后插入相应的字符。"
+  (interactive "*")
+  ;; (message "%s" (current-buffer))
+  (if (if (string-empty-p lim-current-string)
+          (member last-command-event lim-first-char)
+        ;; lim-first-char :: 局部变量中，值为word-file中的参数
+        ;; note :: 判断第一个输入字符是否在first-char列表中
+        (member last-command-event lim-total-char))
+      ;; note :: 判断输入字符是否在total-char列表中
+      (progn
+        (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
+        (funcall lim-handle-function))
+    (setq lim-current-word (char-to-string last-command-event))
+    ;; (message "return word: %s" lim-current-word)
+    ;; 处理不经转译的字符
+    (lim-terminate-translation)))
+
+(defun lim-select-current-term ()
+  "Choose the default term.
+提请插入当前默认的词条，视情况处理字符串，这个函数默认绑定在空格上，绑定关系见 lim-mode-map"
+  (interactive)
+  (if (string-empty-p lim-current-string)
+      ;; lim-current-string 为空 :: 直接转为空格，然后赋给lim-current-word
+      (setq lim-current-word (char-to-string last-command-event))
+    (if (null (car lim-optional-result))
+        ;; t :: lim-optional-result中CAR部分为空
+        ;; lim-current-string :: 可选词条为空，则置空值赋给lim-current-word
+        ;; 如果不为空，则不管
+        (setq lim-current-word "")))
+  (lim-terminate-translation))
+
+(defun lim-delete-last-char ()
+  "如果lim-current-string值不存在时，直接返回相应的 (list key)
+系统接口会对字符进行处理"
+  (interactive)
+  (if (> (length lim-current-string) 1)
+      (progn
+        (setq lim-current-string (substring lim-current-string 0 -1))
+        (funcall lim-handle-function))
+    (setq lim-current-string "")
+    (lim-terminate-translation)))
+
+(defun lim-quit-reserved ()
+  "Exit this translation and insert the entered code."
+  (interactive)
+  (setq lim-current-word lim-current-string)
+  ;; (insert lim-current-word)
+  (lim-terminate-translation))
+
+(defun lim-quit-clear ()
+  "Exit this translation and clear the entered code."
+  (interactive)
+  (setq lim-current-word "")
+  (lim-terminate-translation))
+
+(defun lim-terminate-translation ()
+  "Terminate this translation."
+  (setq lim-translate-status nil)
+  (setq lim-optional-result nil)
+  (setq lim-current-string ""))
+
+;; ------------------------------------------------------------------------------
 ;; Core functions to complete the core functions of the input method.
 ;; Control input-flow by `lim-input-method'
 ;; Get standard input by `lim-obtain-string'
 ;; Splicing encoding strings and get entry  by `lim-handle-string'
-;; Conversion char to string by `lim-translate'
+;; Conversion input-string (current-word) to events by `lim-input-events'
+;; Advise input characters by `lim-advice'
+;; Conversion char to special string by `lim-translate'
+;; If don't use overlay, the input method does not need to insert the post-translation entry itself
+;; All insertion actions should generate input events and pass them to input-method-after-insert-chunk-hook to satisfy other features.
 
 (defun lim-input-method (key)
   "The core function of input-method,
@@ -590,11 +580,12 @@ and call to get the related function to obtain the word translation result.
                        (> (length input-string) 0))
               (if input-method-exit-on-first-char
                   (list (aref input-string 0))
-                ;; (lim-input-string-to-events input-string)
-                ;; string-to-events :: delete this function
-                )))
+                (lim-input-events input-string))))
+                ;; (lim-input-events input-string)
+                ;; string-to-events :: Input method output interface
+                ;; It's very important, just like lim-input-method!
         ;; (lim-delete-overlays)
-        ;; delete-overlays :: 删除overlay, 保留插入字符
+        ;; delete-overlays :: 删除overlay
 	      (run-hooks 'input-method-after-insert-chunk-hook)))))
 
 (defun lim-obtain-string (key)
@@ -656,24 +647,43 @@ Return the input string."
     (char-to-string key)))
 
 (defun lim-handle-string ()
+  "字符串控制函数，如果可能，转译当前编码，否则处理已拼接的编码，将最后一次输入的字符移交至unread-events处理"
   (if (and (functionp lim-stop-function)
            (funcall   lim-stop-function))
-      ;; (if (> (length lim-current-string) 2)
-      ;;     (not (member (char-to-string last-command-event) lim-possible-char))
-      ;;   (> (length lim-current-string) 5))
       (progn
         (setq unread-command-events
               (list (aref lim-current-string (1- (length lim-current-string)))))
-        ;; lim-current-encode :: 已经输入的编码
         (lim-select-current-term))
     (setq lim-optional-result (lim-get lim-current-string)
           lim-current-word (car (car lim-optional-result))
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)))
 
+(defun lim-input-events (str)
+  "Convert input string STR to a list of events.
+If STR has `advice' text property, append the following special event:
+\(lim-advice STR)"
+  (let ((events (mapcar
+                 (lambda (l) l)
+                 str)))
+    (if (or (get-text-property 0 'advice str)
+            (next-single-property-change 0 'advice str))
+        (setq events
+              (nconc events (list (list 'lim-advice str)))))
+    events))
+
+(defun lim-advice (args)
+  "Advise users about the characters input by the current lim scheme."
+  (interactive "e")
+  (let* ((string (nth 1 args))
+         (func (get-text-property 0 'advice string)))
+    (if (functionp func)
+        (funcall func string))))
+
 (defun lim-translate (char)
   (if (functionp lim-translate-function)
       (funcall lim-translate-function)
     (char-to-string char)))
+
 ;; ==============================================================================
 (provide 'lim-core)

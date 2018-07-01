@@ -8,7 +8,7 @@
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.01.001
+;; All-version 0.01.003
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -47,7 +47,7 @@
   "lim: Ligthly input method"
   :group 'leim)
 
-(defvar lim "0.1")
+(defvar lim "v0.1")
 
 ;;;_. variable declare
 ;;===============================================================================

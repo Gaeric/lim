@@ -80,4 +80,4 @@
           (delete-backward-char 1)))))
 
 
-(provide 'lim-advance)
+(provide 'lim-advanced)

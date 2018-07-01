@@ -1,5 +1,5 @@
 (require 'lim-core)
-(require 'lim-advance)
+(require 'lim-advanced)
 
 (defun lim-overflow ()
   (interactive)

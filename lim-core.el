@@ -181,6 +181,7 @@ If not, reopen the file. If the file does not exist, remove the buffer from the 
             (with-current-buffer (format "*%s*" (generate-new-buffer bufname))
               (insert-file-contents file)
               (setcdr buffer (current-buffer)))
+          (message "%s for %s is not exists!" file bufname)
           (setq buflist (remove buf buflist)))))
     t))
 
@@ -305,9 +306,10 @@ otherwise stop the conversion,then insert the corresponding character.
         (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
         (funcall lim-handle-function))
     (setq lim-current-word (char-to-string last-command-event))
-    ;; (message "return word: %s" lim-current-word )
+    (message "return word: %s" lim-current-word)
     ;; 处理(插入)不经转译的字符
-    (lim-insert-current-word)))
+    (lim-insert-current-word)
+    (lim-terminate-translation)))
 
 (defun lim-select-current-term ()
   "Choose the default term.

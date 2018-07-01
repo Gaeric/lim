@@ -1,10 +1,10 @@
 ;;; -*- coding: utf-8 -*-
 ;;; lim.el -- Ligthly Input Architecture for lantian-xixi input method
 
-;; Compatibility: Emacs 26
+;; Compatibility: Emacs 26.1
 ;; Copyright 2018
 ;; Author: lantian
-;; version 0.01
+;; version 0.02
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
@@ -26,20 +26,7 @@
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; ==============================================================================
-(defun note ()
-  "Record note as necessary."
-  (interactive)
-  (let ((object (read-from-minibuffer "object: "))
-        (note (read-from-minibuffer "note: ")))
-    (evil-open-below 1)
-    (insert (format ";; %s :: %s" object note))
-    (evil-force-normal-state)))
-
-(defun message-info (&optional message-info message-log)
-  (interactive)
-  (message (format "%s return: %s" message-info message-log)))
-
-;; ==============================================================================
+(defvar lim-version "0.2")
 ;;; 输入法变量声明
 
 ;;;_. group declare
@@ -47,7 +34,6 @@
   "lim: Ligthly input method"
   :group 'leim)
 
-(defvar lim "v0.1")
 
 ;;;_. variable declare
 ;;===============================================================================
@@ -74,6 +60,7 @@ history 暂且不用
   "The encoding being currently translated, which is a global variable.
 即当前正在转译的编码，这是一个全局变量")
 
+(defvar lim-current-word "" "当前编码转译结果")
 (defvar lim-optional-result nil "All optional terms.
 
 可选单元组：包含可选的词条，以及相应的其它属性：
@@ -87,7 +74,6 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 ")
 
 (defvar lim-possible-char "" "下一个可能的字符")
-(defvar lim-current-word "" "当前编码转译结果")
 (defvar lim-current-pos nil "当前选择的词条在 lim-optional-reslut 中的位置")
 (defvar lim-completion-status t "Control whether to complete. 控制是否进行补全")
 (defvar lim-translate-status nil "转换状态控制开关")
@@ -688,52 +674,3 @@ Return the input string."
     (char-to-string char)))
 ;; ==============================================================================
 (provide 'lim-core)
-
-
-
-(defun lim-overflow ()
-   (interactive)
-   (if (> (length lim-current-string) 2)
-       (not (member (char-to-string last-command-event) lim-possible-char))
-     (> (length lim-current-string) 5)))
-
- (setq lim-stop-function 'lim-overflow)
-
-
-;; ==============================================================================
-(defsubst lim-delete-line ()
-  (delete-region (line-beginning-position) (min (+ (line-end-position) 1)
-                                                (point-max))))
-
-(defun lim-bulid-table ()
-  (interactive)
-  (save-restriction
-    (let ((table (lim-section-region "Table"))
-          (param (lim-section-region "Parameter"))
-          (lastw "")
-          first-char total-char currw)
-      (narrow-to-region (car table) (cdr table))
-      (perform-replace "[ \t]+$" "" nil t nil nil nil (point-min) (point-max))
-      (sort-lines nil (point-min) (point-max))
-      (goto-char (point-min))
-      (while (not (eobp))
-        (if (looking-at "^[ \t]*$")
-            (lim-delete-line)
-          (setq currw (lim-encode-at-point))
-          (add-to-list 'first-char (aref currw 0))
-          (mapc (lambda (c) (add-to-list 'total-char c)) (append currw nil))
-          (if (string= currw lastw)
-              (delete-region (1- (point)) (+ (point) (length currw))))
-          (setq lastw currw)
-          (forward-line 1)))
-      (narrow-to-region (car param) (cdr param))
-      (goto-char (point-min))
-      (insert "first-char=" (concat first-char) "\n"
-              "total-char=" (concat total-char) "\n")
-      (while (not (eobp))
-        (if (or (looking-at "^first-char=")
-                (looking-at "^total-char="))
-            (lim-delete-line)
-          (forward-line 1)))
-      (if (looking-at "^$")
-          (delete-backward-char 1)))))

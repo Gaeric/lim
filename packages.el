@@ -59,7 +59,4 @@ Each entry is either:
         recipe.  See: https://github.com/milkypostman/melpa#recipe-format")
 
 
-(add-to-list 'load-path "./")
-(autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
-
 ;;; packages.el ends here

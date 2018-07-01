@@ -82,7 +82,8 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 (defvar lim-active-hook nil "激活输入法时调用的hook")
 
 (defvar lim-translate-function nil "额外的转换函数")
-(defvar lim-stop-function nil "额外的控制函数，控制handle-function")
+;; (defvar lim-stop-function nil "额外的控制函数，控制handle-function")
+(defvar lim-stop-function 'lim-overflow "额外的控制函数，控制handle-function")
 (defvar lim-handle-function 'lim-handle-string "控制函数，lim-handle-string
 为字符串控制函数，用于处理输入字符串")
 
@@ -104,7 +105,7 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-active-hook
 
     lim-handle-function
-    lim-stop-function
+    ;; lim-stop-function
 
     input-method-function
     deactivate-current-input-method-function)
@@ -180,7 +181,6 @@ If not, reopen the file. If the file does not exist, remove the buffer from the 
             (with-current-buffer (format "*%s*" (generate-new-buffer bufname))
               (insert-file-contents file)
               (setcdr buffer (current-buffer)))
-          (message "%s for %s is not exists!" file bufname)
           (setq buflist (remove buf buflist)))))
     t))
 
@@ -305,6 +305,7 @@ otherwise stop the conversion,then insert the corresponding character.
         (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
         (funcall lim-handle-function))
     (setq lim-current-word (char-to-string last-command-event))
+    ;; (message "return word: %s" lim-current-word )
     ;; 处理(插入)不经转译的字符
     (lim-insert-current-word)))
 
@@ -582,6 +583,7 @@ and call to get the related function to obtain the word translation result.
       (unwind-protect
           (let ((input-string (lim-obtain-string key)))
             ;; first step :: Get input-string ?
+            ;; (message "return input-string: %s" input-string)
             (when (and (stringp input-string)
                        (> (length input-string) 0))
               (if input-method-exit-on-first-char
@@ -658,7 +660,6 @@ Return the input string."
       ;;     (not (member (char-to-string last-command-event) lim-possible-char))
       ;;   (> (length lim-current-string) 5))
       (progn
-        (message "success")
         (setq unread-command-events
               (list (aref lim-current-string (1- (length lim-current-string)))))
         ;; lim-current-encode :: 已经输入的编码

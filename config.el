@@ -12,6 +12,3 @@
 (add-to-list 'load-path "~/.spacemacs.d/layers/lim/")
 (autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
 
-(register-input-method
- "lim-xixi" "euc-cn" 'eim-use-package
- "淅淅" "淅淅顶功输入法" "lim-xixi.txt")

@@ -2,7 +2,7 @@
 [Comment]
 
 [Parameter]
-first-char=yxwtsrqpnmlkjihgfdcb
+first-char=yxwtsrqpnmlkjihgfedcb
 total-char=yxwtsrqpnmlkjihgfdczuvoea;/.,'b
 page-length=3
 
@@ -1249,6 +1249,64 @@ dyv 铎
 dyva 镫
 dyz 钓
 dz 刀
+ea ＠
+eb ％
+ebd ≠
+ec ×
+ech ÷
+ed 、
+ede の
+edh √
+edk 〓
+edl ￡
+edm ?
+edp ∏
+edt ℡
+edu °
+edy ＝
+edyd ≥
+edyh ＞
+ef 〖〗$LEFT
+eh ※
+ehh \\\\
+ehk 【】$LEFT
+ehy ●
+ei ……
+ej ＋
+ejd ∠
+ejh －
+ejj ±
+ek （）$LEFT
+el ◆
+elv ◇
+em ：
+emy $
+eo ”
+ep ——
+epf ㎡
+epj π
+eq ‰
+er ￥
+es ...
+esd ℃
+esj △
+esjh ▲
+et ！
+etx ﹡
+eu “
+ew ？
+ewj ☆
+ewjh ★
+ewq ∞
+eww ～
+ex ＊
+exp φ
+exs Σ
+exy ＜
+exyd ≤
+ez §
+ezf □
+ezu ㈱
 f 是
 f' 发现
 f. 复

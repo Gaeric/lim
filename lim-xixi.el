@@ -1,4 +1,5 @@
 (require 'lim-core)
+(require 'lim-advance)
 
 (defun lim-overflow ()
   (interactive)
@@ -13,9 +14,3 @@
  "淅淅" "淅淅顶功输入法" "lim-xixi.txt")
 
 (provide 'lim-xixi)
-
-
-(member (char-to-string last-command-event) (cdr (assoc "completions" (lim-get "bd"))))
-
-(message "success")
-

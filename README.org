@@ -70,3 +70,5 @@ Fork from
      会导致自动补全等功能出现问题
 **** TODO delete-last-char
      当current-string长度为一时,使用delete-last-char删除时会先直接插入当前选择的词条
+
+     

@@ -540,7 +540,8 @@ otherwise stop the conversion,then insert the corresponding character.
   "Terminate this translation."
   (setq lim-translate-status nil)
   (setq lim-optional-result nil)
-  (setq lim-current-string ""))
+  (setq lim-current-string "")
+  (if (functionp 'lim-delete-overlay) (funcall   'lim-delete-overlay)))
 
 ;; ------------------------------------------------------------------------------
 ;; Core functions to complete the core functions of the input method.
@@ -568,6 +569,8 @@ and call to get the related function to obtain the word translation result.
           overriding-terminal-local-map
           overriding-local-map)
       (list key)
+    (if (functionp 'lim-setup-overlay)
+        (funcall 'lim-setup-overlay))
     (let ((modified-p (buffer-modified-p)))
       ;; (buffer-undo-list t)
       ;; (inhibit-modification-hooks t)
@@ -584,8 +587,9 @@ and call to get the related function to obtain the word translation result.
                 ;; (lim-input-events input-string)
                 ;; string-to-events :: Input method output interface
                 ;; It's very important, just like lim-input-method!
-        ;; (lim-delete-overlays)
-        ;; delete-overlays :: 删除overlay
+        ;; (if (functionp 'lim-clear-overlay) (funcall   'lim-clear-overlay))
+        (lim-delete-overlay)
+        ;; delete-overlay :: 删除overlay
 	      (run-hooks 'input-method-after-insert-chunk-hook)))))
 
 (defun lim-obtain-string (key)
@@ -657,7 +661,8 @@ Return the input string."
     (setq lim-optional-result (lim-get lim-current-string)
           lim-current-word (car (car lim-optional-result))
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
-          lim-current-pos 1)))
+          lim-current-pos 1))
+  (if (functionp 'lim-show) (funcall   'lim-show)))
 
 (defun lim-input-events (str)
   "Convert input string STR to a list of events.

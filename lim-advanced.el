@@ -26,6 +26,7 @@
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 (require 'lim-core)
+
 ;; ==============================================================================
 (defun note ()
   "Record note as necessary."
@@ -39,6 +40,47 @@
 (defun message-info (&optional message-info message-log)
   (interactive)
   (message (format "%s return: %s" message-info message-log)))
+
+;; ==============================================================================
+;;; 输入法高级功能 - advanced function
+;;; Overlay for lim
+
+(defvar lim-overlay nil "lim的overlay")
+
+(defface lim-string-face '((t (:underline t)))
+  "Face to show current string"
+  :group 'lim)
+
+(defun lim-setup-overlay ()
+  "Bulid overlay for lim."
+  (let ((pos (point)))
+    (if (overlayp lim-overlay)
+        (move-overlay lim-overlay pos pos)
+      (setq lim-overlay (make-overlay pos pos))
+      (if input-method-highlight-flag
+          (overlay-put lim-overlay 'face 'lim-string-face)))))
+
+(defun lim-clear-overlay ()
+  "Clear the overlay, but reserved the text."
+  (if (and (overlayp lim-overlay) (overlay-start lim-overlay))
+      (delete-overlay lim-overlay)))
+
+(defsubst lim-delete-overlay ()
+  "Delete the text which in lim-overlay."
+  (if (overlay-start lim-overlay)
+      (delete-region (overlay-start lim-overlay)
+                     (overlay-end   lim-overlay))))
+
+(defun lim-show ()
+  "Show the Input process presentation"
+  (unless enable-multibyte-characters
+    (setq lim-current-string nil
+          lim-current-word nil)
+    (error "Can't input in unibyte buffer"))
+  (lim-delete-overlay)
+  (insert lim-current-word)
+  (move-overlay lim-overlay (overlay-start lim-overlay) (point)))
+
 ;; ==============================================================================
 
 (defsubst lim-delete-line ()
@@ -78,6 +120,5 @@
           (forward-line 1)))
       (if (looking-at "^$")
           (delete-backward-char 1)))))
-
 
 (provide 'lim-advanced)

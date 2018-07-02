@@ -4,11 +4,11 @@
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
 ;; Author: lantian
-;; version 0.02
+;; version 0.04
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.02.001
+;; All-version 0.04.001
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify

@@ -13,14 +13,14 @@
     - [[#v003][v0.03]]
     - [[#v004][v0.04]]
   - [[#list][list]]
-    - [[#features-1][Features]]
+    - [[#features-][Features]]
       - [[#完善回显功能][完善回显功能]]
       - [[#完善标点符号输入][完善标点符号输入]]
       - [[#尝试使用-overlay][尝试使用 overlay]]
       - [[#构建个人词库模块加块搜索提供供自造词][构建个人词库模块,加块搜索,提供供自造词]]
       - [[#完善补全功能][完善补全功能]]
       - [[#完善英文模式][完善英文模式]]
-    - [[#buglist-13][Buglist]]
+    - [[#buglist-22][Buglist]]
       - [[#兼容性改善][兼容性改善]]
       - [[#delete-last-char][delete-last-char]]
 
@@ -45,27 +45,34 @@
     1. 更正字符串经过转译后插入文本的方式 
        （为了避免可能存在的其它相关挂钩函数的问题）
     2. 调用统一接口,完善回显相关功能基本完善
-*** TODO v0.04
+*** v0.04
     1. 修复delete-last-char相关问题
+    2. 增加临时字符模式
 
 ** Todo list
-*** TODO Features
-**** TODO [#B] 完善回显功能
+*** TODO Features [/]
+**** DONE [#B] 完善回显功能
+     CLOSED: [2018-07-02 周一 09:12]
+     - State "DONE"       from "TODO"       [2018-07-02 周一 09:12]
      输入法minibuffer总是会打印出上一条完成或未完成的提示,这不是我所期望的结果,需要找到代码中相应的部分然后改正
 **** TODO [#A] 完善标点符号输入
      可能需要引入完整的history功能
 **** TODO [#A] 尝试使用 overlay
      使用overlay以获得更加展示功能
-**** TODO 构建个人词库模块,加块搜索,提供供自造词
-**** TODO 完善补全功能
-**** TODO 完善英文模式
-*** TODO [#A] Buglist [1/3]
+**** TODO [#B] 构建个人词库模块,加块搜索,提供供自造词
+**** TODO [#A] 完善补全功能
+**** DONE 完善英文模式
+     CLOSED: [2018-07-02 周一 09:12]
+     - State "DONE"       from "TODO"       [2018-07-02 周一 09:12]
+*** TODO [#A] Buglist [2/2]
 **** DONE 兼容性改善
      CLOSED: [2018-07-01 日 23:13]
      - State "DONE"       from "TODO"       [2018-07-01 日 23:13]
      更改字符插入方式，将不应由输入法转换的输入转交于系统处理，而不是直接插入对应字符
      会导致自动补全等功能出现问题
-**** TODO delete-last-char
+**** DONE delete-last-char
+     CLOSED: [2018-07-02 周一 08:50]
+     - State "DONE"       from "TODO"       [2018-07-02 周一 08:50]
      当current-string长度为一时,使用delete-last-char删除时会先直接插入当前选择的词条
 
      

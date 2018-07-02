@@ -1,22 +1,31 @@
-;;; packages.el --- lim layer packages file for Spacemacs.
-;;
-;; Copyright (c) 2012-2018 Sylvain Benner & Contributors
-;;
-;; Author:  <sihua@SIHUA-PC>
-;; URL: https://github.com/syl20bnr/spacemacs
-;;
-;; This file is not part of GNU Emacs.
-;;
+;;; -*- coding: utf-8 -*-
+;;; lim.el -- Ligthly Input Architecture for lantian-xixi input method
+
+;; Compatibility: Emacs 26.1
+;; Copyright 2018
+;; Author: lantian
+;; version 0.04
+;; Description: Ligthly Input Architecture
+
+;; Fork from Eim but refactor all code
+;; All-version 0.04.001
 ;;; License: GPLv3
 
-;;; Commentary:
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this program; if not, write to the Free Software
+;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-;; See the Spacemacs documentation and FAQs for instructions on how to implement
-;; a new layer:
-;;
-;;   SPC h SPC layers RET
-;;
-;;
+
 ;; Briefly, each package to be installed or configured by this layer should be
 ;; added to `lim-packages'. Then, for each package PACKAGE:
 ;;

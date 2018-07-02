@@ -4,11 +4,11 @@
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
 ;; Author: lantian
-;; version 0.02
+;; version 0.04
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.01.003
+;; All-version 0.04.001
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; ==============================================================================
-(defvar lim-version "0.2")
+(defvar lim-version "0.4")
 ;;; 输入法变量声明
 
 ;;;_. group declare
@@ -520,7 +520,7 @@ otherwise stop the conversion,then insert the corresponding character.
       (progn
         (setq lim-current-string (substring lim-current-string 0 -1))
         (funcall lim-handle-function))
-    (setq lim-current-string "")
+    (setq lim-current-word "")
     (lim-terminate-translation)))
 
 (defun lim-quit-reserved ()

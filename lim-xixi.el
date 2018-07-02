@@ -50,7 +50,9 @@
                          (car lim-ascii-char)))
         ;; (setq c (read-event)) change read-event to read-char
         (setq c (read-char))
-        (cond ((= c ?\r) (insert (cdr lim-ascii-char)))
+        (cond ((= c ?\r) (progn
+                           (insert (cdr lim-ascii-char))
+                           (backward-char 1)))
               ((= c ? ) (insert-char (car lim-ascii-char) 1))
               (t
                (setq unread-command-events (list last-input-event))

@@ -105,6 +105,8 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-active-hook
 
     lim-handle-function
+    lim-stop-function
+    lim-overlay
     ;; lim-stop-function
 
     input-method-function

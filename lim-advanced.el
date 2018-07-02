@@ -74,8 +74,8 @@
 (defun lim-show ()
   "Show the Input process presentation"
   (unless enable-multibyte-characters
-    (setq lim-current-string nil
-          lim-current-word nil)
+    (setq lim-current-string ""
+          lim-current-word "")
     (error "Can't input in unibyte buffer"))
   (lim-delete-overlay)
   (insert lim-current-word)

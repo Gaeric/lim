@@ -588,7 +588,7 @@ and call to get the related function to obtain the word translation result.
                 ;; string-to-events :: Input method output interface
                 ;; It's very important, just like lim-input-method!
         ;; (if (functionp 'lim-clear-overlay) (funcall   'lim-clear-overlay))
-        (lim-delete-overlay)
+        ;; (lim-delete-overlay)
         ;; delete-overlay :: 删除overlay
 	      (run-hooks 'input-method-after-insert-chunk-hook)))))
 
@@ -658,11 +658,13 @@ Return the input string."
         (setq unread-command-events
               (list (aref lim-current-string (1- (length lim-current-string)))))
         (lim-select-current-term))
+    ;; 当stop函数生效时,最新读入的字符重新唤醒`lim-input-method'
+    ;; 故此处不需要再次进行lim-show处理
     (setq lim-optional-result (lim-get lim-current-string)
           lim-current-word (car (car lim-optional-result))
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
-          lim-current-pos 1))
-  (if (functionp 'lim-show) (funcall   'lim-show)))
+          lim-current-pos 1)
+    (if (functionp 'lim-show) (funcall 'lim-show))))
 
 (defun lim-input-events (str)
   "Convert input string STR to a list of events.

@@ -8,7 +8,7 @@
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.06.001
+;; All-version 0.06.002
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -45,16 +45,12 @@
 ;;; 输入法高级功能 - advanced function
 ;; ------------------------------------------------------------------------------
 ;; Variable declare
-(defun lim-punctuation-translate ()
+(defun lim-punctuation-translate (char)
   (lim-punc-translate lim-punctuation-list char))
 
 (defvar lim-overlay nil "lim的overlay")
 (defvar lim-punc-exception-list (number-sequence ?0 ?9) "不进行编码转译的特殊情况")
 (defvar lim-punc-translate-status t "标点转译控制开关")
-
-(setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
-(setq lim-translate-function 'lim-punctuation-translate)
-
 
 ;; ------------------------------------------------------------------------------
 ;;; Overlay for lim
@@ -147,6 +143,11 @@
                     (nth 1 punc))))
             str))))
     (char-to-string)))
+
+
+(setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
+(setq lim-translate-function 'lim-punctuation-translate)
+
 ;; ==============================================================================
 (defsubst lim-delete-line ()
   (delete-region (line-beginning-position) (min (+ (line-end-position) 1)

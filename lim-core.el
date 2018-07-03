@@ -8,7 +8,7 @@
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.06.001
+;; All-version 0.06.002
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -687,7 +687,7 @@ If STR has `advice' text property, append the following special event:
 
 (defun lim-translate (char)
   (if (functionp lim-translate-function)
-      (funcall lim-translate-function)
+      (funcall lim-translate-function char)
     (char-to-string char)))
 
 ;; ==============================================================================

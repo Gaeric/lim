@@ -8,7 +8,7 @@
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.06.001
+;; All-version 0.06.000
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify

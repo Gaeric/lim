@@ -23,5 +23,4 @@
   (setq lim-translate-function 'lim-punctuation-translate))
 (setq lim-active-hook 'lim-active-xixi)
 
-
 (global-set-key "'" 'lim-insert-ascii)

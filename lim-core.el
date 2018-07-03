@@ -81,7 +81,7 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 (defvar lim-load-hook nil "载入输入法时调用的hook")
 (defvar lim-active-hook nil "激活输入法时调用的hook")
 
-(defvar lim-translate-function nil "额外的转换函数")
+(defvar lim-translate-function nil "额外的转换函数，目前用来处理标点")
 ;; (defvar lim-stop-function nil "额外的控制函数，控制handle-function")
 (defvar lim-stop-function 'lim-overflow "额外的控制函数，控制handle-function")
 (defvar lim-handle-function 'lim-handle-string "控制函数，lim-handle-string
@@ -153,9 +153,6 @@ OTHER-PROPERTIES 是一些其它的属性，比如：上次的位置，用来优
 
 (defsubst lim-set-active-function (act-func)
   (aset lim-current-scheme 4 act-func))
-
-
-
 
 ;; ==============================================================================
 ;;; 输入法核心功能 - core function
@@ -493,7 +490,8 @@ otherwise stop the conversion,then insert the corresponding character.
       (progn
         (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
         (funcall lim-handle-function))
-    (setq lim-current-word (char-to-string last-command-event))
+    ;; (setq lim-current-word (char-to-string last-command-event))
+    (setq lim-current-word (lim-translate last-command-event))
     ;; (message "return word: %s" lim-current-word)
     ;; 处理不经转译的字符
     (lim-terminate-translation)))

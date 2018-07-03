@@ -43,9 +43,26 @@
 
 ;; ==============================================================================
 ;;; 输入法高级功能 - advanced function
-;;; Overlay for lim
+;; ------------------------------------------------------------------------------
+;; Variable declare
+(defun lim-punctuation-translate ()
+  (lim-punc-translate lim-punctuation-list char))
 
 (defvar lim-overlay nil "lim的overlay")
+(defvar lim-punc-exception-list (number-sequence ?0 ?9) "不进行编码转译的特殊情况")
+(defvar lim-punc-translate-status t "标点转译控制开关")
+
+(setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
+(setq lim-translate-function 'lim-punctuation-translate)
+
+
+;; ------------------------------------------------------------------------------
+;;; Overlay for lim
+;; Setup overlay by `lim-setup-overlay'
+;; Clear overlay by `lim-clear-overlay'
+;; Delete overlay and the content by `lim-delete-overlay'
+;; Show the overlay by `lim-show-overlay'
+
 
 (defface lim-string-face '((t (:underline t)))
   "Face to show current string"
@@ -81,6 +98,55 @@
   (insert lim-current-word)
   (move-overlay lim-overlay (overlay-start lim-overlay) (point)))
 
+;; ------------------------------------------------------------------------------
+;;; Pass the function to lim-translate-function and add punctuation translation control
+;; 将函数传递给lim-translate-function加入标点符号转译控制
+;; Read punctuation by `lim-read-punctuation'
+;; Translate char to punctuation by `lim-punc-translate'
+
+(defun lim-read-punctuation (scheme)
+  "Read punctuation."
+  (let ((lim-current-scheme scheme)
+        buf punc-list punc)
+    (setq buf (cdr (assoc "buffer" (car (lim-buffer-list)))))
+    (save-excursion
+      (set-buffer buf)
+      (save-restriction
+        (widen)
+        (let ((region (lim-section-region "Punctuation")))
+          (goto-char (car region))
+          (while (< (point) (cdr region))
+            (setq punc (lim-line-content))
+            (if (> (length punc) 3)
+                (error "标点不支持多个转换"))
+            (add-to-list 'punc-list punc)
+            (forward-line 1)))))
+    punc-list))
+
+(defun lim-punc-translate (punc-list char)
+  "Translate punctuation."
+  (if lim-punc-translate-status
+      (cond
+       ((< char ? ) "")
+       ((and lim-ascii-char
+             (= char (car lim-ascii-char)))
+        (char-to-string char))
+       (t
+        (let ((str (char-to-string char))
+              punc)
+          (if (and (not (member (char-before) lim-punc-exception-list))
+                   (setq punc (cdr (assoc str punc-list))))
+              (progn
+                (if (= char (char-before))
+                    (delete-char -1))
+                (if (= (safe-length punc) 1)
+                    (car punc)
+                  (setcdr (cdr punc) (not (cddr punc)))
+                  (if (cddr punc)
+                      (car punc)
+                    (nth 1 punc))))
+            str))))
+    (char-to-string)))
 ;; ==============================================================================
 
 (defsubst lim-delete-line ()

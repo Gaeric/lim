@@ -17,4 +17,11 @@
  "淅淅" "淅淅顶功输入法" "lim-xixi.txt")
 
 (setq default-input-method "lim-xixi")
+
+(defun lim-active-xixi ()
+  (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
+  (setq lim-translate-function 'lim-punctuation-translate))
+(setq lim-active-hook 'lim-active-xixi)
+
+
 (global-set-key "'" 'lim-insert-ascii)

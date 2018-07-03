@@ -123,18 +123,21 @@
   "Translate punctuation."
   (if lim-punc-translate-status
       (cond
-       ((< char ? ) "")
+       ;; ((< char ? ) "")
        ((and lim-ascii-char
              (= char (car lim-ascii-char)))
         (char-to-string char))
        (t
+        ;; (message "return: ok")
         (let ((str (char-to-string char))
               punc)
           (if (and (not (member (char-before) lim-punc-exception-list))
                    (setq punc (cdr (assoc str punc-list))))
               (progn
-                (if (= char (char-before))
-                    (delete-char -1))
+                (if (char-before)
+                    ;; note :: Determine if the cursor is at the file header
+                    (if (= char (char-before))
+                                     (delete-char -1)))
                 (if (= (safe-length punc) 1)
                     (car punc)
                   (setcdr (cdr punc) (not (cddr punc)))
@@ -143,10 +146,6 @@
                     (nth 1 punc))))
             str))))
     (char-to-string)))
-
-
-(setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
-(setq lim-translate-function 'lim-punctuation-translate)
 
 ;; ==============================================================================
 (defsubst lim-delete-line ()

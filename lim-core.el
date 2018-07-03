@@ -517,7 +517,7 @@ otherwise stop the conversion,then insert the corresponding character.
   (if (> (length lim-current-string) 1)
       (progn
         (setq lim-current-string (substring lim-current-string 0 -1))
-        (funcall lim-handle-function))
+        (funcall 'lim-handle-delete))
     (setq lim-current-word "")
     (lim-terminate-translation)))
 
@@ -546,6 +546,7 @@ otherwise stop the conversion,then insert the corresponding character.
 ;; Control input-flow by `lim-input-method'
 ;; Get standard input by `lim-obtain-string'
 ;; Splicing encoding strings and get entry  by `lim-handle-string'
+;; Splicing encoding strings when delete by `lim-handle-delete'
 ;; Conversion input-string (current-word) to events by `lim-input-events'
 ;; Advise input characters by `lim-advice'
 ;; Conversion char to special string by `lim-translate'
@@ -663,6 +664,14 @@ Return the input string."
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)
     (if (functionp 'lim-show) (funcall 'lim-show))))
+
+(defun lim-handle-delete ()
+  "字符串删减控制函数，转译删除后的编码"
+    (setq lim-optional-result (lim-get lim-current-string)
+          lim-current-word (car (car lim-optional-result))
+          lim-possible-char (cdr (assoc "completions" lim-optional-result))
+          lim-current-pos 1)
+    (if (functionp 'lim-show) (funcall 'lim-show)))
 
 (defun lim-input-events (str)
   "Convert input string STR to a list of events.

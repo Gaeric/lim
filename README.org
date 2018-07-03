@@ -14,16 +14,17 @@
     - [[#v004][v0.04]]
     - [[#v005][v0.05]]
   - [[#list][list]]
-    - [[#features-36][Features]]
+    - [[#features-46][Features]]
       - [[#完善回显功能][完善回显功能]]
       - [[#完善标点符号输入][完善标点符号输入]]
       - [[#尝试使用-overlay][尝试使用 overlay]]
       - [[#构建个人词库模块加块搜索提供供自造词][构建个人词库模块,加块搜索,提供供自造词]]
       - [[#完善补全功能][完善补全功能]]
       - [[#完善英文模式][完善英文模式]]
-    - [[#buglist-22][Buglist]]
+    - [[#buglist-23][Buglist]]
       - [[#兼容性改善][兼容性改善]]
       - [[#delete-last-char][delete-last-char]]
+      - [[#回退字符后上屏刷新问题][回退字符后，上屏刷新问题]]
 
 * Description
   This is Lim, lightly input method.
@@ -55,12 +56,14 @@
     3. 回退字符后,输入法当前字符未立即更新
        
 ** Todo list
-*** TODO Features [3/6]
+*** TODO Features [4/6]
 **** DONE [#B] 完善回显功能
      CLOSED: [2018-07-02 周一 09:12]
      - State "DONE"       from "TODO"       [2018-07-02 周一 09:12]
      输入法minibuffer总是会打印出上一条完成或未完成的提示,这不是我所期望的结果,需要找到代码中相应的部分然后改正
-**** TODO [#A] 完善标点符号输入
+**** DONE [#A] 完善标点符号输入
+     CLOSED: [2018-07-03 周二 20:02]
+     - State "DONE"       from "TODO"       [2018-07-03 周二 20:02]
      可能需要引入完整的history功能
 **** DONE [#A] 尝试使用 overlay
      CLOSED: [2018-07-03 二 00:57]
@@ -71,7 +74,7 @@
 **** DONE 完善英文模式
      CLOSED: [2018-07-02 周一 09:12]
      - State "DONE"       from "TODO"       [2018-07-02 周一 09:12]
-*** DONE [#A] Buglist [2/2]
+*** DONE [#A] Buglist [2/3]
     CLOSED: [2018-07-03 二 00:57]
     - State "DONE"       from "TODO"       [2018-07-03 二 00:57]
 **** DONE 兼容性改善
@@ -83,5 +86,4 @@
      CLOSED: [2018-07-02 周一 08:50]
      - State "DONE"       from "TODO"       [2018-07-02 周一 08:50]
      当current-string长度为一时,使用delete-last-char删除时会先直接插入当前选择的词条
-
-     
+**** TODO 回退字符后，上屏刷新问题

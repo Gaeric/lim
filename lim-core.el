@@ -4,11 +4,11 @@
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
 ;; Author: lantian
-;; version 0.04
+;; version 0.06
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.04.001
+;; All-version 0.06.001
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; ==============================================================================
-(defvar lim-version "0.4")
+(defvar lim-version "0.06")
 ;;; 输入法变量声明
 
 ;;;_. group declare
@@ -449,8 +449,6 @@ The function emms-delete-if has some Bug."
 ;; Exit this translation and insert the entered code by `lim-quit-reserved'
 ;; Exit this translation and clear the entered code by `lim-quit-clear'
 ;; Terminate this translation by `lim-terminate-translation'
-
-
 
 (defvar lim-mode-map
   (let ((map (make-sparse-keymap))

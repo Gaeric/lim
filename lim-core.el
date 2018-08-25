@@ -74,9 +74,16 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 ")
 
 (defvar lim-possible-char "" "下一个可能的字符")
+(defvar lim-possible-phrase nil "可能的字词组合")
 (defvar lim-current-pos nil "当前选择的词条在 lim-optional-reslut 中的位置")
+
 (defvar lim-completion-status t "Control whether to complete. 控制是否进行补全")
 (defvar lim-translate-status nil "转换状态控制开关")
+(defvar lim-completion-increase t "增强补全控制开关
+不仅影响到补全函数是否查找下一个可能的字符对应的词组
+还影响是否将其拼接入lim-optional-result")
+
+(defvar lim-completion-limit 2 "补全控制条件")
 
 (defvar lim-load-hook nil "载入输入法时调用的hook")
 (defvar lim-active-hook nil "激活输入法时调用的hook")
@@ -100,6 +107,8 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-optional-result
     lim-current-pos
     lim-translate-status
+    lim-possible-char
+    lim-possible-phrase
 
     lim-load-hook
     lim-active-hook
@@ -191,8 +200,8 @@ If not, reopen the file. If the file does not exist, remove the buffer from the 
               (if sym
                   (set sym (mapconcat 'identity (cdr p) "=")))))
           param)
-;;     (if (stringp lim-page-length)
-;;       (setq lim-page-length (string-to-number lim-page-length)))
+    (if (stringp lim-page-length)
+         (setq lim-page-length (string-to-number lim-page-length)))
     (setq lim-first-char (append lim-first-char nil)
           lim-total-char (append lim-total-char nil))))
 
@@ -372,24 +381,58 @@ The function emms-delete-if has some Bug."
 ;; Search code, return word and completion by `lim-get'
 
 (defun lim-completions (code completions)
-  "Get the next possible input character"
+  "Get the next possible input character and word.
+下一个可能的字符，以及对应的词组."
   (let ((maxln 200)
+        ;; note :: 不论词库大小，只进行200次补全
         (count 0)
         (len (length code))
-        (reg (concat "^" (regexp-quote code))))
-    ;; regexp-quote :: Return a regexp string which matches exactly STRING and nothing else.
+        (reg (concat "^" (regexp-quote code)))
+        item phrase)
+  ;; regexp-quote :: Return a regexp string which matches exactly STRING and nothing else.
     (save-excursion
-      (forward-line 1)
-      ;; ?? :: why need to forward-line 1
-      (while (and (looking-at reg)
-                  ;; looking-at :: Return t if text after point matches regular expression REGEXP.
-                  (< count maxln))
-        (add-to-list 'completions
-                     (buffer-substring-no-properties
-                      (+ (point) len)
-                      (+ (point) len 1)))
-        (forward-line 1)
-        (setq count (1+ count)))
+      (beginning-of-line)
+      ;; note :: 由于前置已经执行了lim-seek-word
+      ;; 此时光标处于当前输入编码对应的词条下，由于补全需要，从当前行开始进行补全
+      (if lim-completion-increase
+          (while (and (looking-at reg)
+                      ;; looking-at :: Return t if text after point matches regular expression REGEXP.
+                      (< count maxln))
+            (setq item (lim-line-content))
+            (add-to-list 'completions
+                         (buffer-substring-no-properties
+                          (+ (point) len)
+                          (+ (point) len 1)))
+            ;; note :: Basic function
+            (mapc (lambda (c)
+                    (when (or (>= len lim-completion-limit)
+                             ;; (= (length c) 1)
+                              )
+                      (push (cons c (substring
+                                     (car item)
+                                     len))
+                            phrase)))
+                  (cdr item))
+            (forward-line 1)
+            (setq count (1+ count)))
+        ;; note :: advance function
+        (while (and (looking-at reg)
+                    (< count maxln))
+          (add-to-list 'completions
+                       (buffer-substring-no-properties
+                        (+ (point) len)
+                        (+ (point) len 1)))
+          (forward-line 1)
+          (setq count (1+ count))))
+      ;; note :: completion finish
+      (setq lim-possible-phrase (sort (delete-dups (nreverse phrase))
+                                      ;; note :: If phrase is nil, lim-possible-phrase is nil.
+                                      ;; note :: 顺序排列候选词
+                                      (lambda (a b)
+                                        (< (length (cdr a)) (length (cdr b))))))
+      (if (= count maxln)
+          (setq lim-completion-completed-status nil)
+        (setq lim-completion-completed-status t))
       completions)))
 
 (defun lim-seek-word (code start end)
@@ -433,6 +476,9 @@ The function emms-delete-if has some Bug."
                                                  (point-max)))))
             (if lim-completion-status
                 (setq completions (lim-completions code completions)))))
+        (if lim-completion-increase (setq words (append words lim-possible-phrase)))
+        ;; note :: 必须将 lim-possible-phrase 赋给 words
+        ;; 否则无法在下次查询到相同单词时刷候选栏
         (setq words (delete-dups words))
         ;; delete-dups: delete the duplicate items
         (puthash code (list words
@@ -663,6 +709,8 @@ Return the input string."
           lim-current-word (car (car lim-optional-result))
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)
+    ;; (message "handle-string: %s" lim-optional-result)
+    ;; lim-optional-result :: ((的) (pos . 1) (completions v u t s r q p o n m l k j i h g f e d c b a ; / '))
     (if (functionp 'lim-show) (funcall 'lim-show))))
 
 (defun lim-handle-delete ()

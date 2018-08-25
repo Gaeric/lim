@@ -51,6 +51,7 @@
 (defvar lim-overlay nil "lim的overlay")
 (defvar lim-punc-exception-list (number-sequence ?0 ?9) "不进行编码转译的特殊情况")
 (defvar lim-punc-translate-status t "标点转译控制开关")
+(defvar lim-guidance-status t "候选栏控制开关 ")
 
 ;; ------------------------------------------------------------------------------
 ;;; Overlay for lim
@@ -58,6 +59,8 @@
 ;; Clear overlay by `lim-clear-overlay'
 ;; Delete overlay and the content by `lim-delete-overlay'
 ;; Show the overlay by `lim-show-overlay'
+;; Format the possible phrase by `lim-format'
+;; Show the guidance by `lim-guidance'
 
 
 (defface lim-string-face '((t (:underline t)))
@@ -92,7 +95,39 @@
     (error "Can't input in unibyte buffer"))
   (lim-delete-overlay)
   (insert lim-current-word)
-  (move-overlay lim-overlay (overlay-start lim-overlay) (point)))
+  ;; (lim-completion-prompt)
+  (move-overlay lim-overlay (overlay-start lim-overlay) (point))
+  ;;   (lim-guidance)
+  (lim-format-guidance)
+  ;; (let ((message-log-max nil))
+  (message "%s" lim-guidance-item))
+
+(defun lim-format (key pos total phrase)
+  (let ((i 0))
+    (format "%s[%d/%d]: %s"
+            key pos total
+            (mapconcat 'identity
+                       (mapcar
+                        (lambda (c)
+                          (format "%d.%s " (setq i (1+ i))
+                                  c))
+                        phrase)
+                       " "))))
+
+(defun lim-guidance ()
+  "展示候选栏"
+  (if lim-guidance-status
+      (let* ((phrase
+              (if (= (length lim-current-string) 1)
+                  (car lim-optional-result)
+                  (mapcar
+                   (lambda (a) (concat (car a) (cdr a)))
+                   (cdr (car lim-optional-result)))))
+             (total (length phrase))
+             ;; (pos lim-current-pos)
+             (pos 1))
+        (setq lim-guidance-item
+              (lim-format lim-current-string pos total phrase)))))
 
 ;; ------------------------------------------------------------------------------
 ;;; Pass the function to lim-translate-function and add punctuation translation control

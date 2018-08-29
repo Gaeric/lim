@@ -591,7 +591,7 @@ otherwise stop the conversion,then insert the corresponding character.
   (setq lim-translate-status nil)
   (setq lim-optional-result nil)
   (setq lim-current-string "")
-  (if (functionp 'lim-delete-overlay) (funcall   'lim-delete-overlay)))
+  (if (functionp 'lim-delete-overlay) (funcall 'lim-delete-overlay)))
 
 ;; ------------------------------------------------------------------------------
 ;; Core functions to complete the core functions of the input method.

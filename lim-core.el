@@ -4,11 +4,11 @@
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
 ;; Author: lantian
-;; version 0.06
+;; version 0.07
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.06.000
+;; All-version 0.07.000
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; ==============================================================================
-(defvar lim-version "0.06")
+(defvar lim-version "0.07")
 ;;; 输入法变量声明
 
 ;;;_. group declare
@@ -116,6 +116,8 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-handle-function
     lim-stop-function
     lim-overlay
+    lim-guidance-item
+    lim-prompt-number
     ;; lim-stop-function
 
     input-method-function
@@ -430,6 +432,7 @@ The function emms-delete-if has some Bug."
                                       ;; note :: 顺序排列候选词
                                       (lambda (a b)
                                         (< (length (cdr a)) (length (cdr b))))))
+      ;; (message "lim-possible-phrase :: %s" lim-possible-phrase)
       (if (= count maxln)
           (setq lim-completion-completed-status nil)
         (setq lim-completion-completed-status t))
@@ -475,10 +478,13 @@ The function emms-delete-if has some Bug."
                                                  (point-min)
                                                  (point-max)))))
             (if lim-completion-status
-                (setq completions (lim-completions code completions)))))
-        (if lim-completion-increase (setq words (append words lim-possible-phrase)))
+                (setq completions (lim-completions code completions)))
+            ;; (message "this is lim-possible-phrase: %s" lim-possible-phrase)
+            ;; 由于切换了buffer，必须将增强补全函数写在dolist函数中，否则超出了变量的作用域
+            (if lim-completion-increase (setq words (append words lim-possible-phrase)))))
         ;; note :: 必须将 lim-possible-phrase 赋给 words
         ;; 否则无法在下次查询到相同单词时刷候选栏
+        ;; (message "this is words: %s" words)
         (setq words (delete-dups words))
         ;; delete-dups: delete the duplicate items
         (puthash code (list words
@@ -662,8 +668,7 @@ Return the input string."
         (while lim-translate-status
           ;; translate-status :: 控制是否继续从标准输入读取编码
           (set-buffer-modified-p modified-p)
-          (let* ((prompt (if t
-                             ;; input-method-use-echo-area
+          (let* ((prompt (if input-method-use-echo-area
                              (format "[%s]:%s %s"
                                      ;; (or input-method-previous-message "")
                                      lim-current-string

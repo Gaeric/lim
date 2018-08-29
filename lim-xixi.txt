@@ -2522,6 +2522,7 @@ il; 谆
 il;; 之 [kc]
 il;o 谪
 il;oa 谘
+ila 证
 ila; 冢
 ila;; 诼
 ilao 谮

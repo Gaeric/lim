@@ -4,11 +4,11 @@
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
 ;; Author: lantian
-;; version 0.06
+;; version 0.07
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.06.000
+;; All-version 0.07.000
 ;;; License: GPLv3
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -52,6 +52,7 @@
 (defvar lim-punc-exception-list (number-sequence ?0 ?9) "不进行编码转译的特殊情况")
 (defvar lim-punc-translate-status t "标点转译控制开关")
 (defvar lim-guidance-status t "候选栏控制开关 ")
+(defvar lim-prompt-number "" "编码对应可选词条的数目")
 
 ;; ------------------------------------------------------------------------------
 ;;; Overlay for lim
@@ -94,13 +95,13 @@
           lim-current-word "")
     (error "Can't input in unibyte buffer"))
   (lim-delete-overlay)
-  (insert lim-current-word)
+  (if lim-current-word
+      (insert lim-current-word))
   ;; (lim-completion-prompt)
   (move-overlay lim-overlay (overlay-start lim-overlay) (point))
-  ;;   (lim-guidance)
-  (lim-format-guidance)
-  ;; (let ((message-log-max nil))
-  (message "%s" lim-guidance-item))
+  (let ((message-log-max nil))
+    (lim-guidance)))
+
 
 (defun lim-format (key pos total phrase)
   (let ((i 0))
@@ -120,14 +121,53 @@
       (let* ((phrase
               (if (= (length lim-current-string) 1)
                   (car lim-optional-result)
-                  (mapcar
-                   (lambda (a) (concat (car a) (cdr a)))
-                   (cdr (car lim-optional-result)))))
+                (mapcar
+                 (lambda (a) (concat (car a) (cdr a)))
+                 (cdr (car lim-optional-result)))))
              (total (length phrase))
              ;; (pos lim-current-pos)
              (pos 1))
+        (setq lim-prompt-number total)
+        ;; 将可选词条的数目值赋给全局变量`lim-prompt-number', 且不影响原函数值
+        ;; (lim-subseq (lim-guidance) (lim-page-start) (lim-page-end))
+        ;; (message "%s" lim-optional-result)
         (setq lim-guidance-item
-              (lim-format lim-current-string pos total phrase)))))
+              (lim-format lim-current-string pos total ;; phrase
+                          (lim-subseq phrase (1- (lim-page-start)) (lim-page-end))))))
+  (message "%s" lim-guidance-item))
+
+(defun lim-subseq (list from &optional to)
+  (if (null to)
+      (nthcdr from list)
+    (butlast (nthcdr from list) (- (length list) to))))
+
+(defun lim-mod (x y)
+  "like `mod', but when result is 0, return Y" 
+  (let ((base (mod x y)))
+    (if (= base 0)
+        y
+      base)))
+
+(defun lim-current-page ()
+  (1+ (/ (1- lim-current-pos) lim-page-length)))
+
+(defun lim-total-page ()
+  (1+ (/ (1- lim-prompt-number) lim-page-length)))
+
+(defun lim-page-start ()
+  "计算当前所在页第一个词条的位置"
+  (let ((pos (min lim-prompt-number lim-current-pos)))
+    (1+ (- pos (lim-mod pos lim-page-length)))))
+
+(defun lim-page-end ()
+  "计算当前所在页的最后一个词条的位置"
+  (let* ((whole lim-prompt-number)
+         (len lim-page-length)
+         (pos lim-current-pos)
+         (last (+ (- pos (lim-mod pos len)) len)))
+    (if (< last whole)
+        last
+      whole)))
 
 ;; ------------------------------------------------------------------------------
 ;;; Pass the function to lim-translate-function and add punctuation translation control

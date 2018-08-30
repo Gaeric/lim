@@ -60,8 +60,6 @@
 ;; Clear overlay by `lim-clear-overlay'
 ;; Delete overlay and the content by `lim-delete-overlay'
 ;; Show the overlay by `lim-show-overlay'
-;; Format the possible phrase by `lim-format'
-;; Show the guidance by `lim-guidance'
 
 
 (defface lim-string-face '((t (:underline t)))
@@ -99,25 +97,24 @@
       (insert lim-current-word))
   ;; (lim-completion-prompt)
   (move-overlay lim-overlay (overlay-start lim-overlay) (point))
-  (let ((message-log-max nil))
-    (lim-guidance)))
+  (if lim-guidance-status
+      ;; "控制是否显示候选栏"
+        (lim-guidance)))
 
-
-(defun lim-format (key pos total phrase)
-  (let ((i 0))
-    (format "%s[%d/%d]: %s"
-            key pos total
-            (mapconcat 'identity
-                       (mapcar
-                        (lambda (c)
-                          (format "%d.%s " (setq i (1+ i))
-                                  c))
-                        phrase)
-                       " "))))
+;; ------------------------------------------------------------------------------
+;;; Guidance for lim
+;; Format the possible phrase by `lim-format'
+;; Show the guidance by `lim-guidance'
+;; Toggle the guidance status by `lim-guidance-status-toggle'
+(defun lim-guidance-status-toggla ()
+  "toggle the status "
+  (interactive "*")
+  (if lim-guidance-status
+      (setq lim-guidance-status nil)
+    (setq lim-guidance-status t)))
 
 (defun lim-guidance ()
   "展示候选栏"
-  (if lim-guidance-status
       (let* ((phrase
               (if (= (length lim-current-string) 1)
                   (car lim-optional-result)
@@ -133,8 +130,19 @@
         ;; (message "%s" lim-optional-result)
         (setq lim-guidance-item
               (lim-format lim-current-string pos total ;; phrase
-                          (lim-subseq phrase (1- (lim-page-start)) (lim-page-end))))))
-  (message "%s" lim-guidance-item))
+                          (lim-subseq phrase (1- (lim-page-start)) (lim-page-end)))))
+      (let ((message-log-max nil))
+        (message "%s" lim-guidance-item)))
+
+(defun lim-format (key pos total phrase)
+  (let ((i 0))
+    (format "%s[%d/%d]: %s"
+            key pos total
+            (mapconcat 'identity
+                       (mapcar
+                        (lambda (c)
+                          (format "%d.%s " (setq i (1+ i)) c)) phrase)
+                       " "))))
 
 (defun lim-subseq (list from &optional to)
   (if (null to)
@@ -149,6 +157,7 @@
       base)))
 
 (defun lim-current-page ()
+  "计算当前词条所在的页数"
   (1+ (/ (1- lim-current-pos) lim-page-length)))
 
 (defun lim-total-page ()

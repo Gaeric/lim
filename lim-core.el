@@ -1,5 +1,5 @@
 ;;; -*- coding: utf-8 -*-
-;;; lim.el -- Ligthly Input Architecture for lantian-xixi input method
+;;; lim.el -- Ligthly Input Architecture
 
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
@@ -11,11 +11,6 @@
 ;; All-version 0.07.000
 ;;; License: GPLv3
 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 2, or (at your option)
-;; any later version.
-;;
 ;; This program is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the

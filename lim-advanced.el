@@ -51,7 +51,7 @@
 (defvar lim-overlay nil "lim的overlay")
 (defvar lim-punc-exception-list (number-sequence ?0 ?9) "不进行编码转译的特殊情况")
 (defvar lim-punc-translate-status t "标点转译控制开关")
-(defvar lim-guidance-status t "候选栏控制开关 ")
+(defvar lim-guidance-status nil "候选栏控制开关 ")
 (defvar lim-prompt-number "" "编码对应可选词条的数目")
 
 ;; ------------------------------------------------------------------------------
@@ -106,7 +106,7 @@
 ;; Format the possible phrase by `lim-format'
 ;; Show the guidance by `lim-guidance'
 ;; Toggle the guidance status by `lim-guidance-status-toggle'
-(defun lim-guidance-status-toggla ()
+(defun lim-guidance-status-toggle ()
   "toggle the status "
   (interactive "*")
   (if lim-guidance-status

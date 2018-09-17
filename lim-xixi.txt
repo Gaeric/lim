@@ -1403,7 +1403,6 @@ fja 付
 fja; 伏
 fja;; 伐
 fjaa 傅
-fjao; 阈
 fjav 伐
 fje 阀
 fjev 俘
@@ -7199,6 +7198,7 @@ yjaa 倚
 yjae 俨
 yjaee 伢
 yjao 佑
+yjao; 阈
 yjaoa 侑
 yjaov 阉
 yjav 偃

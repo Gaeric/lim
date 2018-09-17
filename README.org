@@ -20,7 +20,7 @@
       - [[#完善回显功能][完善回显功能]]
       - [[#完善标点符号输入][完善标点符号输入]]
       - [[#尝试使用-overlay][尝试使用 overlay]]
-      - [[#构建个人词库模块加块搜索提供供自造词][构建个人词库模块,加块搜索,提供供自造词]]
+      - [[#构建个人词库模块加快搜索提供供自造词][构建个人词库模块,加快搜索,提供供自造词]]
       - [[#完善补全功能][完善补全功能]]
       - [[#完善英文模式][完善英文模式]]
     - [[#buglist-33][Buglist]]
@@ -29,12 +29,19 @@
       - [[#回退字符后上屏刷新问题][回退字符后，上屏刷新问题]]
 
 * Description
-  This is Lim, lightly input method.
+  This is Lim, lightly input method. 
+  
+  This is a attempt for learning Elisp.
 ** Features:
-
+   lim 完成了以下核心流程，使输入法得以运转
+    - 将词库文件读入一个隐藏的buffer
+    - 使用 read-key-sequence 函数和其它模块读入标准输入
+    - 将标准输入与mode-map对照，并根据当前buffer情况，处理输入字符
+    - 以拼接后的编码为基础，向隐藏buffer查词
+    - 以查询结果为基础，进行补全
+    - 对相应的结果进行展示
 * Install
 * Key bindings
-
 | Key Binding | Description    |
 |-------------+----------------|
 * Changlog
@@ -63,7 +70,6 @@
     1. 完成基本的补全候选功能
     2. 完善标点输入
     3. 完善选词逻辑
-       
 ** Todo list
 *** TODO Features [5/6]
 **** DONE [#B] 完善回显功能
@@ -78,7 +84,7 @@
      CLOSED: [2018-07-03 二 00:57]
      - State "DONE"       from "TODO"       [2018-07-03 二 00:57]
      使用overlay以获得更加展示功能
-**** TODO [#B] 构建个人词库模块,加块搜索,提供供自造词
+**** TODO [#B] 构建个人词库模块,加快搜索,提供供自造词
 **** DONE [#A] 完善补全功能
      CLOSED: [2018-08-29 周三 18:26]
      - State "DONE"       from "TODO"       [2018-08-29 周三 18:26]

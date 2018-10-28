@@ -267,6 +267,9 @@ active-func 为每次切换至输入法时调用的相关函数。"
 ;; Loading file for lim package by `lim-load-file'
 ;; Reading FILE into buffer NAME by `lim-read-parameters'
 ;; Get parameter in [Parameter] section by `lim-read-parameters'
+(defsubst string-empty-p (string)
+  "Check whether STRING is empty."
+  (string= string ""))
 
 (defun lim-section-region (section)
   "Gets the start and end positions of a section, without last blank row.

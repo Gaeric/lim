@@ -1,0 +1,89 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  name: "淅淅输入法"
+  schema_id: xixi
+  author:
+    - 猎鹞
+    - zero
+  description: |
+    在原方案上进行修改
+  version: 0.1
+
+switches:
+  - name: ascii_mode
+    states: [ 中, 西 ]
+    reset: 0
+  - name: full_shape
+    states: [ 半, 全 ]
+  - name: ascii_punct
+    reset: [ 。, . ]
+  - name: zh_trad
+    reset: 0
+    states: [ 简, 繁 ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - reverse_lookup_translator
+    - table_translator
+  filters:
+    - simplifier
+
+speller:
+  alphabet: "yxwtsrqpnmlkjihgfdczuvoea;/.,'b"
+  initials: "yxwtsrqpnmlkjihgfedcb"
+  auto_select: true
+  # max_code_length: 5
+
+menu:
+  page_size: 3
+
+translator:
+  dictionary: xixi
+  enable_charset_filter: true
+  enable_sentence: false
+  enable_encoder: true
+  encode_commit_history: true
+  enable_user_dict: false
+  enable_completion: true
+
+zh_trad:
+  opencc_config: s2tw.json
+  option_name: zh_trad
+
+key_binder:
+  import_preset: default
+  # bindings:
+    # - {accept: "Control+p", send: Up, when: composing}
+    # - {accept: "Control+n", send: Down, when: composing}
+    # - {accept: "Control+b", send: Left, when: composing}
+    # - {accept: "Control+f", send: Right, when: composing}
+    # - {accept: "Control+a", send: Home, when: composing}
+    # - {accept: "Control+e", send: End, when: composing}
+    # - {accept: "Control+d", send: Delete, when: composing}
+    # - {accept: "Control+k", send: "Shift+Delete", when: composing}
+    # - {accept: "Control+h", send: BackSpace, when: composing}
+    # - {accept: "Control+g", send: Escape, when: composing}
+
+punctuator:
+  import_preset: default
+
+recognizer:
+  import_preset: default

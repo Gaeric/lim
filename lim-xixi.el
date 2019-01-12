@@ -59,5 +59,6 @@
                (insert (read-from-minibuffer "自定义输入: ")))))
     (call-interactively 'self-insert-command)))
 
+(global-set-key "'" 'lim-insert-ascii)
 ;; ==============================================================================
 (provide 'lim-xixi)

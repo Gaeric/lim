@@ -787,9 +787,9 @@ cso; 虿
 csu 臣
 csuo 嫦
 csuu 辏
+csv 辍
 csvo 媸
 csvu 邨
-csvv 辍
 ct 程
 ct/ 矬
 ct; 辞
@@ -940,7 +940,6 @@ dda 沌
 dde 沲
 ddo 洞
 ddo/ 豆
-ddoa 沓
 ddu 渎
 ddu/ 滇
 ddv 渡
@@ -1281,6 +1280,7 @@ el ◆
 elv ◇
 em ：
 emy $
+en …
 eo ”
 ep ——
 epf ㎡
@@ -6035,6 +6035,7 @@ tdau 汀
 tde 淘
 tde; 滔
 tdo 湍
+tdoa 沓
 tdov 溻
 tdu 添
 tdu; 忝

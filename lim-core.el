@@ -468,10 +468,11 @@ The function emms-delete-if has some Bug."
         (dolist (buf (lim-buffer-list))
           (with-current-buffer (cdr (assoc "buffer" buf))
             (setq words (append words
-                                 (cdr
+                                (list
+                                 (cadr
                                   (lim-seek-word code
                                                  (point-min)
-                                                 (point-max)))))
+                                                 (point-max))))))
             (if lim-completion-status
                 (setq completions (lim-completions code completions)))
             ;; (message "this is lim-possible-phrase: %s" lim-possible-phrase)

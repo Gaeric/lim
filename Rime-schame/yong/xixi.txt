@@ -1,45 +1,14 @@
-;; -*- coding: utf-8 -*-
-[Comment]
+﻿name= xixi
+key=;,/.eiaoubcdfghjklmnpqrstvwxyz
+len=5
+push=;/,.
+compact=3
+dicts=mb/xixia.txt mb/xixiz.txt
+code_e2=p11+p21
+code_e3=p11+p21+p31
+code_e4=p11+p21+p31
 
-[Parameter]
-first-char=yxwvtsrqpnmlkjihgfedcb
-total-char=yxwtsrqpnmlkjihgfdcuzovea;/.,b
-page-length=3
-
-[Punctuation]
-{ 『
-| ÷
-} 』
-~ ～
-` ・
-! ！
-# ＃
-$ ￥
-% ％
-& ※
-( （
-) ）
-* ×
-+ ＋
-, ，
-- －
-. 。
-/ 、
-: ：
-; ；
-< 《
-= ＝
-> 》
-? ？
-@ ◎
-[ 【
-] 】
-^ ……
-_ ──
-" “ ”
-' ‘ ’
-
-[Table]
+[DATA]
 b 不过
 b, 变
 b. 必
@@ -47,7 +16,8 @@ b/ 本
 b; 办
 ba 布
 ba, 奔
-ba,, 不[hv] 磅
+ba,, 不[hv]
+ba,, 磅
 ba,; 碚
 ba,e 殡
 bae 碑
@@ -565,7 +535,8 @@ cjev 氅
 cjo 倡
 cjoe 催
 cjoo 阊
-cjou 侧 常[c.]
+cjou 侧
+cjou 常[c.]
 cju 创
 cju, 传[cg]
 cjua 俦
@@ -600,7 +571,8 @@ ckeo 攒
 ckeu 搋
 cko 抽
 ckoa 揣
-ckoaa 徂 撮
+ckoaa 徂
+ckoaa 撮
 ckoe 摧
 ckou 抻
 cku 扯
@@ -660,7 +632,8 @@ cn,o 憧
 cn; 怆
 cna 穿
 cna, 宠
-cna,, 忖 怵
+cna,, 忖
+cna,, 怵
 cnae 惭
 cnau 宸
 cnav 憷
@@ -923,7 +896,8 @@ dhe 敦
 dhe; 瘩
 dho 帝
 dhoa 端
-dhoaa 疸 盗
+dhoaa 疸
+dhoaa 盗
 dhu 店
 dhv 度
 dhv, 憝
@@ -961,10 +935,12 @@ dizz 哆
 dj 当
 dj, 袋
 dja 代
-djau 仃 倒[ds]
+djau 仃
+djau 倒[ds]
 djo 黛
 djo, 贷
-djoa 佃 但[do]
+djoa 佃
+djoa 但[do]
 djoaa 侗
 djou 岱
 dju 傣
@@ -980,7 +956,8 @@ dke 搭
 dko 担
 dkou 得[kr]
 dku 掉
-dkua 垫 待[ku]
+dkua 垫
+dkua 待[ku]
 dkuv 挡
 dkv 掇
 dkz 抵
@@ -1054,7 +1031,8 @@ dou 帱
 dov 瞪
 dova 嶝
 dovu 鼎
-dovv 电[dc] 眈
+dovv 电[dc]
+dovv 眈
 doz 骶
 dp 东
 dq 断
@@ -1165,64 +1143,6 @@ dyv 铎
 dyva 镫
 dyz 钓
 dz 刀
-ea ＠
-eb ％
-ebd ≠
-ec ×
-ech ÷
-ed 、
-ede の
-edh √
-edk 〓
-edl ￡
-edm ?
-edp ∏
-edt ℡
-edu °
-edy ＝
-edyd ≥
-edyh ＞
-ef 〖〗$LEFT
-eh ※
-ehk 【】$LEFT
-ehy ●
-ei ……
-ej ＋
-ejd ∠
-ejh －
-ejj ±
-ek （）$LEFT
-el ◆
-elv ◇
-em ：
-emy $
-en …
-eo ”
-ep ——
-epf ㎡
-epj π
-eq ‰
-er ￥
-es ...
-esd ℃
-esj △
-esjh ▲
-et ！
-etx ﹡
-eu “
-ew ？
-ewj ☆
-ewjh ★
-ewq ∞
-eww ～
-ex ＊
-exp φ
-exs Σ
-exy ＜
-exyd ≤
-ez §
-ezf □
-ezu ㈱
 f 事情
 f, 方
 f. 复
@@ -1486,7 +1406,8 @@ gcuz 桄
 gcv 概
 gcve 橄
 gcz 构
-gcz; 枸 格[ge]
+gcz; 枸
+gcz; 格[ge]
 gd 工
 gd, 滚
 gd,; 沽
@@ -1527,8 +1448,10 @@ gfe 攻
 gfe, 故[gp]
 gfe; 聒
 gfo 革
-gfo, 贡 过[g,]
-gfo,, 汞 贾
+gfo, 贡
+gfo, 过[g,]
+gfo,, 汞
+gfo,, 贾
 gfu 恭
 gfuo 鞲
 gfuu 酐
@@ -1630,9 +1553,11 @@ gnv 惯
 gnz 宄
 go 国
 go, 固
-go,, 果[gr] 赅
+go,, 果[gr]
+go,, 赅
 go,; 蛄
-go,;a 崞 罟
+go,;a 崞
+go,;a 罟
 go; 冈
 go;; 蛤
 go;v 蚣
@@ -1906,7 +1831,8 @@ hi; 呼
 hi;; 哈[hp]
 hia 呵
 hia; 喊
-hia;, 咴 哄
+hia;, 咴
+hia;, 哄
 hiae 嚯
 hie 哗
 hie, 嚆
@@ -1927,7 +1853,8 @@ hj 候
 hj, 阂
 hj,u 华[h;]
 hj; 伙
-hj;a 合[hc] 含
+hj;a 合[hc]
+hj;a 含
 hja 闳
 hja; 何[hf]
 hje 颔
@@ -2009,7 +1936,8 @@ hnz 惚
 hnza 鲎
 ho 回
 ho, 蝴
-ho,, 骸 黑[h.]
+ho,, 骸
+ho,, 黑[h.]
 ho,; 岵
 ho; 蛤
 hoa 虹
@@ -2225,9 +2153,11 @@ if;, 真[fm]
 if;a 哉
 ifa 载
 ifa, 栽
-ifa,, 甄 酎
+ifa,, 甄
+ifa,, 酎
 ifaa 正[if]
-ifaaa 再[i/] 整[ff]
+ifaaa 再[i/]
+ifaaa 整[ff]
 ife 政
 ifea 酢
 ifo 遭
@@ -2253,7 +2183,8 @@ igu 奏
 igv 耔
 ih 族
 ih, 章
-ih,, 瘴 装[hh]
+ih,, 瘴
+ih,, 装[hh]
 ih,a 麈
 ih,aa 疰
 ih; 座
@@ -2263,7 +2194,8 @@ ih;a 咨
 ih;e 疹
 iha 状
 iha, 瘃
-ihaa 主[iw] 症
+ihaa 主[iw]
+ihaa 症
 ihau 震
 ihauu 斋
 ihe 准
@@ -2271,7 +2203,8 @@ ihea 痄
 ihee 彰
 ihez 旃
 iho 资
-iho, 这[rh] 遮
+iho, 这[rh]
+iho, 遮
 ihoz 衷
 ihu 庄
 ihu; 站[hy]
@@ -2320,7 +2253,8 @@ iiz 咒
 iizu 啁
 ij 作
 ij, 值
-ij,a 伫 住[i;]
+ij,a 伫
+ij,a 住[i;]
 ij,aa 隹
 ij,e 做[jf]
 ij,o 僮
@@ -2472,7 +2406,9 @@ ioae 崭
 ioau 蛭
 ioe 帐
 ioe, 账
-ioe,, 帙 蛛 颛
+ioe,, 帙
+ioe,, 蛛
+ioe,, 颛
 ioe; 蜘
 ioea 蚱
 ioev 眨
@@ -2539,13 +2475,15 @@ it,; 稹
 it,o 箸
 it;a 知[ti]
 ita 乍
-itaa 箴 重[cn]
+itaa 箴
+itaa 重[cn]
 itao 簪
 itaz 筑
 itaza 籀
 ite 竹
 ite, 稚
-ite,, 秩 笊
+ite,, 秩
+ite,, 笊
 ite,a 雉
 itea 笮
 ito 造
@@ -2715,7 +2653,8 @@ jbu 剧
 jbv 建
 jbv, 忌
 jbva 弪
-jbvu 即[jv] 郡
+jbvu 即[jv]
+jbvu 郡
 jbvv 己[bc]
 jc 机
 jc, 杰
@@ -2806,7 +2745,8 @@ jfa 戟
 jfa, 棘
 jfa,, 戬
 jfe 救
-jfe, 教[ft] 聚
+jfe, 教[ft]
+jfe, 聚
 jfe,, 醮
 jfe,a 截
 jfe; 鬏
@@ -2850,7 +2790,8 @@ jh;; 交[j,]
 jh;e 疥
 jh;z 竞
 jha 减
-jha, 奖 就[ja]
+jha, 奖
+jha, 就[ja]
 jha,, 桨
 jhaa 酱
 jhao 廑
@@ -2869,12 +2810,14 @@ jhv 脊
 jhv; 竣
 jhva 痉
 jhvu 郊
-jhvuu 疖 郏
+jhvuu 疖
+jhvuu 郏
 jhvv 瘕
 jhz 竟
 jhz, 疚
 jhz; 痂
-jhza 将[hw] 鹫
+jhza 将[hw]
+jhza 鹫
 jhzv 净
 jhzvv 麂
 ji 叫
@@ -2917,11 +2860,13 @@ jja 集
 jjaa 侥
 jjae 偕
 jjao 借
-jjaoa 僭 僵
+jjaoa 僭
+jjaoa 僵
 jje 介
 jje, 僬
 jjee 儆
-jjeu 件[jt] 牮
+jjeu 件[jt]
+jjeu 牮
 jjo 俱
 jjoa 间[jr]
 jjoz 偈
@@ -2960,7 +2905,8 @@ jkoe 攫
 jku 街
 jku; 拮
 jkv 径
-jkv, 抉 据[kb]
+jkv, 抉
+jkv, 据[kb]
 jkv; 捃
 jkvv 掘
 jkz 拘
@@ -2975,7 +2921,8 @@ jla 诫
 jla, 谏
 jlaa 讵
 jlao 谨
-jlau 军[ls] 襟
+jlau 军[ls]
+jlau 襟
 jle 颈
 jlo 迳
 jlo; 扃
@@ -3035,7 +2982,8 @@ jo 见
 jo, 蛟
 jo,v 嵴
 jo; 界
-jo;, 具[jm] 睑
+jo;, 具[jm]
+jo;, 睑
 jo;e 蚧
 jo;o 囧
 jo;v 圈
@@ -3141,7 +3089,8 @@ jvaa 亟
 jvo 胛
 jvu 脚
 jvuu 际
-jvuuu 肼 阱
+jvuuu 肼
+jvuuu 阱
 jvuv 腈
 jvv 腱
 jvva 胫
@@ -3152,7 +3101,9 @@ jw 几
 jw, 久
 jw,, 及[wk]
 jw,; 狡
-jw,;, 饺 鲛 鲸
+jw,;, 饺
+jw,;, 鲛
+jw,;, 鲸
 jw,e 鲚
 jw,z 獍
 jw; 句
@@ -3170,7 +3121,8 @@ jwu; 鲒
 jwuu 鲣
 jwv 急
 jwv, 觖
-jwvv 九[j;] 鲫
+jwvv 九[j;]
+jwvv 鲫
 jwz 角
 jwza 鸠
 jwze 解[wz]
@@ -3615,9 +3567,11 @@ lh,o, 廪
 lh,u 凛
 lh,u, 廪
 lh; 冷
-lh;, 六[l;] 廉
+lh;, 六[l;]
+lh;, 廉
 lh;a 廉
-lh;aa 吝 銮
+lh;aa 吝
+lh;aa 銮
 lh;v 零
 lh;z 露
 lh;za 瘘
@@ -3638,7 +3592,8 @@ lheu 挛
 lheuu 痢
 lhez 痨
 lho 雷
-lho, 离[l,] 赉
+lho, 离[l,]
+lho, 赉
 lho; 脔
 lhou 峦
 lhov 瘰
@@ -3653,7 +3608,8 @@ lhva 孪
 lhvaa 膂
 lhve 庐
 lhvu 疗
-lhvuu 羸 酃
+lhvuu 羸
+lhvuu 酃
 lhvv 廊
 lhvz 癃
 lhz 亮
@@ -3696,7 +3652,8 @@ lj;z 伦
 lj;za 偻
 lja 例
 lja, 俩
-lja,, 瓴 阑
+lja,, 瓴
+lja,, 阑
 ljaa 傈
 ljao 僚
 ljao, 俪
@@ -3784,10 +3741,12 @@ lo,e 罹
 lo,o 罱
 lo; 髅
 lo;v 岭
-lo;v, 囹 蛉
+lo;v, 囹
+lo;v, 蛉
 lo;z 蝼
 lo;za 嵝
-lo;zu 嶙 瞵
+lo;zu 嶙
+lo;zu 瞵
 lo;zv 囵
 loa 睐
 loa, 崃
@@ -3876,14 +3835,17 @@ lw,, 乐[wp]
 lw; 鳞
 lwa 猎
 lwao 獠
-lwao, 鲡 鲢
+lwao, 鲡
+lwao, 鲢
 lwaz 鳓
 lwe 雒
 lweu 猁
 lwo 留
 lwo, 遛
 lwoa 鲁
-lwoaa 狸 鲤 鳢
+lwoaa 狸
+lwoaa 鲤
+lwoaa 鳢
 lwoz 猡
 lwu 鲈
 lwu; 鲮
@@ -3999,7 +3961,9 @@ meev 莓
 meo 莫
 meoa 苗
 meoa, 蔑
-meoaa 暮 瞢 苜
+meoaa 暮
+meoaa 瞢
+meoaa 苜
 meoo 蔓
 meou 幕
 meov 萌
@@ -4008,7 +3972,8 @@ meu, 慕
 meu,, 茉
 meua 墓
 mev 茅
-mev, 么[me] 荬
+mev, 么[me]
+mev, 荬
 meva 蓦
 meve 茅
 mevv 苠
@@ -4130,7 +4095,8 @@ moe 瞒
 moea 蟒
 moea, 螨
 moeo 瞄
-moeo, 蟆 蠛
+moeo, 蟆
+moeo, 蠛
 moeu 蠓
 moo 冒
 mooo 帽
@@ -4362,7 +4328,8 @@ nsv, 怒
 nsv,, 奴
 nsva 妞
 nsva, 辗
-nsvaa 孥 驽
+nsvaa 孥
+nsvaa 驽
 nsvv 娜
 nsvvv 弩
 nsvz 妮
@@ -4496,7 +4463,8 @@ phv, 癖
 phva 冯
 phz 疲
 phzv 庖
-phzvv 庀 疱
+phzvv 庀
+phzvv 疱
 pi 跑
 pi, 喷
 pi; 品
@@ -4556,7 +4524,8 @@ pmev 叛
 pmo 盆
 pmo, 贫
 pmoa 番
-pmoaa 暼 瞥
+pmoaa 暼
+pmoaa 瞥
 pmu 判
 pmv 鄱
 pmz 炮
@@ -4937,7 +4906,8 @@ qtuv 氰
 qtv 缺
 qtv, 憩
 qtva 氢
-qtvv 乞 气[q;]
+qtvv 乞
+qtvv 气[q;]
 qu 去
 qu, 墙
 qu,; 謦
@@ -5064,7 +5034,8 @@ rgaa 聱
 rge 敖
 rgo 瑞
 rgo, 耦
-rgo,, 螯 遨
+rgo,, 螯
+rgo,, 遨
 rgv 骜
 rgz 韧
 rgza 鳌
@@ -5104,7 +5075,8 @@ rja 儒
 rjaa 佴
 rjao 俺
 rje 俄
-rjea 任[rt] 偌
+rjea 任[rt]
+rjea 偌
 rjo 偶
 rju 仁
 rjua 闰
@@ -5363,7 +5335,8 @@ sf; 甚
 sf;, 粟
 sfa 酾
 sfe 斯
-sfe, 散[fe] 酥
+sfe, 散[fe]
+sfe, 酥
 sfo 速
 sfo, 贳
 sfo; 啬
@@ -5449,7 +5422,8 @@ sjo, 赏
 sjoa 畲
 sju 舍
 sjua 侍
-sjuaa 仕 仨
+sjuaa 仕
+sjuaa 仨
 sjuu 佘
 sjv 似
 sjv, 食
@@ -5498,15 +5472,18 @@ sla 试
 sla, 桑
 slau 叁
 sle 谁
-sle, 诉[lq] 颡
+sle, 诉[lq]
+sle, 颡
 slee 衫
 slev 毵
 slez 诜
 slo 视
 slo; 谡
-slou 神[s.] 讪
+slou 神[s.]
+slou 讪
 slu 诗
-slua 圣 社[lu]
+slua 圣
+slua 社[lu]
 slv 双
 slvo 诵
 slvv 扇
@@ -5581,7 +5558,8 @@ sov, 思[si]
 soz 岁
 soz, 赡
 sozo 蜀
-sozv 兕 四[se]
+sozv 兕
+sozv 四[se]
 sp 时
 spa 师
 spee 少[pv]
@@ -5595,7 +5573,8 @@ squ 艄
 sr 身
 sr, 暑
 sra 射
-sra, 是[fn] 晟
+sra, 是[fn]
+sra, 晟
 sra,, 时[sp]
 sraa 晒
 sre 顺
@@ -5631,7 +5610,8 @@ staz 簌
 ste 牲
 stea 笙
 sto 适
-stoa 眚 算[sz]
+stoa 眚
+stoa 算[sz]
 stoz 甥
 stu 升
 stua 筛
@@ -6042,7 +6022,6 @@ tyv 忐
 tyz 龆
 tz 图
 tzo 迢
-v $LAST
 w 为什么
 w, 望
 w. 忘
@@ -6483,7 +6462,8 @@ xl; 祥
 xl;u 详
 xl;u, 谖
 xla 戏
-xlaa 习 写[xs]
+xlaa 习
+xlaa 写[xs]
 xlae 谐
 xle 谢
 xleu 训
@@ -6570,7 +6550,8 @@ xr, 暄
 xr,, 煦
 xr; 衅
 xr;, 囟
-xr;a 向[xm] 晞
+xr;a 向[xm]
+xr;a 晞
 xr;e 曦
 xr;v 鼷
 xra 血
@@ -6836,7 +6817,8 @@ yg;z 珧
 yga 琊
 yge 瑛
 ygo 运
-ygo, 迂 远[yn]
+ygo, 迂
+ygo, 远[yn]
 ygoa 盂
 ygoo 韫
 ygoz 璎
@@ -6864,7 +6846,8 @@ yhau 弈
 yhaua 瘗
 yhe 夜
 yhe, 颜
-yhe,, 庾 瘐
+yhe,, 庾
+yhe,, 瘐
 yhea 旖
 yhee 彦
 yho 赢
@@ -6914,7 +6897,8 @@ yiv 咏
 yiv, 吆
 yivo 踊
 yivu 郢
-yivuu 吲 郧
+yivuu 吲
+yivuu 郧
 yivv 邑
 yivz 哟
 yivze 呦
@@ -7031,7 +7015,8 @@ ymoa 益
 ymoaa 釉
 ymu 羊
 ymuu 丫
-ymuuu 刈 剡
+ymuuu 刈
+ymuuu 剡
 ymuv 爰
 ymv 熠
 ymv, 恙
@@ -7081,8 +7066,10 @@ yo;vu 嵛
 yoa 崖
 yoa, 因[y.]
 yoa; 岩
-yoa;a 圄 蜮
-yoaa 屿 由[y/]
+yoa;a 圄
+yoa;a 蜮
+yoaa 屿
+yoaa 由[y/]
 yoae 岈
 yoae, 螈
 yoaee 蚜
@@ -7108,13 +7095,15 @@ yov; 贻
 yov;a 眙
 yovo 蛹
 yovu 邮
-yovuu 峄 蚓
+yovuu 峄
+yovuu 蚓
 yovv 幽
 yovz 黝
 yovze 蚴
 yoz 婴
 yoza 鸭
-yozaa 鸯 鹦
+yozaa 鸯
+yozaa 鹦
 yozv 嶷
 yozz 黟
 yp 友
@@ -7157,7 +7146,8 @@ ysaa, 嫣
 ysav 尧
 yse 雅
 yse, 医
-yse,, 妖 轶
+yse,, 妖
+yse,, 轶
 ysee 牙
 yso 姻
 yso, 迓

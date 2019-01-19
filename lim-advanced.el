@@ -94,7 +94,7 @@
     (error "Can't input in unibyte buffer"))
   (lim-delete-overlay)
   (if lim-current-word
-      (insert lim-current-word))
+      (insert (substring-no-properties lim-current-word 0 1)))
   ;; (lim-completion-prompt)
   (move-overlay lim-overlay (overlay-start lim-overlay) (point))
   (if lim-guidance-status

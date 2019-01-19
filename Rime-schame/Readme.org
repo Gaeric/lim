@@ -1,0 +1,19 @@
+#+title:淅淅输入法-rime框架文件说明
+* Table of Contents                                       :TOC_4_gh:noexport:
+- [[#changelog][Changelog]]
+  - [[#v01][v0.1]]
+    - [[#todo-list][Todo-list]]
+  - [[#v02][v0.2]]
+
+* Changelog
+** v0.1
+   SCHEDULED: <2019-01-18 周五>
+*** Todo-list
+     1. 最新的蓝版小兮码
+     2. 去除词组，保留单字
+     3. 完美替换 ~/~ 和 ~;~, ~;~ 和 ~,~, ~,~ 和 ~/~ 和三者编码位置
+** v0.2
+    1. 生成 lim rime yong三组文件
+    2. 加入部分符号
+    3. 配置 rime 个人配置
+    4. 编写输入方案

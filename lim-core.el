@@ -567,7 +567,9 @@ otherwise stop the conversion,then insert the corresponding character.
 根据当前展示的词条输入数字选择词"
   (interactive)
   (if (string-empty-p lim-current-string)
-      (setq lim-current-word (char-to-string last-command-event))
+      (progn
+        (setq lim-current-word (char-to-string last-command-event))
+        (lim-terminate-translation))
     (let ((num (- last-command-event 48)))
       (message "%d" num)
       (if (and (car lim-optional-result)

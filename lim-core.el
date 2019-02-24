@@ -8,7 +8,7 @@
 ;; Description: Ligthly Input Architecture
 
 ;; Fork from Eim but refactor all code
-;; All-version 0.07.000
+;; All-version 0.07.001
 ;;; License: GPLv3
 
 ;; This program is distributed in the hope that it will be useful,
@@ -515,7 +515,8 @@ The function emms-delete-if has some Bug."
       ;; vector :: set vertor to lim-entry-command
       (setq i (1+ i)))
     (dolist (i (number-sequence ?1 ?9))
-      (define-key map (char-to-string i) 'lim-entry-command))
+      ;; (define-key map (char-to-string i) 'lim-entry-command)
+      (define-key map (char-to-string i) 'lim-select-num-term))
     (define-key map " "         'lim-select-current-term)
     (define-key map [backspace] 'lim-delete-last-char)
     (define-key map [delete]    'lim-delete-last-char)
@@ -560,6 +561,21 @@ otherwise stop the conversion,then insert the corresponding character.
         ;; 如果不为空，则不管
         (setq lim-current-word "")))
   (lim-terminate-translation))
+
+(defun lim-select-num-term ()
+  "Choose the term by num.
+根据当前展示的词条输入数字选择词"
+  (interactive)
+  (if (string-empty-p lim-current-string)
+      (setq lim-current-word (char-to-string last-command-event))
+    (let ((num (- last-command-event 48)))
+      (message "%d" num)
+      (if (and (car lim-optional-result)
+               (nth num (car lim-optional-result)))
+          (progn
+            (setq lim-current-word (car (nth num (car lim-optional-result))))
+            (lim-terminate-translation))
+        (user-error "Ivalid number")))))
 
 (defun lim-delete-last-char ()
   "如果lim-current-string值不存在时，直接返回相应的 (list key)

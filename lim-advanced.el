@@ -67,7 +67,7 @@
   :group 'lim)
 
 (defun lim-setup-overlay ()
-  "Bulid overlay for lim."
+  "Build overlay for lim."
   (let ((pos (point)))
     (if (overlayp lim-overlay)
         (move-overlay lim-overlay pos pos)
@@ -236,8 +236,8 @@
   (delete-region (line-beginning-position) (min (+ (line-end-position) 1)
                                                 (point-max))))
 
-(defun lim-bulid-table ()
-  "Bulid table by this function. Require lim-core"
+(defun lim-build-table ()
+  "Build table by this function. Require lim-core"
   (interactive)
   (save-restriction
     (let ((table (lim-section-region "Table"))

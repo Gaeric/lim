@@ -53,6 +53,9 @@
 (defvar lim-punc-translate-status t "标点转译控制开关")
 (defvar lim-guidance-status nil "候选栏控制开关 ")
 (defvar lim-prompt-number "" "编码对应可选词条的数目")
+;;  (c . 出楚材))
+(defvar lim-evil-char-cn-lib nil "储存由码表得到的字符汉字对应关系表")
+
 
 ;; ------------------------------------------------------------------------------
 ;;; Overlay for lim
@@ -269,5 +272,65 @@
           (forward-line 1)))
       (if (looking-at "^$")
           (delete-backward-char 1)))))
+
+(defun lim-build-char-table ()
+  "Output a library for lim-evil-find-char."
+  (interactive)
+  (save-restriction
+    ;; 先置空处理
+    (setq lim-evil-char-cn-lib nil)
+    (let ((table (lim-section-region "Table"))
+          (lim-char-string-temp  "") ;; 结构为 (b . 不避弼)
+          currchar lastchar
+          currline currword)
+      (narrow-to-region (car table) (cdr table))
+      (perform-replace "[ \t]+$" "" nil t nil nil nil (point-min) (point-max))
+      (sort-lines nil (point-min) (point-max))
+      (goto-char (point-min))
+      (while (not (eobp))
+        (if (looking-at "^[ \t]*$")
+            (lim-delete-line)
+          (setq currline (lim-line-content))
+          (setq currchar (substring-no-properties (car currline) 0 1))
+          (setq currword (mapconcat
+                          (lambda (x) (substring-no-properties x 0 1))
+                          (cdr currline) ""))
+          (if (string= currchar lastchar)
+              ;; lim-char-string-temp 为一个字符的所有currword的拼接
+              (setq lim-char-string-temp
+                    (concat lim-char-string-temp currword))
+            ;; 初始条件为空
+            ;; 其余条件下，lim-char-string-temp均不为空
+            ;; 在其为空时，不应做出任何改变
+            ;; 在其不为空时，应当更新lim-evil-char-cn-lib
+            (unless (string-empty-p lim-char-string-temp)
+              (setq lim-evil-char-cn-lib (push
+                                          (cons lastchar
+                                                (delete-duplicates lim-char-string-temp))
+                                          lim-evil-char-cn-lib)))
+            ;; 在首字符变换时，重置lastchar和currword
+            (setq lastchar currchar)
+            (setq lim-char-string-temp  currword))
+          (forward-line 1)))
+      ;; 处理最后一组词
+      ;; (setq lim-evil-char-cn-lib (push  lim-char-string-temp lim-evil-char-cn-lib))
+      (setq lim-evil-char-cn-lib (push
+                                  (cons lastchar (delete-duplicates  lim-char-string-temp))
+                                  lim-evil-char-cn-lib)))))
+
+(defun lim-evil-bulid-lib ()
+  (interactive)
+  (progn
+    (insert (format "(defvar lim--evil-char-cn-lib"))
+    (progn
+      (insert "\n '(\n")
+      (mapc
+       (lambda (x) (insert (format "  (\"%s\" . \"%s\")\n" (car x) (cdr x))))
+       lim-evil-char-cn-lib)
+      (insert ")"))
+    (insert (format "  \"字符汉字对应关系表\")"))))
+;; 词库之中每一行可能有多个词
+;; 只取每个词的第一个字
+;; 根据每一行首字母判断是否要增加新的行
 
 (provide 'lim-advanced)

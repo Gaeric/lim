@@ -25,77 +25,7 @@
 ;; 对evil的find功能(f/F/t/T)功能进行增强，使其可以通过码表的首字母跳转至中文字符处
 ;; 首先，建立字符与汉字对应关系表 lim--evil-char-cn-lib
 
-(require 'lim-advanced)
-
-(defvar lim-evil-char-cn-lib nil
-  "储存由码表得到的字符汉字对应关系表")
-  ;; ((b . 不避弼)
-  ;;  (c . 出楚材))
-
-(defun lim-build-char-table ()
-  "Output a library for lim-evil-find-char."
-  (interactive)
-  (save-restriction
-    ;; 先置空处理
-    (setq lim-evil-char-cn-lib nil)
-    (let ((table (lim-section-region "Table"))
-          (lim-char-string-temp  "") ;; 结构为 (b . 不避弼)
-          currchar lastchar
-          currline currword)
-      (narrow-to-region (car table) (cdr table))
-      (perform-replace "[ \t]+$" "" nil t nil nil nil (point-min) (point-max))
-      (sort-lines nil (point-min) (point-max))
-      (goto-char (point-min))
-      (while (not (eobp))
-        (if (looking-at "^[ \t]*$")
-            (lim-delete-line)
-          (setq currline (lim-line-content))
-          (setq currchar (substring-no-properties (car currline) 0 1))
-          (setq currword (mapconcat
-                          (lambda (x) (substring-no-properties x 0 1))
-                          (cdr currline) ""))
-          (if (string= currchar lastchar)
-              ;; lim-char-string-temp 为一个字符的所有currword的拼接
-              (setq lim-char-string-temp
-                    (concat lim-char-string-temp currword))
-            ;; 初始条件为空
-            ;; 其余条件下，lim-char-string-temp均不为空
-            ;; 在其为空时，不应做出任何改变
-            ;; 在其不为空时，应当更新lim-evil-char-cn-lib
-            (unless (string-empty-p lim-char-string-temp)
-              (setq lim-evil-char-cn-lib (push
-                                          (cons lastchar
-                                                (delete-duplicates lim-char-string-temp))
-                                          lim-evil-char-cn-lib)))
-            ;; 在首字符变换时，重置lastchar和currword
-            (setq lastchar currchar)
-            (setq lim-char-string-temp  currword))
-          (forward-line 1)))
-      ;; 处理最后一组词
-      ;; (setq lim-evil-char-cn-lib (push  lim-char-string-temp lim-evil-char-cn-lib))
-      (setq lim-evil-char-cn-lib (push
-                                  (cons lastchar (delete-duplicates  lim-char-string-temp))
-                                  lim-evil-char-cn-lib)))))
-
-(defun lim-evil-bulid-lib ()
-  (interactive)
-  (progn
-    (insert (format "(defvar lim--evil-char-cn-lib"))
-    (progn
-      (insert "\n '(\n")
-      (mapc
-       (lambda (x) (insert (format "  (\"%s\" . \"%s\")\n" (car x) (cdr x))))
-       lim-evil-char-cn-lib)
-      (insert ")"))
-    (insert (format "  \"字符汉字对应关系表\")"))))
-
-
-;; 词库之中每一行可能有多个词
-;; 只取每个词的第一个字
-;; 根据每一行首字母判断是否要增加新的行
 ;; 词条的结构应该是：
-
-(message "%s" lim-evil-char-cn-lib)
 
 (defvar lim--evil-char-cn-lib
   '(("y" . "原尤右殒餍硬厌靥砑雁魇殃赝厣奄砚研压殪愿有郁欹已熨异尉鬻尹尾引聿肀样榆椅桠椰杳柚樱樾乙橼杨檐楹游淤演液瀛洋浴淫溢瀹漾渝源一淹涯湮滢渊沂潆油泱洇沅滟涌泳渔沿漪页菸薏营荧蓥芽荑莠萸莜英萤茵莹茔芋芸芫艺苡蔚蓣蕴萦荫胤药莺莸苑茚要雨燕亚焉酉酽严颐鞅酝耶鄢鄞酏元玉瑶琰鼋瑗瑜珧琊瑛运迂盂韫璎耘于玥云艳言衣亦瘀霪应癔痒饔兖奕痍疣疟痖弈瘗夜颜庾瘐旖彦赢裔音瘿壅雩育冶膺雍庸翊瘾毅韵鹰嬴疡痈疫意叶咬唁喑唷噫吟喻呀咦哑呓跃咿员喁咽嘤哕吁噎咏吆踊郢吲郧邑哟呦依佯仪阅俣佾优佑伛阈倚俨伢偃阉侑攸佚仡逾龠觎余闫伊愈悠耀俑俞亿仰阎佣摇衍掖援揖徭徉揄挹掩揠衙揶御押拽撄掾扬拥抑役语永翌谳谚谊谣议以裕谕讶祐羿预矣谀诱翼甬谒祎译恿诒羽予郓勇冤鹬豫诣允爷义炎爻焱谷烊肴猷养烨舀燠烟遥煜益釉羊丫刈剡爰熠恙欲鹞鹆焰炀繇远誉窨慵愉悦悒窬忧寅恹宥窑窳宜寓怏愠宴宇忆怡恽怿窈眼央禺蝣圆蚁峪崤蝇蛘蝓嵛崖因岩圄蜮屿由岈螈蚜罨崦睚囿崾蜒曳罂屹遇遗圜蚰蜴园圉野愚贻眙蛹邮峄蚓幽黝蚴婴鸭鸯鹦嶷黟友舣殷易禹臾昱晏舆曰晕舁粤晔影映邀鼹鼬岳劓延牖曜昀与夷弋娱彧媛姚姨妪娅嫣尧雅医妖轶牙姻迓辕妍轧郾翳妤鸦欤轺鸢移夭毓箢氧氩筵秧迤氤氲筠竽越懿垸墉袁业域壹垭塬垣堰堙埏盐埸垠邺圯月院腋臆臃陨媵腰胰腌腴阳隅胭刖阽阴也隐用匀狺夤鳙馀鳐狳犹鱿猗颖颍饫迎逸鱼眢猿印怨饴狱肄疑狁饮鸳约幺验彝缢邕缨纭纡缘驭绎驿幼银镛铱镱虞镒铫铘钺龉铕铀铟卣钰钥龈钇又盈孕")
@@ -158,7 +88,7 @@
       (setq result nil))
     (if fwd (backward-char))
     (or result
-        (user-error "No Such Char:<%c>" char))))
+        (user-error "Can’t find: %c" char))))
 
 (evil-define-motion evil-lim-find-char-forward (count char)
   "Search the word forward as f"
@@ -258,5 +188,4 @@
     (define-key evil-motion-state-map [remap evil-repeat-find-char]         nil)
     (define-key evil-motion-state-map [remap evil-repeat-find-char-reverse] nil)))
 
-(evil-lim-find-mode 1)
-
+(provide 'lim-evil-find-char)

@@ -29,6 +29,7 @@
 
 (require 'lim-core)
 (require 'lim-advanced)
+(require 'lim-evil-find-char)
 
 (setq lim-stop-function 'lim-overflow)
 
@@ -60,5 +61,7 @@
     (call-interactively 'self-insert-command)))
 
 (global-set-key "'" 'lim-insert-ascii)
+(evil-lim-find-mode 1)
 ;; ==============================================================================
 (provide 'lim-xixi)
+

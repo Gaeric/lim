@@ -47,7 +47,7 @@ b/ 本
 b; 办
 ba 布
 ba, 奔
-ba,, 不[hv] 磅
+ba,, 磅 不[hv]
 ba,; 碚
 ba,e 殡
 bae 碑
@@ -260,6 +260,7 @@ bnev 窆
 bnu 宝
 bo 备
 bo, 贝
+boo 赑
 bo,e 髌
 boa 豳
 boau 畀
@@ -1054,7 +1055,7 @@ dou 帱
 dov 瞪
 dova 嶝
 dovu 鼎
-dovv 电[dc] 眈
+dovv 眈 电[dc]
 doz 骶
 dp 东
 dq 断
@@ -1396,8 +1397,8 @@ ftu 缶
 ftv 繁
 ftvu 氟
 fu 服
-fu, 坟
-fu,e 坊
+fu, 坊
+fu,, 坟
 fua 封
 fua, 黼
 fuav 黻
@@ -1927,7 +1928,7 @@ hj 候
 hj, 阂
 hj,u 华[h;]
 hj; 伙
-hj;a 合[hc] 含
+hj;a 含 合[hc]
 hja 闳
 hja; 何[hf]
 hje 颔
@@ -2263,7 +2264,7 @@ ih;a 咨
 ih;e 疹
 iha 状
 iha, 瘃
-ihaa 主[iw] 症
+ihaa 症 主[iw]
 ihau 震
 ihauu 斋
 ihe 准
@@ -2271,7 +2272,7 @@ ihea 痄
 ihee 彰
 ihez 旃
 iho 资
-iho, 这[rh] 遮
+iho, 遮 这[rh]
 ihoz 衷
 ihu 庄
 ihu; 站[hy]
@@ -2715,7 +2716,7 @@ jbu 剧
 jbv 建
 jbv, 忌
 jbva 弪
-jbvu 即[jv] 郡
+jbvu 郡 即[jv]
 jbvv 己[bc]
 jc 机
 jc, 杰
@@ -2806,7 +2807,7 @@ jfa 戟
 jfa, 棘
 jfa,, 戬
 jfe 救
-jfe, 教[ft] 聚
+jfe, 聚 教[ft]
 jfe,, 醮
 jfe,a 截
 jfe; 鬏
@@ -2874,7 +2875,7 @@ jhvv 瘕
 jhz 竟
 jhz, 疚
 jhz; 痂
-jhza 将[hw] 鹫
+jhza 鹫 将[hw]
 jhzv 净
 jhzvv 麂
 ji 叫
@@ -3615,7 +3616,7 @@ lh,o, 廪
 lh,u 凛
 lh,u, 廪
 lh; 冷
-lh;, 六[l;] 廉
+lh;, 廉 六[l;]
 lh;a 廉
 lh;aa 吝 銮
 lh;v 零
@@ -5363,7 +5364,7 @@ sf; 甚
 sf;, 粟
 sfa 酾
 sfe 斯
-sfe, 散[fe] 酥
+sfe, 酥 散[fe]
 sfo 速
 sfo, 贳
 sfo; 啬
@@ -6297,6 +6298,7 @@ xbe 犀
 xbeu 屣
 xbo 迅
 xbo, 遐
+xbo; 屃
 xbu 屑
 xbue 犀
 xc 相
@@ -7161,6 +7163,7 @@ yse,, 妖 轶
 ysee 牙
 yso 姻
 yso, 迓
+ysov 又双叒叕
 ysu 辕
 ysuu 妍
 ysv 轧

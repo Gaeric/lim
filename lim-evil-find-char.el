@@ -76,7 +76,8 @@
   (let ((fwd (> count 0))
         result)
     (when fwd (forward-char))
-    (if (search-forward-regexp
+    (setq case-fold-search nil)
+    (if (re-search-forward
          (lim-find-regexp char)
          (unless evil-cross-lines
            (if fwd

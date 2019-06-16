@@ -31,6 +31,7 @@
       - [[#兼容性改善][兼容性改善]]
       - [[#delete-last-char][delete-last-char]]
       - [[#回退字符后上屏刷新问题][回退字符后，上屏刷新问题]]
+      - [[#kill-other-buffer-后启动lim失败][*kill-other-buffer* 后启动lim失败]]
 
 * Description
   This is Lim, lightly input method. 
@@ -123,3 +124,5 @@
      CLOSED: [2018-07-04 周三 00:17]
      - State "DONE"       from "TODO"       [2018-07-04 周三 00:17]
      目前未复现
+**** *kill-other-buffer* 后启动lim失败
+

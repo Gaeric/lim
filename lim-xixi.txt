@@ -13,7 +13,6 @@ page-length=3
 ~ ～
 ` ・
 ! ！
-# ＃
 $ ￥
 % ％
 & ※
@@ -260,7 +259,6 @@ bnev 窆
 bnu 宝
 bo 备
 bo, 贝
-boo 赑
 bo,e 髌
 boa 豳
 boau 畀
@@ -268,6 +266,7 @@ boe 败
 boe, 睥
 boe,u 髀
 boev 贬
+boo 赑
 bou 罢
 bouu 蚌
 bov 崩
@@ -1192,6 +1191,7 @@ ej ＋
 ejd ∠
 ejh －
 ejj ±
+eji ＃
 ek （）$LEFT
 el ◆
 elv ◇

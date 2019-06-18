@@ -78,8 +78,8 @@
     3. 完善选词逻辑
     4. 完成数字选词功能
 ** Todo list
-*** DONE Features [6/11]
-    CLOSED: [2019-06-18 Tue 00:08]
+*** TODO Features [6/11]
+    - State "TODO"       from "DONE"       [2019-06-19 Wed 01:35]
     - State "DONE"       from "TODO"       [2019-06-18 Tue 00:08]
 **** DONE [#B] 完善回显功能
      CLOSED: [2018-07-02 周一 09:12]
@@ -121,6 +121,15 @@
 ***** TODO 统计每个字的输入次数
 **** TODO [#A] 根据当前光标位置，自动切换输入模式
      1. 参考pyim的自动关闭输入法探针，完成lim的对应功能
+     2. 核心函数如下
+        #+begin_src elisp
+          (let* ((pos (point))
+                 (pos-syntax (syntax-ppss pos)))
+            (or
+             (nth 3 pos-syntax) ;; non-nil if inside a string
+             (nth 4 pos-syntax) ;; non-nil if instide a comment
+             ))
+        #+end_src
 *** DONE [#A] Buglist [3/4]
     CLOSED: [2018-07-03 二 00:57]
     - State "DONE"       from "TODO"       [2018-07-03 二 00:57]

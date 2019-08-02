@@ -60,6 +60,21 @@
                (insert (read-from-minibuffer "自定义输入: ")))))
     (call-interactively 'self-insert-command)))
 
+
+(defun lim-insert-org-verbatim ()
+  (interactive)
+  (if current-input-method
+      (let (c)
+        (message "verbatim(~): ")
+        (setq c (read-char))
+        (cond ((= c ?\r)
+               (insert "~"))
+              (t
+               (setq unread-command-events (list last-input-event))
+               (insert
+                (concat "~" (read-from-minibuffer "verbatim: ") "~")))))
+    (call-interactively 'self-insert-command)))
+
 (global-set-key "'" 'lim-insert-ascii)
 (evil-lim-find-mode 1)
 ;; ==============================================================================

@@ -9,8 +9,9 @@
 ;;
 ;;; License: GPLv3
 
-(add-to-list 'load-path "~/.spacemacs.d/layers/lim/")
-(autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
+;; for spacemacs
+;; (add-to-list 'load-path "~/.spacemacs.d/layers/lim/")
+;; (autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
 
 (register-input-method
  "lim-xixi" "euc-cn" 'lim-use-package

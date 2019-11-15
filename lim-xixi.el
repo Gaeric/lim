@@ -76,6 +76,7 @@
     (call-interactively 'self-insert-command)))
 
 (global-set-key "'" 'lim-insert-ascii)
+(global-set-key "~" 'lim-insert-org-verbatim)
 (evil-lim-find-mode 1)
 ;; ==============================================================================
 (provide 'lim-xixi)

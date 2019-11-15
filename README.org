@@ -130,7 +130,7 @@
              (nth 4 pos-syntax) ;; non-nil if instide a comment
              ))
         #+end_src
-*** DONE [#A] Buglist [3/4]
+*** DONE [#A] Buglist [3/5]
     CLOSED: [2018-07-03 二 00:57]
     - State "DONE"       from "TODO"       [2018-07-03 二 00:57]
 **** DONE 兼容性改善
@@ -148,4 +148,7 @@
      目前未复现
 **** TODO [#A] *kill-other-buffer* 后启动lim失败
      增加异常机制，在隐性删除 *lim-xixi* 后，再次生成此buffer
-    
+**** TODO evil-lim-find在查找特殊字符如.时，只跳转至下一位
+     由于使用正则搜索~re-search-forward~替换了~search-forward~，导致搜索时使用正则表达式
+     
+     根据是否存在码表映射关系，优化查词逻辑

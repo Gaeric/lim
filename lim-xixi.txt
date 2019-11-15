@@ -1187,8 +1187,8 @@ ei ……
 ej ＋
 ejd ∠
 ejh －
-ejj ±
 eji ＃
+ejj ±
 ek （）$LEFT
 el ◆
 elv ◇
@@ -5243,6 +5243,7 @@ rya 铒
 rye 锇
 ryo 睿
 ryv 锕
+ryv, 叡
 ryz 铷
 rz 忍
 rz, 刃

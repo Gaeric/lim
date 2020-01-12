@@ -1,6 +1,6 @@
 ;;; packages.el --- lantian layer packages file for Spacemacs.
 ;;
-;; Copyright (c) 2018 lantian
+;; Copyright (c) 2018-2019 lantian
 ;;
 ;; Author:  <lantian@ZERO>
 ;; URL: https://github.com/syl20bnr/spacemacs
@@ -9,7 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-(add-to-list 'load-path "~/.spacemacs.d/layers/lim/")
 (autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
 
 (register-input-method
@@ -21,5 +20,9 @@
   (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
   (setq lim-translate-function 'lim-punctuation-translate)
   (evil-lim-find-mode))
+
+;; (global-set-key "'" 'lim-insert-ascii)
+;; (global-set-key "~" 'lim-insert-org-verbatim)
+;; (evil-lim-find-mode 1)
 ;; 载入输入法时即加载标点相关控制函数，保证不受影响
 (setq lim-load-hook 'lim-active-xixi)

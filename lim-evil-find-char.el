@@ -175,7 +175,7 @@
           'evil-lim-find-char-repeat)
         (define-key
           evil-motion-state-map [remap evil-repeat-find-char-reverse]
-          'evil-lim-find-char-repeat))
+          'evil-lim-find-char-reverse))
 
     (define-key evil-motion-state-map [remap evil-find-char]                nil)
     (define-key evil-motion-state-map [remap evil-find-char-to]             nil)

@@ -1183,7 +1183,7 @@ ef 〖〗$LEFT
 eh ※
 ehk 【】$LEFT
 ehy ●
-ei ……
+ei ♥ ❤
 ej ＋
 ejd ∠
 ejh －
@@ -4281,6 +4281,7 @@ ngau 辇
 ngv 瑙
 nh 应
 nha 疟
+nha, 雫
 nhe 霓
 nhev 旎
 nhz 凝

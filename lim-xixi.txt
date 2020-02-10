@@ -638,8 +638,7 @@ cme 彩
 cmeo 糙
 cmo 粗
 cmo, 汆
-cmo; 肏
-cmoa 曾[co]
+cmoa 肏 曾[co]
 cmou 灿
 cmouu 岔
 cmu 刹
@@ -1179,9 +1178,7 @@ edu °
 edy ＝
 edyd ≥
 edyh ＞
-ef 〖〗$LEFT
 eh ※
-ehk 【】$LEFT
 ehy ●
 ei ♥ ❤
 ej ＋
@@ -1189,7 +1186,6 @@ ejd ∠
 ejh －
 eji ＃
 ejj ±
-ek （）$LEFT
 el ◆
 elv ◇
 em ：
@@ -2973,7 +2969,7 @@ jla 诫
 jla, 谏
 jlaa 讵
 jlao 谨
-jlau 军[ls] 襟
+jlau 襟 军[ls]
 jle 颈
 jlo 迳
 jlo; 扃
@@ -3033,7 +3029,7 @@ jo 见
 jo, 蛟
 jo,v 嵴
 jo; 界
-jo;, 具[jm] 睑
+jo;, 睑 具[jm]
 jo;e 蚧
 jo;o 囧
 jo;v 圈
@@ -5457,7 +5453,6 @@ sjv,, 怂
 sjv; 伺
 sjve 俟
 sjvu 舒
-sjvv 舒
 sjz 倏
 sjz; 歙
 sk 手
@@ -6042,7 +6037,6 @@ tyv 忐
 tyz 龆
 tz 图
 tzo 迢
-v $LAST
 w 为什么
 w, 望
 w. 忘
@@ -7013,7 +7007,7 @@ ylzo 豫
 ylzoa 诣
 ylzv 允
 ym 爷
-ym,, 义[km]
+ym, 义[km]
 ym; 炎
 ym;, 爻
 ym;; 焱

@@ -52,17 +52,19 @@
     ("b" . "布奔不磅碚殡碑礴砭泵碥甭飙夯避辟襞屏屄鐾弼檗擘壁璧剥臂嬖己榜槟杯柄板柏彬标棒梆杓滨汴渤灞泊浜百滗濞逼瀑濒波展蒡薄苄荸菠蔽蕃苯荜菝茇蓓萆葆蓖芭薜苞博丙鬓鞴本鞭髟贲逋醭靶孛邴勃鹁帮斑班碧邦耙玻部辨病瓿瘭霸庇褒瓣庳瘪亳瘢冰痹禀卞癍斌辩变辫疤雹别啵踣叭哺哔跸跋吡蹦呗嘣卟鄙跛趵便倍卜傍傧保煲伴闭佰伯俾堡把摈拌扒播捌扮拔捕搏搬捭扳摆摒报抱彼拨被谤必弁畚裨褓遍扁补褙裱褊半八焙蹩弊炳敝颁爆迸坌爸憋煸粑豹鳖炮并悖忭怖宾愎窆宝贝髌豳畀败睥髀贬罢蚌崩蝙岜般舭舶舨白卑兵暴晡魃版鼻帛币鹎比毕毙妣婢婊匾毖笔簿秉箔掰簸筚笨秕篦稗箅拜笆笾表埔甏埠坂坝吧膀膑脖陛膊膘阪巴胞孢包饽饼飚狴鳔鲅狈备刨匕惫鳊饱鸨鲍飑编缤驳绊骠缏绑绷北镑镳镔辈钚锛钵钸镖钹彪铂钣钡步背悲铋邶钯龅边办"))
   "字符汉字对应关系表")
 
-(defun lim-find-regexp (char)
-  (let (lim-char-cn
-        lim-regexp)
+(defun lim-find-regexp (count char fwd)
+  "根据输入的字符，及生成的码表首字母对应关系表，进行查找并定位到其位置"
+  (let ((lim-char-cn
+         (cdr (assoc (char-to-string char) lim--evil-char-cn-lib)))
+        (lim-bound
+         (unless evil-cross-lines (if fwd (line-end-position) (line-beginning-position)))))
     (setq lim-char-cn
           (cdr (assoc
                 (char-to-string char)
                 lim--evil-char-cn-lib)))
     (if lim-char-cn
-        (setq lim-regexp
-              (format "[%c%s]" char lim-char-cn))
-      (setq lim-regexp (format "%c" char)))))
+        (re-search-forward (format "[%c%s]" char lim-char-cn) lim-bound t count)
+      (search-forward (char-to-string char) lim-bound t count))))
 
 (defun evil-lim-find-char (count char)
   "根据count的正负及大小向对应方向查词，并返回查询结果
@@ -77,14 +79,7 @@
         result)
     (when fwd (forward-char))
     (setq case-fold-search nil)
-    (if (re-search-forward
-         (lim-find-regexp char)
-         (unless evil-cross-lines
-           (if fwd
-               (line-end-position)
-             (line-beginning-position)))
-         t  ;; NOERROR
-         count)
+    (if (lim-find-regexp count char fwd)
         (setq result t)
       (setq result nil))
     (if fwd (backward-char))
@@ -180,7 +175,7 @@
           'evil-lim-find-char-repeat)
         (define-key
           evil-motion-state-map [remap evil-repeat-find-char-reverse]
-          'evil-lim-find-char-repeat))
+          'evil-lim-find-char-reverse))
 
     (define-key evil-motion-state-map [remap evil-find-char]                nil)
     (define-key evil-motion-state-map [remap evil-find-char-to]             nil)

@@ -1,5 +1,8 @@
 ;;; -*- coding: utf-8 -*-
-;;; lim-evil-find-char -- evil find enhance for chinese by lim.
+;;; lim-tools -- lim-tools for chinese
+
+;; 1. evil find enhance for chinese by lim.
+;; 2. count chinese words
 
 ;; Compatibility: Emacs 26.1
 ;; Copyright 2018
@@ -21,6 +24,7 @@
 ;; along with this program; if not, write to the Free Software
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
+;; 1. evil find enhance for chinese by lim.
 ;; 中文说明
 ;; 对evil的find功能(f/F/t/T)功能进行增强，使其可以通过码表的首字母跳转至中文字符处
 ;; 首先，建立字符与汉字对应关系表 lim--evil-char-cn-lib
@@ -52,6 +56,7 @@
     ("b" . "布奔不磅碚殡碑礴砭泵碥甭飙夯避辟襞屏屄鐾弼檗擘壁璧剥臂嬖己榜槟杯柄板柏彬标棒梆杓滨汴渤灞泊浜百滗濞逼瀑濒波展蒡薄苄荸菠蔽蕃苯荜菝茇蓓萆葆蓖芭薜苞博丙鬓鞴本鞭髟贲逋醭靶孛邴勃鹁帮斑班碧邦耙玻部辨病瓿瘭霸庇褒瓣庳瘪亳瘢冰痹禀卞癍斌辩变辫疤雹别啵踣叭哺哔跸跋吡蹦呗嘣卟鄙跛趵便倍卜傍傧保煲伴闭佰伯俾堡把摈拌扒播捌扮拔捕搏搬捭扳摆摒报抱彼拨被谤必弁畚裨褓遍扁补褙裱褊半八焙蹩弊炳敝颁爆迸坌爸憋煸粑豹鳖炮并悖忭怖宾愎窆宝贝髌豳畀败睥髀贬罢蚌崩蝙岜般舭舶舨白卑兵暴晡魃版鼻帛币鹎比毕毙妣婢婊匾毖笔簿秉箔掰簸筚笨秕篦稗箅拜笆笾表埔甏埠坂坝吧膀膑脖陛膊膘阪巴胞孢包饽饼飚狴鳔鲅狈备刨匕惫鳊饱鸨鲍飑编缤驳绊骠缏绑绷北镑镳镔辈钚锛钵钸镖钹彪铂钣钡步背悲铋邶钯龅边办"))
   "字符汉字对应关系表")
 
+
 (defun lim-find-regexp (count char fwd)
   "根据输入的字符，及生成的码表首字母对应关系表，进行查找并定位到其位置"
   (let ((lim-char-cn
@@ -66,7 +71,7 @@
         (re-search-forward (format "[%c%s]" char lim-char-cn) lim-bound t count)
       (search-forward (char-to-string char) lim-bound t count))))
 
-(defun evil-lim-find-char (count char)
+(defun lim-evil-find-char (count char)
   "根据count的正负及大小向对应方向查词，并返回查询结果
 若count为正或nil，则向前查词，反之向后；
 若查找到词，则将光标(evil模式下的光标块)置于对应的字符上
@@ -86,96 +91,96 @@
     (or result
         (user-error "Can’t find: %c" char))))
 
-(evil-define-motion evil-lim-find-char-forward (count char)
+(evil-define-motion lim-evil-find-char-forward (count char)
   "Search the word forward as f"
   :type inclusive
   (interactive "<c><C>")
-  (setq evil-lim-last-char char)
-  (setq evil-lim-last-call 'evil-lim-find-char-forward)
-  (evil-lim-find-char count char))
+  (setq lim-evil-last-char char)
+  (setq lim-evil-last-call 'lim-evil-find-char-forward)
+  (lim-evil-find-char count char))
 
-(evil-define-motion evil-lim-find-char-forward-to (count char)
+(evil-define-motion lim-evil-find-char-forward-to (count char)
   "Search the word forward as t"
   :type inclusive
   (interactive "<c><C>")
-  (setq evil-lim-last-char char)
-  (setq evil-lim-last-call 'evil-lim-find-char-forward-to)
+  (setq lim-evil-last-char char)
+  (setq lim-evil-last-call 'lim-evil-find-char-forward-to)
   (and
-   (evil-lim-find-char count char)
+   (lim-evil-find-char count char)
    (backward-char)))
 
-(evil-define-motion evil-lim-find-char-backword (count char)
+(evil-define-motion lim-evil-find-char-backword (count char)
   "Search the word backword as F"
   :type inclusive
   (interactive "<c><C>")
-  (setq evil-lim-last-char char)
-  (setq evil-lim-last-call 'evil-lim-find-char-backword)
+  (setq lim-evil-last-char char)
+  (setq lim-evil-last-call 'lim-evil-find-char-backword)
   ;; 由于向后查找，count为nil时需要处理
-  (evil-lim-find-char (- (or count 1)) char))
+  (lim-evil-find-char (- (or count 1)) char))
 
-(evil-define-motion evil-lim-find-char-backword-to (count char)
+(evil-define-motion lim-evil-find-char-backword-to (count char)
   "Search the word backword as T"
   :type inclusive
   (interactive "<c><C>")
-  (setq evil-lim-last-char char)
-  (setq evil-lim-last-call 'evil-lim-find-char-backword-to)
+  (setq lim-evil-last-char char)
+  (setq lim-evil-last-call 'lim-evil-find-char-backword-to)
   ;; 由于向后查找，count为nil时需要处理
   (and
-   (evil-lim-find-char (- (or count 1)) char)
+   (lim-evil-find-char (- (or count 1)) char)
    (forward-char)))
 
-(evil-define-motion evil-lim-find-char-repeat (count)
+(evil-define-motion lim-evil-find-char-repeat (count)
   "Search again as ;"
   :type inclusive
   (funcall
-   evil-lim-last-call
-   count evil-lim-last-char))
+   lim-evil-last-call
+   count lim-evil-last-char))
 
-(evil-define-motion evil-lim-find-char-reverse (count)
+(evil-define-motion lim-evil-find-char-reverse (count)
   "Search again as ,"
   :type inclusive
   (cond
-   ((eq evil-lim-last-call 'evil-lim-find-char-forward)
-    (evil-lim-find-char-backword count evil-lim-last-char))
+   ((eq lim-evil-last-call 'lim-evil-find-char-forward)
+    (lim-evil-find-char-backword count lim-evil-last-char))
 
-   ((eq evil-lim-last-call 'evil-lim-find-char-backword)
-    (evil-lim-find-char-forward count evil-lim-last-char))
+   ((eq lim-evil-last-call 'lim-evil-find-char-backword)
+    (lim-evil-find-char-forward count lim-evil-last-char))
 
-   ((eq evil-lim-last-call 'evil-lim-find-char-forward-to)
-    (evil-lim-find-char-backword-to count evil-lim-last-char))
+   ((eq lim-evil-last-call 'lim-evil-find-char-forward-to)
+    (lim-evil-find-char-backword-to count lim-evil-last-char))
 
-   ((eq evil-lim-last-call 'evil-lim-find-char-backword-to)
-    (evil-lim-find-char-forward-to count evil-lim-last-char))))
+   ((eq lim-evil-last-call 'lim-evil-find-char-backword-to)
+    (lim-evil-find-char-forward-to count lim-evil-last-char))))
 
 
-(define-minor-mode evil-lim-find-mode
+(define-minor-mode lim-evil-find-mode
   "Minor mode to make Evil's f/F/t/T be able to find Chinese by lim."
   :global t
   :lighter " EFCP"
-  (if evil-lim-find-mode
+  (if lim-evil-find-mode
       (progn
         (define-key
           evil-motion-state-map [remap evil-find-char]
-          'evil-lim-find-char-forward)
+          'lim-evil-find-char-forward)
 
         (define-key
           evil-motion-state-map [remap evil-find-char-backward]
-          'evil-lim-find-char-backword)
+          'lim-evil-find-char-backword)
 
         (define-key
           evil-motion-state-map [remap evil-find-char-to]
-          'evil-lim-find-char-forward-to)
+          'lim-evil-find-char-forward-to)
 
         (define-key
           evil-motion-state-map [remap evil-find-char-to-backward]
-          'evil-lim-find-char-backword-to)
+          'lim-evil-find-char-backword-to)
 
         (define-key
           evil-motion-state-map [remap evil-repeat-find-char]
-          'evil-lim-find-char-repeat)
+          'lim-evil-find-char-repeat)
         (define-key
           evil-motion-state-map [remap evil-repeat-find-char-reverse]
-          'evil-lim-find-char-reverse))
+          'lim-evil-find-char-reverse))
 
     (define-key evil-motion-state-map [remap evil-find-char]                nil)
     (define-key evil-motion-state-map [remap evil-find-char-to]             nil)
@@ -184,4 +189,48 @@
     (define-key evil-motion-state-map [remap evil-repeat-find-char]         nil)
     (define-key evil-motion-state-map [remap evil-repeat-find-char-reverse] nil)))
 
-(provide 'lim-evil-find-char)
+
+;; 2. count chinese words
+(defvar lim-cn-shape  "[，。／÷？；：、＼·｜§¦｀～！＠☯＃⌘％°￥$€£¥¢¤₩……＆＊·・×※❂（）\
+－——＋＝々〃‘’“”《〈«‹》〉»›「【〔［」】〕］『〖｛』〗｝]")
+
+
+(defun count-chinese-words (start end)
+  "Count Chinese words between START and END."
+  (let ((words 0)
+        (puncs 0)
+        (cn-re
+         ;; (rx (category chinese))
+         (rx (category chinese-two-byte))))
+    (save-excursion
+      (save-restriction
+        (narrow-to-region start end)
+        (goto-char (point-min))
+        (while (re-search-forward
+                cn-re
+                nil t)
+          (setq words (1+ words)))
+        (goto-char (point-min))
+        (while (re-search-forward
+                lim-cn-shape
+                nil t)
+          (setq puncs (1+ puncs)))))
+    (setq chinese-puncs puncs)
+    (setq chinese-words words))
+  (message "中文字数：%s （不计标点符号）\n中文标点：%s" chinese-words chinese-puncs))
+
+
+(defun lim-count-words (start end)
+  "Count Chinese words between START and END.
+If called interactively, START and END are normally the start and
+end of the buffer; but if the region is active, START and END are
+the start and end of the region.  Print a message reporting the
+number of lines, words, and chars."
+  (interactive (list nil nil))
+  (cond ((use-region-p)
+         (count-chinese-words (region-beginning) (region-end)))
+        (t
+         (count-chinese-words (point-min) (point-max)))))
+
+
+(provide 'lim-tools)

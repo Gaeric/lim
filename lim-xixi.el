@@ -29,7 +29,7 @@
 
 (require 'lim-core)
 (require 'lim-advanced)
-(require 'lim-evil-find-char)
+(require 'lim-tools)
 
 (setq lim-stop-function 'lim-overflow)
 
@@ -77,7 +77,6 @@
 
 (global-set-key "'" 'lim-insert-ascii)
 (global-set-key "~" 'lim-insert-org-verbatim)
-(evil-lim-find-mode 1)
 ;; ==============================================================================
 (provide 'lim-xixi)
 

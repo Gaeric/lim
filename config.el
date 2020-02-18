@@ -19,7 +19,7 @@
 (defun lim-active-xixi ()
   (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
   (setq lim-translate-function 'lim-punctuation-translate)
-  (evil-lim-find-mode))
+  (lim-evil-find-mode))
 
 ;; (global-set-key "'" 'lim-insert-ascii)
 ;; (global-set-key "~" 'lim-insert-org-verbatim)

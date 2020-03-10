@@ -156,7 +156,7 @@
 (define-minor-mode lim-evil-find-mode
   "Minor mode to make Evil's f/F/t/T be able to find Chinese by lim."
   :global t
-  :lighter " EFCP"
+  ;; :lighter " LEFC"
   (if lim-evil-find-mode
       (progn
         (define-key

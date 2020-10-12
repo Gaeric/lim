@@ -482,8 +482,8 @@ cfo 曹
 cfu 刺
 cfua 耻
 cfv 朝
-cfvv 臣
-cfvva 翅
+cfva 臣
+cfvv 翅
 cg 传
 cg, 琮
 cge 舂
@@ -919,7 +919,7 @@ dhe 敦
 dhe; 瘩
 dho 帝
 dhoa 端
-dhoaa 疸 盗
+dhoaa 盗 疸
 dhu 店
 dhv 度
 dhv, 憝

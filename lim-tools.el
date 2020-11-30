@@ -232,5 +232,48 @@ number of lines, words, and chars."
         (t
          (count-chinese-words (point-min) (point-max)))))
 
+(defun lim-translate-string (code)
+  (interactive)
+  (let ((code-list (string-to-list code))
+        current-str unread-char
+        total-result optional-result
+        current-word possible-char)
+    (while (car code-list)
+      (setq unread-char (char-to-string (car code-list)))
+      (setq code-list (cdr code-list))
+
+      (if possible-char
+          (if (and (or (member unread-char possible-char)
+                       ;; xixi rule
+                       (= (length current-str) 1))
+                   (member (string-to-char unread-char) lim-total-char))
+              (setq current-str (concat current-str unread-char))
+            (setq total-result (concat total-result current-word)
+                  current-word nil
+                  possible-char nil
+                  current-str unread-char))
+        (setq current-str (concat current-str unread-char)))
+
+      (setq optional-result (lim-get current-str)
+            current-word (caar optional-result)
+            possible-char (cdr (assoc "completions" optional-result)))
+
+      (unless current-word
+        (setq total-result (concat total-result current-str)
+              current-str nil)))
+    (setq total-result (concat total-result current-word))))
+
+
+(defun lim-translate-string-in-region ()
+  (interactive)
+  ;; TODO: deactivate region
+  (if (region-active-p)
+      (let (result)
+        (toggle-input-method)
+        (setq result (lim-translate-string
+                      (buffer-substring-no-properties (region-beginning) (region-end))))
+        (message (format "result: %s" result))
+        (toggle-input-method))))
+
 
 (provide 'lim-tools)

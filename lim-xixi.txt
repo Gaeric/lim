@@ -5099,7 +5099,7 @@ rja 儒
 rjaa 佴
 rjao 俺
 rje 俄
-rjea 任[rt] 偌
+rjea 偌 任[rt]
 rjo 偶
 rju 仁
 rjua 闰

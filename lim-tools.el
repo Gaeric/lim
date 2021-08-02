@@ -274,5 +274,8 @@ number of lines, words, and chars."
         (message (format "result: %s" result))
         (pop-mark))))
 
+(defun lim-orderless-regexp (orig_func component)
+  (let ((result (funcall orig_func component)))
+    (format "%s\\|%s" result (lim-translate-string result))))
 
 (provide 'lim-tools)

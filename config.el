@@ -10,6 +10,7 @@
 ;;; License: GPLv3
 
 (autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
+(autoload 'lim-orderless-regexp "lim-tools")
 
 (register-input-method
  "lim-xixi" "euc-cn" 'lim-use-package

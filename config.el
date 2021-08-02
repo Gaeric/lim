@@ -22,8 +22,5 @@
   (setq lim-translate-function 'lim-punctuation-translate)
   (lim-evil-find-mode))
 
-;; (global-set-key "'" 'lim-insert-ascii)
-;; (global-set-key "~" 'lim-insert-org-verbatim)
-;; (evil-lim-find-mode 1)
 ;; 载入输入法时即加载标点相关控制函数，保证不受影响
 (setq lim-load-hook 'lim-active-xixi)

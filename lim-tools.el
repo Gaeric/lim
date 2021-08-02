@@ -233,11 +233,11 @@ number of lines, words, and chars."
          (count-chinese-words (point-min) (point-max)))))
 
 (defun lim-translate-string (code)
-  (interactive)
   (let ((code-list (string-to-list code))
         current-str unread-char
         total-result optional-result
         current-word possible-char)
+    (toggle-input-method)
     (while (car code-list)
       (setq unread-char (char-to-string (car code-list)))
       (setq code-list (cdr code-list))
@@ -261,6 +261,7 @@ number of lines, words, and chars."
       (unless current-word
         (setq total-result (concat total-result current-str)
               current-str nil)))
+    (toggle-input-method)
     (setq total-result (concat total-result current-word))))
 
 
@@ -268,11 +269,9 @@ number of lines, words, and chars."
   (interactive)
   (if (region-active-p)
       (let (result)
-        (toggle-input-method)
         (setq result (lim-translate-string
                       (buffer-substring-no-properties (region-beginning) (region-end))))
         (message (format "result: %s" result))
-        (toggle-input-method)
         (pop-mark))))
 
 

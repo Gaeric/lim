@@ -266,14 +266,14 @@ number of lines, words, and chars."
 
 (defun lim-translate-string-in-region ()
   (interactive)
-  ;; TODO: deactivate region
   (if (region-active-p)
       (let (result)
         (toggle-input-method)
         (setq result (lim-translate-string
                       (buffer-substring-no-properties (region-beginning) (region-end))))
         (message (format "result: %s" result))
-        (toggle-input-method))))
+        (toggle-input-method)
+        (pop-mark))))
 
 
 (provide 'lim-tools)

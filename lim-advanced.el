@@ -85,7 +85,7 @@
 
 (defsubst lim-delete-overlay ()
   "Delete the text which in lim-overlay."
-  (if (overlay-start lim-overlay)
+  (if (and (overlayp lim-overlay) (overlay-start lim-overlay))
       (delete-region (overlay-start lim-overlay)
                      (overlay-end   lim-overlay))))
 

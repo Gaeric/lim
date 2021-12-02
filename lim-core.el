@@ -108,7 +108,6 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-overlay
     lim-guidance-item
     lim-prompt-number
-    ;; lim-stop-function
 
     input-method-function
     deactivate-current-input-method-function)

@@ -25,7 +25,7 @@
 
 (defgroup lim nil
   "lim: Ligthly input method"
-  :group 'leim)
+  :group 'lim)
 
 ;;===============================================================================
 (defvar lim-package-list nil "所有可用的输入方案")

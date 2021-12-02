@@ -18,6 +18,7 @@
 (setq default-input-method "lim-xixi")
 
 (defun lim-active-xixi ()
+  (setq lim-stop-function 'lim-overflow)
   (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
   (setq lim-translate-function 'lim-punctuation-translate)
   (lim-evil-find-mode))

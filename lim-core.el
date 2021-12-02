@@ -22,21 +22,17 @@
 
 ;; ==============================================================================
 (defvar lim-version "0.07")
-;;; 输入法变量声明
 
-;;;_. group declare
 (defgroup lim nil
   "lim: Ligthly input method"
   :group 'leim)
 
-
-;;;_. variable declare
 ;;===============================================================================
 (defvar lim-package-list nil "所有可用的输入方案")
 (defvar lim-first-char (number-sequence ?a ?z) "Table 中首字符列表")
 (defvar lim-total-char (number-sequence ?a ?z) "Table 中所有字符列表")
 ;;===============================================================================
-;;;_. My declare
+
 (defvar lim-current-scheme (make-vector 5 nil)
   "The current input scheme. A vector consists of five parts.
 当前使用的输入方案，一个向量[vector]，由五个部分组成:
@@ -84,8 +80,7 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 (defvar lim-active-hook nil "激活输入法时调用的hook")
 
 (defvar lim-translate-function nil "额外的转换函数，目前用来处理标点")
-;; (defvar lim-stop-function nil "额外的控制函数，控制handle-function")
-(defvar lim-stop-function 'lim-overflow "额外的控制函数，控制handle-function")
+(defvar lim-stop-function nil "额外的控制函数，控制handle-function")
 (defvar lim-handle-function 'lim-handle-string "控制函数，lim-handle-string
 为字符串控制函数，用于处理输入字符串")
 
@@ -163,9 +158,6 @@ OTHER-PROPERTIES 是一些其它的属性，比如：上次的位置，用来优
   (aset lim-current-scheme 4 act-func))
 
 ;; ==============================================================================
-;;; 输入法核心功能 - core function
-
-;; ------------------------------------------------------------------------------
 ;; Create and activate input method functions by `lim-use-package'
 ;; Check if all bufs exist in all buffer-lists by `lim-check-buffers'
 ;; Bulid variables by `lim-install-variable'
@@ -206,25 +198,17 @@ If not, reopen the file. If the file does not exist, remove the buffer from the 
   "Create and activate input method functions.
 Accept two parameters: word-file and active-func
 word-file, given a dictionary file
-active-funct, called every time you switch.
-   建立并激活当前输入框架，接受两个参数，
-word-file 为输入法指定的词库文件，
-active-func 为每次切换至输入法时调用的相关函数。"
+active-funct, called every time you switch."
   (interactive)
   (mapc 'kill-local-variable lim-local-variable-list)
   (mapc 'make-local-variable lim-local-variable-list)
-  ;; note :: rebulid all local variable
   (if (assoc scheme-name lim-package-list)
       (setq lim-current-scheme (cdr (assoc
                                      scheme-name lim-package-list)))
-    ;; make lim-current-scheme
     (setq lim-current-scheme (make-vector 9 nil)))
   (if (functionp active-func)
       (funcall active-func))
-  ;; note :: 如果相关函数存在，调用之
-  (unless (and (lim-scheme-name)
-               (lim-check-buffers))
-    ;; note :: the result of check is nil, and scheme-name is nil
+  (unless (and (lim-scheme-name) (lim-check-buffers))
     (if (and word-file
              (if (file-exists-p (expand-file-name word-file))
                  (setq word-file (expand-file-name word-file))
@@ -241,7 +225,7 @@ active-func 为每次切换至输入法时调用的相关函数。"
             (if (assoc "lib" param)
                 (load (cadr (assoc "lib" param)))))
           (run-hooks 'lim-load-hook))
-      (error "没有这个文件： %s" word-file)))
+      (error "File not exists： %s" word-file)))
   (lim-install-variable)
   (setq input-method-function 'lim-input-method)
   (setq deactivate-current-input-method-function 'lim-deactivate)
@@ -271,9 +255,7 @@ active-func 为每次切换至输入法时调用的相关函数。"
   (string= string ""))
 
 (defun lim-section-region (section)
-  "Gets the start and end positions of a section, without last blank row.
-得到一个部分的起点和终点位置，忽略未尾的空行；
-各个部分之间以 [section] 的形式划分。"
+  "Gets the start and end positions of a section, without last blank row."
   (let ((regexp-section (concat "^\\[" section "\\]\n")))
     (save-excursion
       (if (not (re-search-forward regexp-section nil t))
@@ -290,8 +272,7 @@ active-func 为每次切换至输入法时调用的相关函数。"
                       (1+ (point)))))))
 
 (defun lim-line-content (&optional seperaters omit-null)
-  "Decompose the current row by split-string.
-调用split-string 函数，以 seperaters 为分隔符分解当前行"
+  "Decompose the current row by split-string."
   (let ((items (split-string
                 (buffer-substring-no-properties
                  (line-beginning-position)
@@ -319,29 +300,21 @@ The function emms-delete-if has some Bug."
 ;;;_. read file functions
 (defun lim-load-file (file)
   "Loading file for lim scheme."
-  (let ((bufname (format " *%s*" (lim-scheme-name)))
-        ;; bufname: 空格可使缓冲区不可见
+  (let ((bufname (format " *%s*" (lim-scheme-name))) ;; bufname: blank make buf hidden
         buflist buf param other-files)
     (save-excursion
       (setq buf (lim-read-file file bufname t))
       (setq param (cdr (assoc "param" buf)))
       (setq buflist (append buflist (list buf)))
       (when (cdr (setq other-files (assoc "other-files" param)))
-        ;; note :: 增加判断other-file=为空的情况
         (setq other-files (split-string (cadr other-files) "|"))
-        ;; split-string: 用`|'分隔各个词库，中间不留空格
         (dolist (other-file other-files)
-          ;; dolist :: 将ohter-files列表中的每一个元素赋给other-file，然后执行 body 函数
           (if
-              ;; if :: 增加判断 other-files 的参数格式和文件是否存在
               (if (file-exists-p (expand-file-name other-file))
-              ;; file-exists-p :: Return t if file FILENAME exists.
-              ;; expand-file-name :: Convert filename NAME to absolute, and canonicalize it.
-              (setq other-file (expand-file-name other-file))
-            (setq other-file (locate-file other-file load-path)))
-              ;; note :: 用于读取所有的other-files中写的所有other-file
+                  (setq other-file (expand-file-name other-file))
+                (setq other-file (locate-file other-file load-path)))
               (setq buflist (append buflist (list (lim-read-file other-file bufname))))
-            (error "other-files 参数格式错误或文件不存在"))))
+            (error "other-files invalid"))))
       buflist)))
 
 (defun lim-read-file (file name &optional read-param)
@@ -350,19 +323,16 @@ The function emms-delete-if has some Bug."
     (save-excursion
       (set-buffer (generate-new-buffer name))
       (insert-file-contents word-file nil nil nil t)
-      ;; insert-file-contents: (insert-file-contents FILENAME &optional VISIT BEG END REPLACE)
       (if read-param
           (setq param (lim-read-parameters)))
       (setq region (lim-section-region "Table"))
       (narrow-to-region (car region) (cdr region))
       `(("buffer" . ,(current-buffer))
-        ;; ` :: ,: means insert the VAR
         ("param" . ,param)
         ("file" . ,file)))))
 
 (defun lim-read-parameters ()
-  "Get parameter in [Parameter] section, return assoc list.
-得到 [Parameter] 部分的参数，以assoc list 的形式返回"
+  "Get parameter in [Parameter] section, return assoc list."
   (let* ((region (lim-section-region "Parameter"))
          param pair)
     (goto-char (car region))
@@ -380,10 +350,8 @@ The function emms-delete-if has some Bug."
 ;; Search code, return word and completion by `lim-get'
 
 (defun lim-completions (code completions)
-  "Get the next possible input character and word.
-下一个可能的字符，以及对应的词组."
-  (let ((maxln 200)
-        ;; note :: 不论词库大小，只进行200次补全
+  "Get the next possible input character and word."
+  (let ((maxln 200)                     ; search 200 times for speed
         (count 0)
         (len (length code))
         (reg (concat "^" (regexp-quote code)))
@@ -395,7 +363,6 @@ The function emms-delete-if has some Bug."
       ;; 此时光标处于当前输入编码对应的词条下，由于补全需要，从当前行开始进行补全
       (if lim-completion-increase
           (while (and (looking-at reg)
-                      ;; looking-at :: Return t if text after point matches regular expression REGEXP.
                       (< count maxln))
             (setq item (lim-line-content))
             (add-to-list 'completions
@@ -405,16 +372,13 @@ The function emms-delete-if has some Bug."
             ;; note :: Basic function
             (mapc (lambda (c)
                     (when (or (>= len lim-completion-limit)
-                             ;; (= (length c) 1)
+                              ;; (= (length c) 1)
                               )
-                      (push (cons c (substring
-                                     (car item)
-                                     len))
+                      (push (cons c (substring (car item) len))
                             phrase)))
                   (cdr item))
             (forward-line 1)
             (setq count (1+ count)))
-        ;; note :: advance function
         (while (and (looking-at reg)
                     (< count maxln))
           (add-to-list 'completions
@@ -426,10 +390,8 @@ The function emms-delete-if has some Bug."
       ;; note :: completion finish
       (setq lim-possible-phrase (sort (delete-dups (nreverse phrase))
                                       ;; note :: If phrase is nil, lim-possible-phrase is nil.
-                                      ;; note :: 顺序排列候选词
                                       (lambda (a b)
                                         (< (length (cdr a)) (length (cdr b))))))
-      ;; (message "lim-possible-phrase :: %s" lim-possible-phrase)
       (if (= count maxln)
           (setq lim-completion-completed-status nil)
         (setq lim-completion-completed-status t))
@@ -449,14 +411,13 @@ The function emms-delete-if has some Bug."
             (lim-seek-word code start mid))))))
 
 (defun lim-encode-at-point ()
-  "Get the encoding of the current line.
-得到当前行的编码"
+  "Get the encoding of the current line."
   (beginning-of-line)
   ;; note :: Be sure the point is at the beginning of line
   (save-excursion
     (if (re-search-forward "[ \t]" (line-end-position) t)
         (buffer-substring-no-properties (line-beginning-position) (1- (point)))
-      (error "文件格式错误！%s 的第 %d 行没有词条！" (buffer-name) (line-number-at-pos)))))
+      (error "File format Invalid ！Line %d is blank！" (buffer-name) (line-number-at-pos)))))
 
 
 (defun lim-get (code)
@@ -502,19 +463,15 @@ The function emms-delete-if has some Bug."
 
 (defvar lim-mode-map
   (let ((map (make-sparse-keymap))
-        ;; make-sparse-keymap :: Construct and return a new sparse keymap.
         (i ?\ ))
-    ;; i :: 将i设置为32
     (while (< i 127)
       (define-key map (char-to-string i) 'lim-entry-command)
       (setq i (1+ i)))
     (setq i 128)
     (while (< i 256)
       (define-key map (vector i) 'lim-entry-command)
-      ;; vector :: set vertor to lim-entry-command
       (setq i (1+ i)))
     (dolist (i (number-sequence ?1 ?9))
-      ;; (define-key map (char-to-string i) 'lim-entry-command)
       (define-key map (char-to-string i) 'lim-select-num-term))
     (define-key map " "         'lim-select-current-term)
     (define-key map [backspace] 'lim-delete-last-char)
@@ -528,23 +485,17 @@ The function emms-delete-if has some Bug."
 
 (defun lim-entry-command ()
   "Find the corresponding entry in char list.
-otherwise stop the conversion,then insert the corresponding character.
-在char列表中找到相应的条目，否则停止转换，然后插入相应的字符。"
+otherwise stop the conversion,then insert the corresponding character."
   (interactive "*")
-  ;; (message "%s" (current-buffer))
   (if (if (string-empty-p lim-current-string)
           (member last-command-event lim-first-char)
-        ;; lim-first-char :: 局部变量中，值为word-file中的参数
-        ;; note :: 判断第一个输入字符是否在first-char列表中
         (member last-command-event lim-total-char))
-      ;; note :: 判断输入字符是否在total-char列表中
       (progn
         (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
         (funcall lim-handle-function))
     ;; (setq lim-current-word (char-to-string last-command-event))
     (setq lim-current-word (lim-translate last-command-event))
     ;; (message "return word: %s" lim-current-word)
-    ;; 处理不经转译的字符
     (lim-terminate-translation)))
 
 (defun lim-select-current-term ()
@@ -562,8 +513,7 @@ otherwise stop the conversion,then insert the corresponding character.
   (lim-terminate-translation))
 
 (defun lim-select-num-term ()
-  "Choose the term by num.
-根据当前展示的词条输入数字选择词"
+  "Choose the term by num."
   (interactive)
   (if (string-empty-p lim-current-string)
       (progn
@@ -579,8 +529,7 @@ otherwise stop the conversion,then insert the corresponding character.
         (user-error "Ivalid number")))))
 
 (defun lim-delete-last-char ()
-  "如果lim-current-string值不存在时，直接返回相应的 (list key)
-系统接口会对字符进行处理"
+  "如果lim-current-string值不存在时，直接返回相应的 (list key)"
   (interactive)
   (if (> (length lim-current-string) 1)
       (progn
@@ -644,20 +593,13 @@ and call to get the related function to obtain the word translation result.
       ;; note :: maybe they are not nessccary
       (unwind-protect
           (let ((input-string (lim-obtain-string key)))
-            ;; first step :: Get input-string ?
-            ;; (message "return input-string: %s" input-string)
             (when (and (stringp input-string)
                        (> (length input-string) 0))
               (if input-method-exit-on-first-char
                   (list (aref input-string 0))
+                ;; use lim-input-events to handle insert and other hook.
                 (lim-input-events input-string))))
-                ;; (lim-input-events input-string)
-                ;; string-to-events :: Input method output interface
-                ;; It's very important, just like lim-input-method!
-        ;; (if (functionp 'lim-clear-overlay) (funcall   'lim-clear-overlay))
-        ;; (lim-delete-overlay)
-        ;; delete-overlay :: 删除overlay
-	      (run-hooks 'input-method-after-insert-chunk-hook)))))
+        (run-hooks 'input-method-after-insert-chunk-hook)))))
 
 (defun lim-obtain-string (key)
   "start translation of the typed character KEY by the Current Scheme.
@@ -724,14 +666,10 @@ Return the input string."
         (setq unread-command-events
               (list (aref lim-current-string (1- (length lim-current-string)))))
         (lim-select-current-term))
-    ;; 当stop函数生效时,最新读入的字符重新唤醒`lim-input-method'
-    ;; 故此处不需要再次进行lim-show处理
     (setq lim-optional-result (lim-get lim-current-string)
           lim-current-word (car (car lim-optional-result))
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)
-    ;; (message "handle-string: %s" lim-optional-result)
-    ;; lim-optional-result :: ((的) (pos . 1) (completions v u t s r q p o n m l k j i h g f e d c b a ; / '))
     (if (functionp 'lim-show) (funcall 'lim-show))))
 
 (defun lim-handle-delete ()

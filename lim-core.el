@@ -78,6 +78,7 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 
 (defvar lim-load-hook nil "载入输入法时调用的hook")
 (defvar lim-active-hook nil "激活输入法时调用的hook")
+(defvar lim-exit-minibuffer-hook nil)
 
 (defvar lim-translate-function nil "额外的转换函数，目前用来处理标点")
 (defvar lim-stop-function nil "额外的控制函数，控制handle-function")
@@ -232,7 +233,7 @@ active-funct, called every time you switch."
   ;; IF we are in minibuffer, turn off the current input mehtod
   ;; before exiting
   (when (eq (selected-window) (minibuffer-window))
-    (add-hook 'minibuffer-exit-hook 'lim-exit-from-minibuffer))
+    (add-hook 'minibuffer-exit-hook 'lim-exit-minibuffer-hook))
   (run-hooks 'lim-active-hook)
   (if (functionp (lim-active-function))
       (funcall (lim-active-function))))

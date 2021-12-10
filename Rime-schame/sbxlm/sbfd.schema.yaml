@@ -1,0 +1,168 @@
+# Rime schema settings
+# encoding: utf-8
+
+schema:
+  schema_id: sbfd
+  name: "声笔飞单"
+  version: "9.5"
+  author:
+    - 戴石麟 <https://sbxlm.gitee.io>
+  dependencies:
+    - sbzdy #自定义词典
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+  - name: full_shape
+    reset: 0
+  - name: zh_trad
+    reset: 0
+    states: [ 简体, 繁體 ]
+  - name: auto_inline
+    reset: 1
+
+engine:
+  processors:
+    - selector
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - affix_segmentor@sbzdy
+    - affix_segmentor@bihua_lookup
+    - affix_segmentor@pinyin_lookup
+    - affix_segmentor@zhlf_lookup
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+    - lua_translator@date_translator
+    - lua_translator@time_translator
+    - lua_translator@number_translator
+    - table_translator@sbzdy
+    - table_translator@bihua_lookup
+    - script_translator@pinyin_lookup
+    - script_translator@zhlf_lookup
+  filters:
+    - reverse_lookup_filter@bihua_reverse_lookup
+    - reverse_lookup_filter@pinyin_reverse_lookup
+    - reverse_lookup_filter@zhlf_reverse_lookup
+    - simplifier@prompt
+    - simplifier
+    - uniquifier
+
+speller:
+  alphabet: "qwertasdfgzxcvbyuiophjklnm"
+  initials: "qwrtsdfgzxcvbyphjklnm"
+  auto_select: true
+  auto_clear: max_length
+  max_code_length: 5
+  
+translator:
+  dictionary: sbfd
+  enable_user_dict: false
+  enable_encoder: false
+  enable_sentence: false
+  strict_spelling: true
+  enable_completion: false
+  encode_commit_history: false
+  initial_quality: 1000
+
+sbzdy:
+  tag: sbzdy
+  dictionary: sbzdy
+  enable_user_dict: false
+  enable_encoder: false
+  enable_sentence: false
+  strict_spelling: true
+  enable_completion: true
+  encode_commit_history: false
+  prefix: "u"
+  tips: "〔自定义〕"
+
+simplifier:
+  opencc_config: s2t.json
+  option_name: zh_trad
+   
+bihua_lookup:
+  tag: bihua_lookup
+  dictionary: bihua
+  enable_user_dict: false
+  enable_encoder: false
+  enable_sentence: false
+  strict_spelling: true
+  enable_completion: true
+  encode_commit_history: false
+  tips: "〔笔画反查〕"
+
+bihua_reverse_lookup:
+  tags: [ bihua_lookup ] 
+  overwrite_comment: true
+  dictionary: sbfmfc
+  
+pinyin_lookup:
+  tag: pinyin_lookup
+  dictionary: sbpy
+  enable_user_dict: false
+  enable_encoder: false
+  enable_sentence: false
+  strict_spelling: true
+  enable_completion: true
+  encode_commit_history: false
+  prefix: "a"
+  tips: "〔拼音反查〕"
+
+pinyin_reverse_lookup:
+  tags: [ pinyin_lookup ] 
+  overwrite_comment: true
+  dictionary: sbfmfc
+  
+zhlf_lookup:
+  tag: zhlf_lookup
+  dictionary: zhlf
+  enable_user_dict: false
+  enable_encoder: false
+  enable_sentence: false
+  strict_spelling: true
+  enable_completion: true
+  encode_commit_history: false
+  prefix: "i"
+  tips: "〔两分反查〕"
+
+zhlf_reverse_lookup:
+  tags: [ zhlf_lookup ] 
+  overwrite_comment: true
+  dictionary: sbfmfc
+
+punctuator:
+  import_preset: symbols
+
+recognizer:
+  patterns:
+    sbzdy: "^u[qwrtsdfgzxcvbyphjklnm][a-z0-9]*$"
+    bihua_lookup: "^[aeiou][aeiou]*'?$"
+    pinyin_lookup: "^a[qwrtsdfgzxcvbyphjklnm][a-z]*'?$"
+    zhlf_lookup: "^i[qwrtsdfgzxcvbyphjklnm][a-z]*'?$"
+    retention: "^o[qwrtsdfgzxcvbyphjklnm0-9][a-z0-9]*$"
+    punct: '^\\([0-9]|10|[A-Za-z]+)$'
+
+key_binder:
+  bindings:
+    - { when: paging, accept: Tab, send: Page_Up }
+    - { when: has_menu, accept: Return, send: Page_Down }
+
+menu:
+  page_size: 6
+  alternative_select_keys: " aeuio"
+  alternative_select_labels: [" ",ａ,ｅ,ｕ,ｉ,ｏ]

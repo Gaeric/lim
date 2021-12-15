@@ -40,7 +40,7 @@
 
 (register-input-method
  "lim-sbfd" "euc-cn" 'lim-use-package
- "FD" "FD顶功输入法" "lim-sbfd.txt")
+ "飞单" "声笔飞单顶功输入法" "lim-sbfd.txt")
 (setq default-input-method "lim-sbfd")
 
 (defun lim-active-sbfd ()

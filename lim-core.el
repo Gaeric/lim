@@ -188,8 +188,6 @@ If not, reopen the file. If the file does not exist, remove the buffer from the 
               (if sym
                   (set sym (mapconcat 'identity (cdr p) "=")))))
           param)
-    (if (stringp lim-page-length)
-         (setq lim-page-length (string-to-number lim-page-length)))
     (setq lim-first-char (append lim-first-char nil)
           lim-total-char (append lim-total-char nil))))
 

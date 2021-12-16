@@ -44,6 +44,7 @@
 ;; ==============================================================================
 ;;; 输入法高级功能 - advanced function
 ;; ------------------------------------------------------------------------------
+(defcustom lim-page-length 6 "the length of guidance every page")
 ;; Variable declare
 (defun lim-punctuation-translate (char)
   (lim-punc-translate lim-punctuation-list char))

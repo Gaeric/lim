@@ -100,7 +100,6 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-possible-char
     lim-possible-phrase
 
-    lim-load-hook
     lim-active-hook
 
     lim-handle-function

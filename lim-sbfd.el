@@ -36,16 +36,19 @@
 
 (autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
 (autoload 'lim-orderless-regexp "lim-tools")
+(autoload 'lim-evil-find-mode "lim-tools")
+(autoload 'lim-count-words "lim-tools")
 
 (register-input-method
  "lim-sbfd" "euc-cn" 'lim-use-package
  "飞单" "声笔飞单顶功输入法" "lim-sbfd.txt")
+
 (setq default-input-method "lim-sbfd")
 
-(defun lim-active-sbfd ()
+(defun lim-load-sbfd ()
   (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
   (setq lim-translate-function 'lim-punctuation-translate)
-  (setq-default lim-handle-function 'lim-handle-string-sbfd)
-  (with-eval-after-load 'evil 'lim-evil-find-mode))
+  (setq lim-handle-function 'lim-handle-string-sbfd)
+  (with-eval-after-load 'evil (lim-evil-find-mode)))
 
-(setq lim-load-hook 'lim-active-sbfd)
+(add-hook 'lim-load-hook 'lim-load-sbfd)

@@ -8,7 +8,6 @@
 ;; License: GPLv3
 (require 'lim-core)
 (require 'lim-advanced)
-(require 'lim-tools)
 
 (defun lim-handle-string-sbfd ()
   (if (if (> (length lim-current-string) 2)

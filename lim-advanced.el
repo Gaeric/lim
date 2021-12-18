@@ -212,8 +212,8 @@
   (if lim-punc-translate-status
       (cond
        ;; ((< char ? ) "")
-       ((and lim-ascii-char
-             (= char (car lim-ascii-char)))
+       ((if (boundp 'lim-ascii-char)
+            (= char (car lim-ascii-char)))
         (char-to-string char))
        (t
         ;; (message "return: ok")

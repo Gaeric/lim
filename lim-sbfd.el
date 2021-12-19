@@ -51,4 +51,10 @@
   (setq lim-handle-function 'lim-handle-string-sbfd)
   (with-eval-after-load 'evil (lim-evil-find-mode)))
 
+(defvar lim-ascii-char (cons ?\' "‘’")
+  "*Key used for `lim-insert-ascii'.")
+
+(global-set-key "'" 'lim-insert-ascii)
+(global-set-key "~" 'lim-insert-org-verbatim)
+
 (add-hook 'lim-load-hook 'lim-load-sbfd)

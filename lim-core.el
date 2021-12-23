@@ -232,7 +232,6 @@ active-funct, called every time you switch."
       (funcall (lim-active-function))))
 
 
-;; TODO: implements this function
 (defun lim-exit-from-minibuffer ()
   "turn off the input method when exit minibuffer"
   (deactivate-input-method)

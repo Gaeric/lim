@@ -38,6 +38,8 @@
 (autoload 'lim-orderless-regexp "lim-tools")
 (autoload 'lim-evil-find-mode "lim-tools")
 (autoload 'lim-count-words "lim-tools")
+(autoload 'lim-insert-ascii "lim-tools")
+(autoload 'lim-insert-org-verbatim "lim-tools")
 
 (register-input-method
  "lim-sbfd" "euc-cn" 'lim-use-package

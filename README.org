@@ -35,9 +35,7 @@
       - [[#kill-other-buffer-后启动lim失败][*kill-other-buffer* 后启动lim失败]]
 
 * Description
-  This is Lim, lightly input method. 
-  
-  This is a attempt for learning Elisp.
+  Lim, lightly input method. 
 ** Features:
    lim 完成了以下核心流程，使输入法得以运转
     - 将词库文件读入一个隐藏的buffer
@@ -48,8 +46,8 @@
     - 对相应的结果进行展示
 * Install
 * Key bindings
-| Key Binding | Description    |
-|-------------+----------------|
+  | Key Binding | Description    |
+  |-------------+----------------|
 * Changlog
 ** Version
 *** v0.01

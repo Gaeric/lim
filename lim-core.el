@@ -565,7 +565,6 @@ otherwise stop the conversion,then insert the corresponding character."
 ;; Splicing encoding strings and get entry  by `lim-handle-string'
 ;; Splicing encoding strings when delete by `lim-handle-delete'
 ;; Conversion input-string (current-word) to events by `lim-input-events'
-;; Advise input characters by `lim-advice'
 ;; Conversion char to special string by `lim-translate'
 ;; If don't use overlay, the input method does not need to insert the post-translation entry itself
 ;; All insertion actions should generate input events and pass them to input-method-after-insert-chunk-hook to satisfy other features.
@@ -692,14 +691,6 @@ If STR has `advice' text property, append the following special event:
         (setq events
               (nconc events (list (list 'lim-advice str)))))
     events))
-
-(defun lim-advice (args)
-  "Advise users about the characters input by the current lim scheme."
-  (interactive "e")
-  (let* ((string (nth 1 args))
-         (func (get-text-property 0 'advice string)))
-    (if (functionp func)
-        (funcall func string))))
 
 (defun lim-translate (char)
   (if (functionp lim-translate-function)

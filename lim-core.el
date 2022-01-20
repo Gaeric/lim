@@ -489,7 +489,8 @@ otherwise stop the conversion,then insert the corresponding character."
   (interactive "*")
   (if (if (string-empty-p lim-current-string)
           (member last-command-event lim-first-char)
-        (member last-command-event lim-total-char))
+        ;; (member last-command-event lim-total-char))
+        t)
       (progn
         (setq lim-current-string (concat lim-current-string (char-to-string last-command-event)))
         (funcall lim-handle-function))

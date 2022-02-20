@@ -1,0 +1,76 @@
+#+title: Feature and Bug List
+* Todo list
+** TODO Features [6/11]
+    - State "TODO"       from "DONE"       [2019-06-19 Wed 01:35]
+    - State "DONE"       from "TODO"       [2019-06-18 Tue 00:08]
+*** DONE [#B] 完善回显功能
+     CLOSED: [2018-07-02 周一 09:12]
+     - State "DONE"       from "TODO"       [2018-07-02 周一 09:12]
+     输入法minibuffer总是会打印出上一条完成或未完成的提示,这不是我所期望的结果,需要找到代码中相应的部分然后改正
+*** DONE [#A] 完善标点符号输入
+     CLOSED: [2018-07-03 周二 20:02]
+     - State "DONE"       from "TODO"       [2018-07-03 周二 20:02]
+     可能需要引入完整的history功能
+*** DONE [#A] 尝试使用 overlay
+     CLOSED: [2018-07-03 二 00:57]
+     - State "DONE"       from "TODO"       [2018-07-03 二 00:57]
+     使用overlay以获得更加展示功能
+*** TODO [#B] 构建个人词库模块，提供供自造词
+     功能增强：可以自定义修改词库
+*** DONE [#A] 完善补全功能
+     CLOSED: [2018-08-29 周三 18:26]
+     - State "DONE"       from "TODO"       [2018-08-29 周三 18:26]
+*** DONE 完善英文模式
+     CLOSED: [2018-07-02 周一 09:12]
+     - State "DONE"       from "TODO"       [2018-07-02 周一 09:12]
+*** TODO [#A] 完成选词模块
+     1. 可以通过一定的按键对候选词翻页
+     2. 可以使用数字对根据翻页后的候选栏的候选词进行选择
+*** TODO lim中文标点输入优化
+     根据键入的字符，依据上下文结构，智能选择全半角标点
+     #+begin_src elisp
+       ;; 核心函数
+       (rx ...)
+     #+end_src
+     根据
+*** DONE lim evil搜索模式
+     CLOSED: [2019-06-18 Tue 00:07]
+     - State "DONE"       from "TODO"       [2019-06-18 Tue 00:07]
+     根据用户词库，构建 char-to-chinese-lib，通过evil f/F/t/T进行查词
+     代码已使现，待迁移
+*** TODO 增加输入统计的模块功能
+***** TODO 统计输入速度和键准
+***** TODO 统计每个字的输入次数
+*** TODO [#A] 根据当前光标位置，自动切换输入模式
+     1. 参考pyim的自动关闭输入法探针，完成lim的对应功能
+     2. 核心函数如下
+        #+begin_src elisp
+          (let* ((pos (point))
+                 (pos-syntax (syntax-ppss pos)))
+            (or
+             (nth 3 pos-syntax) ;; non-nil if inside a string
+             (nth 4 pos-syntax) ;; non-nil if instide a comment
+             ))
+        #+end_src
+** DONE [#A] Buglist [3/5]
+    CLOSED: [2018-07-03 二 00:57]
+    - State "DONE"       from "TODO"       [2018-07-03 二 00:57]
+*** DONE 兼容性改善
+     CLOSED: [2018-07-01 日 23:13]
+     - State "DONE"       from "TODO"       [2018-07-01 日 23:13]
+     更改字符插入方式，将不应由输入法转换的输入转交于系统处理，而不是直接插入对应字符
+     会导致自动补全等功能出现问题
+*** DONE delete-last-char
+     CLOSED: [2018-07-02 周一 08:50]
+     - State "DONE"       from "TODO"       [2018-07-02 周一 08:50]
+     当current-string长度为一时,使用delete-last-char删除时会先直接插入当前选择的词条
+*** DONE 回退字符后，上屏刷新问题
+     CLOSED: [2018-07-04 周三 00:17]
+     - State "DONE"       from "TODO"       [2018-07-04 周三 00:17]
+     目前未复现
+*** TODO [#A] *kill-other-buffer* 后启动lim失败
+     增加异常机制，在隐性删除 *lim-xixi* 后，再次生成此buffer
+*** TODO evil-lim-find在查找特殊字符如.时，只跳转至下一位
+     由于使用正则搜索~re-search-forward~替换了~search-forward~，导致搜索时使用正则表达式
+     
+     根据是否存在码表映射关系，优化查词逻辑

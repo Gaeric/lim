@@ -438,12 +438,10 @@ The function emms-delete-if has some Bug."
                                                  (point-max))))))
             (if lim-completion-status
                 (setq completions (lim-completions code completions)))
-            ;; (message "this is lim-possible-phrase: %s" lim-possible-phrase)
             ;; 由于切换了buffer，必须将增强补全函数写在dolist函数中，否则超出了变量的作用域
             (if lim-completion-increase (setq words (append words lim-possible-phrase)))))
         ;; note :: 必须将 lim-possible-phrase 赋给 words
         ;; 否则无法在下次查询到相同单词时刷候选栏
-        ;; (message "this is words: %s" words)
         (setq words (delete-dups words))
         ;; delete-dups: delete the duplicate items
         (puthash code (list words
@@ -496,7 +494,6 @@ otherwise stop the conversion,then insert the corresponding character."
         (funcall lim-handle-function))
     ;; (setq lim-current-word (char-to-string last-command-event))
     (setq lim-current-word (lim-translate last-command-event))
-    ;; (message "return word: %s" lim-current-word)
     (lim-terminate-translation)))
 
 (defun lim-select-current-term ()
@@ -521,7 +518,6 @@ otherwise stop the conversion,then insert the corresponding character."
         (setq lim-current-word (char-to-string last-command-event))
         (lim-terminate-translation))
     (let ((num (- last-command-event 48)))
-      (message "%d" num)
       (if (and (car lim-optional-result)
                (nth num (car lim-optional-result)))
           (progn
@@ -639,7 +635,6 @@ Return the input string."
                     (commandp cmd)
                   (eq cmd 'lim-entry-command))
                 (progn
-                  ;; (message "keyseq: %s" keyseq)
                   (setq last-command-event (aref keyseq (1- (length keyseq)))
                         last-command this-command
                         this-command cmd)
@@ -651,7 +646,6 @@ Return the input string."
               ;; Let's return the event(s) to the caller.
               (setq unread-command-events
                     (string-to-list (this-single-command-raw-keys)))
-              ;; (message "unread-command-events: %s" unread-command-events)
               (lim-terminate-translation))))
         lim-current-word)
     ;; Since KEY doesn't start nay translation, just return it.

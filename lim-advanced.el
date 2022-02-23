@@ -211,12 +211,10 @@
   "Translate punctuation."
   (if lim-punc-translate-status
       (cond
-       ;; ((< char ? ) "")
        ((if (boundp 'lim-ascii-char)
             (= char (car lim-ascii-char)))
         (char-to-string char))
        (t
-        ;; (message "return: ok")
         (let ((str (char-to-string char))
               punc)
           (if (and (not (member (char-before) lim-punc-exception-list))
@@ -225,7 +223,7 @@
                 (if (char-before)
                     ;; note :: Determine if the cursor is at the file header
                     (if (= char (char-before))
-                                     (delete-char -1)))
+                        (delete-char -1)))
                 (if (= (safe-length punc) 1)
                     (car punc)
                   (setcdr (cdr punc) (not (cddr punc)))

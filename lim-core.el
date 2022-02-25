@@ -616,11 +616,9 @@ Return the input string."
               lim-translate-status t)
         ;; note :: Initialize related variables
         (if key
-            ;; condition :: key is non-nil
             (setq unread-command-events
                   (cons key unread-command-events)))
         (while lim-translate-status
-          ;; translate-status :: 控制是否继续从标准输入读取编码
           (set-buffer-modified-p modified-p)
           (let* ((prompt (if input-method-use-echo-area
                              (format "[%s]:%s %s"

@@ -423,10 +423,8 @@ The function emms-delete-if has some Bug."
 (defun lim-get (code)
   (when (and (stringp code) (not (string-empty-p code)))
     (let ((history (gethash code (lim-history)))
-          ;; gethash :: Look up Key in TABLE and return its associated value.
           pos words completions)
       (if (and (car history) (assoc "completions" (cdr history)))
-          ;; history :: get history from hash table
           history
         (dolist (buf (lim-buffer-list))
           (with-current-buffer (cdr (assoc "buffer" buf))

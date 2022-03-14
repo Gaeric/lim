@@ -21,7 +21,7 @@
 ;; Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 ;; ==============================================================================
-(defvar lim-version "0.07")
+(require 'quail)
 
 (defgroup lim nil
   "lim: Ligthly input method"
@@ -68,7 +68,7 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 (defvar lim-possible-phrase nil "可能的字词组合")
 (defvar lim-current-pos nil "当前选择的词条在 lim-optional-reslut 中的位置")
 
-(defvar lim-completion-status t "Control whether to complete. 控制是否进行补全")
+(defvar lim-completion-status t "Control whether to complete.")
 (defvar lim-translate-status nil "转换状态控制开关")
 (defvar lim-completion-increase t "增强补全控制开关
 不仅影响到补全函数是否查找下一个可能的字符对应的词组
@@ -592,7 +592,7 @@ and call to get the related function to obtain the word translation result.
               (if input-method-exit-on-first-char
                   (list (aref input-string 0))
                 ;; use lim-input-events to handle insert and other hook.
-                (lim-input-events input-string))))
+                (quail-input-string-to-events input-string))))
         (run-hooks 'input-method-after-insert-chunk-hook)))))
 
 (defun lim-obtain-string (key)
@@ -669,19 +669,6 @@ Return the input string."
           lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)
     (if (functionp 'lim-show) (funcall 'lim-show)))
-
-(defun lim-input-events (str)
-  "Convert input string STR to a list of events.
-If STR has `advice' text property, append the following special event:
-\(lim-advice STR)"
-  (let ((events (mapcar
-                 (lambda (l) l)
-                 str)))
-    (if (or (get-text-property 0 'advice str)
-            (next-single-property-change 0 'advice str))
-        (setq events
-              (nconc events (list (list 'lim-advice str)))))
-    events))
 
 (defun lim-translate (char)
   (if (functionp lim-translate-function)

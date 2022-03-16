@@ -226,17 +226,11 @@ active-funct, called every time you switch."
   ;; IF we are in minibuffer, turn off the current input mehtod
   ;; before exiting
   (when (eq (selected-window) (minibuffer-window))
-    (add-hook 'minibuffer-exit-hook 'lim-exit-from-minibuffer))
+    (add-hook 'minibuffer-exit-hook 'quail-exit-from-minibuffer))
   (run-hooks 'lim-active-hook)
   (if (functionp (lim-active-function))
       (funcall (lim-active-function))))
 
-
-(defun lim-exit-from-minibuffer ()
-  "turn off the input method when exit minibuffer"
-  (deactivate-input-method)
-  (if (<= (minibuffer-depth) 1)
-      (remove-hook 'minibuffer-exit-hook 'lim-exit-from-minibuffer)))
 
 (defun lim-deactivate ()
   (setq lim-translate-status nil)

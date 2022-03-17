@@ -12,7 +12,7 @@
 (defun lim-handle-sbfd ()
   "sbfd handle current string"
   (let ((re (lim-get lim-current-string))
-        (candidates (cdr car lim-optional-result))
+        (candidates (cdr (car lim-optional-result)))
         current-item)
     (if (caar re)
         (progn

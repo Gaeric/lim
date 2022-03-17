@@ -74,8 +74,6 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 不仅影响到补全函数是否查找下一个可能的字符对应的词组
 还影响是否将其拼接入lim-optional-result")
 
-(defvar lim-completion-limit 2 "补全控制条件")
-
 (defvar lim-load-hook nil "载入输入法时调用的hook")
 (defvar lim-active-hook nil "激活输入法时调用的hook")
 
@@ -365,11 +363,7 @@ The function emms-delete-if has some Bug."
                           (+ (point) len 1)))
             ;; note :: Basic function
             (mapc (lambda (c)
-                    (when (or (>= len lim-completion-limit)
-                              ;; (= (length c) 1)
-                              )
-                      (push (cons c (substring (car item) len))
-                            phrase)))
+                    (push (cons c (substring (car item) len)) phrase))
                   (cdr item))
             (forward-line 1)
             (setq count (1+ count)))

@@ -183,8 +183,6 @@
       whole)))
 
 ;; ------------------------------------------------------------------------------
-;;; Pass the function to lim-translate-function and add punctuation translation control
-;; 将函数传递给lim-translate-function加入标点符号转译控制
 ;; Read punctuation by `lim-read-punctuation'
 ;; Translate char to punctuation by `lim-punc-translate'
 

@@ -51,7 +51,7 @@
 
 (defun lim-load-sbfd ()
   (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
-  (setq lim-translate-function 'lim-punctuation-translate)
+  (setq lim-convert-function 'lim-punctuation-translate)
   (setq lim-handle-function 'lim-handle-sbfd)
   (with-eval-after-load 'evil (lim-evil-find-mode)))
 

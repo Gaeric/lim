@@ -56,7 +56,7 @@
 
 (defun lim-active-xixi ()
   (setq lim-punctuation-list (lim-read-punctuation lim-current-scheme))
-  (setq lim-translate-function 'lim-punctuation-translate)
+  (setq lim-convert-function 'lim-punctuation-translate)
   (lim-evil-find-mode))
 
 ;; 载入输入法时即加载标点相关控制函数，保证不受影响

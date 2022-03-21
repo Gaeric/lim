@@ -77,7 +77,8 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
 (defvar lim-load-hook nil "载入输入法时调用的hook")
 (defvar lim-active-hook nil "激活输入法时调用的hook")
 
-(defvar lim-translate-function nil "额外的转换函数，目前用来处理标点")
+(defvar lim-convert-function nil
+  "handle the input char can't translate")
 (defvar lim-stop-function nil "额外的控制函数，控制handle-function")
 (defvar lim-handle-function 'lim-handle-string "控制函数，lim-handle-string
 为字符串控制函数，用于处理输入字符串")
@@ -659,8 +660,8 @@ Return the input string."
     (if (functionp 'lim-show) (funcall 'lim-show)))
 
 (defun lim-translate (char)
-  (if (functionp lim-translate-function)
-      (funcall lim-translate-function char)
+  (if (functionp lim-convert-function)
+      (funcall lim-convert-function char)
     (char-to-string char)))
 
 ;; ==============================================================================

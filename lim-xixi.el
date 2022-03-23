@@ -34,9 +34,7 @@
 
 (defun lim-overflow ()
   (interactive)
-  (if (> (length lim-current-string) 2)
-      (not (member (char-to-string last-command-event) lim-possible-char))
-    (> (length lim-current-string) 5)))
+  (caar (lim-get lim-current-string)))
 
 (defvar lim-ascii-char (cons ?\' "‘’")
   "*Key used for `lim-insert-ascii'.")

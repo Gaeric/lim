@@ -64,7 +64,6 @@ pos         上次选择的位置
 completion  下一个可能的字符（如果 lim-completion-status 为 t）
 ")
 
-(defvar lim-possible-char "" "下一个可能的字符")
 (defvar lim-possible-phrase nil "可能的字词组合")
 (defvar lim-current-pos nil "当前选择的词条在 lim-optional-reslut 中的位置")
 
@@ -96,7 +95,6 @@ completion  下一个可能的字符（如果 lim-completion-status 为 t）
     lim-optional-result
     lim-current-pos
     lim-translate-status
-    lim-possible-char
     lim-possible-phrase
     lim-active-hook
     lim-stop-function
@@ -647,7 +645,6 @@ Return the input string."
         (lim-select-current-term))
     (setq lim-optional-result (lim-get lim-current-string)
           lim-current-word (car (car lim-optional-result))
-          lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)
     (if (functionp 'lim-show) (funcall 'lim-show))))
 
@@ -655,7 +652,6 @@ Return the input string."
   "字符串删减控制函数，转译删除后的编码"
     (setq lim-optional-result (lim-get lim-current-string)
           lim-current-word (car (car lim-optional-result))
-          lim-possible-char (cdr (assoc "completions" lim-optional-result))
           lim-current-pos 1)
     (if (functionp 'lim-show) (funcall 'lim-show)))
 

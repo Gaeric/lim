@@ -18,7 +18,6 @@
         (progn
           (setq 
            lim-current-word (caar re)
-           lim-possible-char (cdr (assoc "completions" re))
            lim-current-pos 1
            lim-optional-result re)
           (if (functionp 'lim-show) (funcall 'lim-show)))

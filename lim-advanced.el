@@ -330,4 +330,38 @@
 ;; 只取每个词的第一个字
 ;; 根据每一行首字母判断是否要增加新的行
 
+(defun lim-insert-ascii ()
+  (interactive)
+  (if current-input-method
+      (let (c)
+        (message (format "自定义输入(空格%s, 回车%c): "
+                         (cdr lim-ascii-char)
+                         (car lim-ascii-char)))
+        ;; (setq c (read-event)) change read-event to read-char
+        (setq c (read-char))
+        (cond ((= c ?\r) (progn
+                           (insert (cdr lim-ascii-char))
+                           (backward-char 1)))
+              ((= c ? ) (insert-char (car lim-ascii-char) 1))
+              (t
+               (setq unread-command-events (list last-input-event))
+               (insert (read-from-minibuffer "自定义输入: ")))))
+    (call-interactively 'self-insert-command)))
+
+
+(defun lim-insert-org-verbatim ()
+  (interactive)
+  (if current-input-method
+      (let (c)
+        (message "verbatim(~): ")
+        (setq c (read-char))
+        (cond ((= c ?\r)
+               (insert "~"))
+              (t
+               (setq unread-command-events (list last-input-event))
+               (insert
+                (concat "~" (read-from-minibuffer "verbatim: ") "~")))))
+    (call-interactively 'self-insert-command)))
+
+
 (provide 'lim-advanced)

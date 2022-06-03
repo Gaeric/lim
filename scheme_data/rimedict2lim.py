@@ -60,7 +60,7 @@ first_char = [x for x in first_char]
 first_char.sort()
 total_char = [x for x in total_char]
 total_char.sort()
-with open('reuslt.txt', 'w', encoding='utf-8') as fp:
+with open('result.txt', 'w', encoding='utf-8') as fp:
     fp.write(";; -*- coding: utf-8 -*-\n\n")
     fp.write('[Parameter]\n')
     fp.write(f'first-char={"".join(first_char)}\n')

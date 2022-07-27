@@ -9,6 +9,7 @@ total-char=abcdefghijklmnopqrstuvwxyz
 | ÷
 } 』
 ` ・
+@ ♥
 ! ！
 $ ￥
 % ％

@@ -30,6 +30,7 @@
 ;; 首先，建立字符与汉字对应关系表 lim--char-cn-lib
 
 ;; 词条的结构应该是：
+(require 'lim-dylib)
 
 (defvar lim--char-cn-lib
   '(("y" . "原尤右殒餍硬厌靥砑雁魇殃赝厣奄砚研压殪愿有郁欹已熨异尉鬻尹尾引聿肀样榆椅桠椰杳柚樱樾乙橼杨檐楹游淤演液瀛洋浴淫溢瀹漾渝源一淹涯湮滢渊沂潆油泱洇沅滟涌泳渔沿漪页菸薏营荧蓥芽荑莠萸莜英萤茵莹茔芋芸芫艺苡蔚蓣蕴萦荫胤药莺莸苑茚要雨燕亚焉酉酽严颐鞅酝耶鄢鄞酏元玉瑶琰鼋瑗瑜珧琊瑛运迂盂韫璎耘于玥云艳言衣亦瘀霪应癔痒饔兖奕痍疣疟痖弈瘗夜颜庾瘐旖彦赢裔音瘿壅雩育冶膺雍庸翊瘾毅韵鹰嬴疡痈疫意叶咬唁喑唷噫吟喻呀咦哑呓跃咿员喁咽嘤哕吁噎咏吆踊郢吲郧邑哟呦依佯仪阅俣佾优佑伛阈倚俨伢偃阉侑攸佚仡逾龠觎余闫伊愈悠耀俑俞亿仰阎佣摇衍掖援揖徭徉揄挹掩揠衙揶御押拽撄掾扬拥抑役语永翌谳谚谊谣议以裕谕讶祐羿预矣谀诱翼甬谒祎译恿诒羽予郓勇冤鹬豫诣允爷义炎爻焱谷烊肴猷养烨舀燠烟遥煜益釉羊丫刈剡爰熠恙欲鹞鹆焰炀繇远誉窨慵愉悦悒窬忧寅恹宥窑窳宜寓怏愠宴宇忆怡恽怿窈眼央禺蝣圆蚁峪崤蝇蛘蝓嵛崖因岩圄蜮屿由岈螈蚜罨崦睚囿崾蜒曳罂屹遇遗圜蚰蜴园圉野愚贻眙蛹邮峄蚓幽黝蚴婴鸭鸯鹦嶷黟友舣殷易禹臾昱晏舆曰晕舁粤晔影映邀鼹鼬岳劓延牖曜昀与夷弋娱彧媛姚姨妪娅嫣尧雅医妖轶牙姻迓辕妍轧郾翳妤鸦欤轺鸢移夭毓箢氧氩筵秧迤氤氲筠竽越懿垸墉袁业域壹垭塬垣堰堙埏盐埸垠邺圯月院腋臆臃陨媵腰胰腌腴阳隅胭刖阽阴也隐用匀狺夤鳙馀鳐狳犹鱿猗颖颍饫迎逸鱼眢猿印怨饴狱肄疑狁饮鸳约幺验彝缢邕缨纭纡缘驭绎驿幼银镛铱镱虞镒铫铘钺龉铕铀铟卣钰钥龈钇又盈孕")
@@ -188,49 +189,6 @@
     (define-key evil-motion-state-map [remap evil-find-char-to-backward]    nil)
     (define-key evil-motion-state-map [remap evil-repeat-find-char]         nil)
     (define-key evil-motion-state-map [remap evil-repeat-find-char-reverse] nil)))
-
-
-;; 2. count chinese words
-(defvar lim-cn-shape  "[，。／÷？；：、＼·｜§¦｀～！＠☯＃⌘％°￥$€£¥¢¤₩……＆＊·・×※❂（）\
-－——＋＝々〃‘’“”《〈«‹》〉»›「【〔［」】〕］『〖｛』〗｝]")
-
-
-(defun count-chinese-words (start end)
-  "Count Chinese words between START and END."
-  (let ((words 0)
-        (puncs 0)
-        (cn-re
-         ;; (rx (category chinese))
-         (rx (category chinese-two-byte))))
-    (save-excursion
-      (save-restriction
-        (narrow-to-region start end)
-        (goto-char (point-min))
-        (while (re-search-forward
-                cn-re
-                nil t)
-          (setq words (1+ words)))
-        (goto-char (point-min))
-        (while (re-search-forward
-                lim-cn-shape
-                nil t)
-          (setq puncs (1+ puncs)))))
-    (setq chinese-puncs puncs)
-    (setq chinese-words words))
-  (message "中文字数：%s （不计标点符号）\n中文标点：%s" chinese-words chinese-puncs))
-
-
-(defun lim-count-words (start end)
-  "Count Chinese words between START and END.
-If called interactively, START and END are normally the start and
-end of the buffer; but if the region is active, START and END are
-the start and end of the region.  Print a message reporting the
-number of lines, words, and chars."
-  (interactive (list nil nil))
-  (cond ((use-region-p)
-         (count-chinese-words (region-beginning) (region-end)))
-        (t
-         (count-chinese-words (point-min) (point-max)))))
 
 (defun lim-translate-string (code)
   (let ((code-list (string-to-list code))

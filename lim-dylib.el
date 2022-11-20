@@ -7,11 +7,19 @@
 ;;
 ;; License: GPLv3
 
-(load-rs-module "./target/release/liblim.so")
+(load-rs-module "~/.emacs.d/site-lisp/lim/target/release/liblim.so")
 
 (defun lim-count-words ()
+  "Count Chinese words between START and END."
   (interactive)
-  (lim-do-count
-   (buffer-substring-no-properties
-    (point-min)
-    (point-max))))
+  (let (start end)
+    (if (region-active-p)
+        (progn
+          (setq start (region-beginning)
+                end (region-end)))
+      (setq start (point-min)
+            end (point-max)))
+    (lim-do-count
+     (buffer-substring-no-properties start end))))
+
+(provide 'lim-dylib)

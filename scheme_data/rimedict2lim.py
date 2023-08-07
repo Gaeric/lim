@@ -11,6 +11,7 @@ punc = '''
 | ÷
 } 』
 ` ・
+@ ♥
 ! ！
 $ ￥
 % ％
@@ -30,14 +31,14 @@ $ ￥
 ? ？
 [ 【
 ] 】
-^ ……
+^ …
 _ ──
 " “ ”
 ' ‘ ’
 '''
 
 table = {}
-with open('./sbxlm/sbfd.dict.yaml') as fp:
+with open('./starfire-fd_dict.yaml') as fp:
     content = fp.readlines()
     start = False
     first_char = set()

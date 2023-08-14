@@ -73,6 +73,8 @@ class Table:
                     if item.chara == concise_item.chara and \
                        item.encode != concise_item.encode and \
                            item.encode.startswith(concise_item.encode):
+                        # there only one full encode, remove concise_item for performance
+                        self.table[kind].remove(concise_item)
                         self.table['full'].remove(item)
                             
     def write(self, filepath):
@@ -92,7 +94,7 @@ def parse_line(line):
         
 
 if __name__ == "__main__":
-    with open('./sbfddict_20230805.txt') as fp:
+    with open('./data/sbfddict_20230805.txt') as fp:
         content = fp.readlines()
 
     table = Table('starfire_fd', "星火飞单")

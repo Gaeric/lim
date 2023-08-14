@@ -81,6 +81,7 @@ class Table:
         with open(filepath, 'w', encoding='utf-8') as fp:
             fp.write(f'# Rime dict \n# encoding: utf-8\n# {self.comment}\n\n')
             fp.write(f'---\nname: {self.name}\nversion: {self.version}\n')
+            fp.write('sort: original\n')
             fp.write('...\n')
             for item in self.table['full']:
                 fp.write(item.display())

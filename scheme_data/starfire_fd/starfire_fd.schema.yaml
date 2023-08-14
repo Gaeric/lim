@@ -41,10 +41,9 @@ engine:
     - fallback_segmentor
   translators:
     - punct_translator
-    - reverse_lookup_translator
     - table_translator
   filters:
-    - uniquifier
+    - simplifier
 
 speller:
   alphabet: "zyxwvutsrqponmlkjihgfedcba"

@@ -95,6 +95,6 @@ if __name__ == "__main__":
     with open('./sbfddict_20230805.txt') as fp:
         content = fp.readlines()
 
-    table = Table('starfire-fd', "飞单_星火版")
+    table = Table('starfire_fd', "星火飞单")
     table.build(content)
-    table.write('./starfire-fd_dict.yaml')
+    table.write('./starfire_fd.dict.yaml')

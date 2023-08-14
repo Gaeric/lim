@@ -89,23 +89,17 @@ local function processor(key_event, env)
    local is_prev_poptop = env.poptop_set[prev] or false
    local is_first_poptop = env.poptop_set[first] or false
 
-
-   log.info('first_poptop judge ')
    if env.poptop_command and is_first_poptop then
       return 2
    end
 
-   log.info('alphabet judge ')
    if not is_alphabet then
-      log.info('alphabet judge ')
       return 2
    end
 
    if is_prev_poptop and not is_poptop then
-      log.info('prev poptop current not')
       poptop(env)
    elseif not is_prev_poptop and not is_poptop and #input >= min_len then
-      log.info('prev not poptop, current not')
       poptop(env)
    elseif #input >= env.poptop_max then
       return selector(ch, context)

@@ -51,6 +51,7 @@ speller:
 
 menu:
   page_size: 6
+  alternative_select_keys: " aeuio"
 
 translator:
   dictionary: starfire_fd

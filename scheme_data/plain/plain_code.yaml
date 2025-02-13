@@ -4,7 +4,7 @@ info:
   name: plain_code
   author: gaeric
   version: 0.1.0
-  description: "易码配置-对照20240318修定修改"\uff0c"余如下五个字未匹配"\uff1a"\n暵\trln\trli\n鄜\twbk\tbkv\n麒\twbt\tbit\n麟\twbe\tble\n𠙶\tkxv\txkv"
+  description: "易码配置-对照20240318修定修改"
 data:
   repertoire:
     "\uf003":

@@ -4,7 +4,7 @@ info:
   name: plain_config
   author: gaeric
   version: 1.0.0
-  description: 四二顶单字配置
+  description: 基于三码定长版本的四二顶单字输入法
 data:
   repertoire:
     "\uf003":

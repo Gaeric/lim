@@ -1,10 +1,10 @@
 version: '0.1'
 source: plain
 info:
-  name: plain_code
+  name: plain_config
   author: gaeric
-  version: 0.1.0
-  description: "易码配置-对照20240318修定修改"
+  version: 1.0.0
+  description: 四二顶单字配置
 data:
   repertoire:
     "\uf003":
@@ -440,9 +440,6 @@ analysis:
     "\ue00b":
       - 䒑
       - 夫
-    末:
-      - '1'
-      - 木
     直:
       - 十
       - "\uf000"
@@ -450,10 +447,6 @@ analysis:
     丈:
       - '1'
       - 乂
-    甩:
-      - "\ue02a"
-      - 二
-      - '6'
     卅:
       - '1'
       - 川
@@ -467,9 +460,6 @@ analysis:
     孑:
       - 了
       - '1'
-    尹:
-      - "\ue431"
-      - '3'
     夹:
       - '1'
       - 丷
@@ -496,12 +486,6 @@ analysis:
       - 千
       - 艹
       - 二
-    "\ue082":
-      - 大
-      - 丷
-    余:
-      - 亼
-      - 朩
     "\ue0eb":
       - 日
       - 十
@@ -511,22 +495,12 @@ analysis:
     主:
       - '4'
       - 王
-    佥:
-      - 亼
-      - "\ue42d"
-      - '1'
-    隶:
-      - "\ue431"
-      - 氺
     产:
       - "\ue054"
       - 厂
     朿:
       - 木
       - 冂
-    今:
-      - 亽
-      - '5'
   customizeCorners: {}
 form:
   alphabet: qwertyuiopasdfghjklzxcvbnm

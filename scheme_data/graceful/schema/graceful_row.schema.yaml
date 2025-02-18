@@ -2,9 +2,9 @@
 # encoding: utf-8
 
 schema:
-  schema_id: graceful
-  name: total
-  version: '0.9'
+  schema_id: graceful_row
+  name: 奕整
+  version: '0.1.0'
   author:
     - lantian
     - 佚名
@@ -50,7 +50,7 @@ speller:
 translator:
   dictionary: graceful
 
- reverse_lookup:
+reverse_lookup:
   dictionary: stroke
   enable_completion: true
   prefix: "`"

@@ -16,6 +16,17 @@
   本文记录修改历史和生成方案。
 * 整句方案探索
   1. 使用袖珍简化字拼音方案，替代其码表为奕整单字码表，注释其简码规则，并加入八股文配置，可生成可用的整句方案
+     [[https://github.com/rime/rime-pinyin-simp][袖珍简化字拼音]]
+
+     简码规则：
+     #+begin_example
+       speller:
+         alphabet: zyxwvutsrqponmlkjihgfedcba
+         delimiter: " '"
+         algebra:
+         ...
+         ...
+     #+end_example
 
   2. 加入其它模型
      [[https://github.com/amzxyz/RIME-LMDG/wiki/%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E5%8F%82%E6%95%B0%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E][RIME-LMDG语言参数配置说明]]

@@ -587,7 +587,7 @@
 俽	mln	2	mln	2
 俾	mgu	0	mgu	0
 俿	mxb	2	mxb	2
-倀	mei	0	mei	0
+倀	mic	3	mic	3
 倁	mvj	1	mvj	1
 倂	mak	2	mak	1
 倃	mlj	0	mlj	0
@@ -1328,7 +1328,7 @@
 勤	zti	0	zti	0
 勥	iji	0	iji	0
 勦	gbi	1	gbi	1
-勧	tei	4	tei	4
+勧	tei	3	tei	3
 勨	zil	1	zil	1
 勩	uwi	6	uwi	6
 勪	mji	0	mji	0
@@ -2083,7 +2083,7 @@
 嗗	jdg	1	jdg	1
 嗘	jak	1	jak	1
 嗙	jky	0	jky	0
-嗚	jzn	2	jzn	1
+嗚	jzx	0	jzx	0
 嗛	jsn	2	jsn	2
 嗜	jad	0	jad	0
 嗝	jug	0	jug	0
@@ -2730,7 +2730,7 @@
 塟	bxa	0	bxa	0
 塠	aao	3	aao	3
 塡	awt	0	awt	0
-塢	azn	2	azn	2
+塢	azx	0	azx	0
 塣	oja	1	oja	1
 塤	ajt	1	ajt	1
 塥	aug	0	aug	0
@@ -3482,7 +3482,7 @@
 孏	gbs	3	gbs	2
 子	uii	0	ui	0
 孑	tei	0	tei	0
-孒	tei	2	tei	2
+孒	tei	1	tei	1
 孓	tzd	0	tzd	0
 孔	uwe	1	uwe	0
 孕	vui	0	vui	0
@@ -4016,7 +4016,7 @@
 嵥	exs	0	exs	0
 嵦	eea	4	eea	4
 嵧	eyb	2	eyb	2
-嵨	ezn	1	ezn	1
+嵨	ezx	0	ezx	0
 嵩	ecg	0	ecg	0
 嵪	ecg	2	ecg	2
 嵫	esy	1	esy	1
@@ -4052,12 +4052,12 @@
 嶉	ejr	0	ejr	0
 嶊	ehr	0	ehr	0
 嶋	ezn	0	ezn	0
-嶌	ezn	2	ezn	2
+嶌	ezn	1	ezn	1
 嶍	enn	2	enn	2
 嶎	enu	0	enu	0
 嶏	ewa	0	ewa	0
 嶐	efn	0	efn	0
-嶑	ezx	0	ezx	0
+嶑	ezx	1	ezx	1
 嶒	evd	1	evd	1
 嶓	eib	1	eib	1
 嶔	etn	1	etn	1
@@ -4219,7 +4219,7 @@
 帰	poz	0	poz	0
 帱	zqu	0	zqu	0
 帲	zak	0	zak	0
-帳	zei	0	zei	0
+帳	zic	1	zic	1
 帴	zqq	1	zqq	0
 帵	zlc	0	zlc	0
 帶	bcz	1	bcz	1
@@ -4446,7 +4446,7 @@
 弓	igg	0	igg	0
 弔	ics	1	ics	1
 引	ics	0	ics	0
-弖	iei	2	iei	2
+弖	iei	1	iei	1
 弗	ind	0	ind	0
 弘	ios	0	ios	0
 弙	ieu	1	ieu	1
@@ -4477,7 +4477,7 @@
 弲	ijv	0	ijv	0
 弳	iee	3	iee	3
 弴	icu	2	icu	2
-張	iei	1	iei	1
+張	iic	1	iic	1
 弶	ich	2	ich	2
 強	ioc	0	ioc	0
 弸	ivv	1	ivv	1
@@ -4861,7 +4861,7 @@
 悲	pnx	1	pnx	0
 悳	ufn	3	ufn	2
 悴	npu	1	npu	1
-悵	nei	0	nei	0
+悵	nic	2	nic	2
 悶	enx	2	enx	2
 悷	nzp	2	nzp	2
 悸	nwu	0	nwu	0
@@ -5577,7 +5577,7 @@
 捾	hld	3	hld	3
 捿	hxg	2	hxg	2
 掀	hln	0	hln	0
-掁	hei	0	hei	0
+掁	hic	1	hic	1
 掂	hxl	0	hxl	0
 掃	hoz	0	hoz	0
 掄	hgy	1	hgy	1
@@ -5768,7 +5768,7 @@
 搽	hbs	0	hbs	0
 搾	hrr	4	hrr	4
 搿	hgh	1	hgh	1
-摀	hzn	1	hzn	1
+摀	hzx	0	hzx	0
 摁	hgn	1	hgn	1
 摂	hff	4	hff	4
 摃	het	0	het	0
@@ -5830,7 +5830,7 @@
 摻	hoi	1	hoi	1
 摼	hea	1	hea	1
 摽	hul	1	hul	1
-摾	hic	1	hic	1
+摾	hic	2	hic	2
 摿	hks	1	hks	1
 撀	anh	0	anh	0
 撁	hpf	1	hpf	0
@@ -6262,7 +6262,7 @@
 昫	dsj	1	dsj	1
 昬	bdr	2	bdr	2
 昭	dma	1	dma	1
-昮	dei	1	dei	1
+昮	dei	0	dei	0
 是	dhf	0	dh	0
 昰	dbe	0	dbe	0
 昱	dkl	1	dkl	1
@@ -6941,7 +6941,7 @@
 棓	skj	0	skj	0
 棔	syd	2	syd	2
 棕	sll	0	sll	0
-棖	sei	1	sei	0
+棖	sic	3	sic	3
 棗	nnb	3	nnb	3
 棘	nnb	1	nnb	1
 棙	szp	1	szp	1
@@ -7572,7 +7572,7 @@
 歊	cnq	1	cnq	1
 歋	wxn	2	wxn	2
 歌	xxn	0	xxn	0
-歍	znq	0	znq	0
+歍	zxn	0	zxn	0
 歎	umn	0	umn	0
 歏	ztn	2	ztn	2
 歐	ajn	0	ajn	0
@@ -8184,7 +8184,7 @@
 涮	onp	0	onp	0
 涯	owv	0	owv	0
 涰	orr	1	orr	1
-涱	oei	2	oei	2
+涱	oic	2	oic	2
 液	opl	1	opl	0
 涳	ore	1	ore	1
 涴	olc	1	olc	1
@@ -8264,7 +8264,7 @@
 淾	tis	1	tis	1
 淿	onz	1	onz	1
 渀	okb	1	okb	1
-渁	oii	3	oii	3
+渁	oii	4	oii	4
 渂	odc	1	odc	1
 渃	obu	1	obu	1
 渄	opf	0	opf	0
@@ -8423,7 +8423,7 @@
 溝	owa	0	owa	0
 溞	orc	1	orc	1
 溟	ocf	0	ocf	0
-溠	oie	1	oie	1
+溠	oie	0	oie	0
 溡	odw	1	odw	1
 溢	osc	0	osc	0
 溣	omy	0	omy	0
@@ -8432,7 +8432,7 @@
 溦	oel	0	oel	0
 溧	ous	2	ous	2
 溨	ous	4	ous	4
-溩	ozn	1	ozn	1
+溩	ozx	1	ozx	1
 溪	oak	1	oak	1
 溫	ogc	0	ogc	0
 溬	oio	2	oio	2
@@ -8569,7 +8569,7 @@
 漯	oby	0	oby	0
 漰	oev	2	oev	2
 漱	opn	0	opn	0
-漲	oie	0	oie	0
+漲	oii	3	oii	3
 漳	osu	0	osu	0
 漴	oel	2	oel	2
 漵	okl	1	okl	1
@@ -8601,7 +8601,7 @@
 潏	ocj	2	ocj	2
 潐	orx	1	orx	1
 潑	ott	2	ott	2
-潒	ozx	1	ozx	1
+潒	ozx	2	ozx	2
 潓	otn	2	otn	2
 潔	oqy	0	oqy	0
 潕	ocu	2	ocu	2
@@ -8840,7 +8840,7 @@
 瀾	oes	2	oes	2
 瀿	oty	3	oty	3
 灀	orf	0	orf	0
-灁	oei	3	oei	3
+灁	oei	2	oei	2
 灂	oau	3	oau	3
 灃	oea	3	oea	3
 灄	off	1	off	1
@@ -8982,7 +8982,7 @@
 烌	xms	1	xms	1
 烍	xfk	0	xfk	0
 烎	cxh	3	cxh	3
-烏	znn	2	znn	1
+烏	zxh	0	zxh	0
 烐	xlo	0	xlo	0
 烑	xkf	2	xkf	2
 烒	xqe	0	xqe	0
@@ -9177,7 +9177,7 @@
 熐	xcf	3	xcf	3
 熑	xsn	2	xsn	2
 熒	xxx	5	xxx	4
-熓	xzn	4	xzn	4
+熓	xzx	0	xzx	0
 熔	xlc	0	xlc	0
 熕	xet	0	xet	0
 熖	xay	1	xay	1
@@ -9531,7 +9531,7 @@
 狲	puh	0	puh	0
 狳	pkw	1	pkw	1
 狴	pxa	0	pxa	0
-狵	pui	0	pui	0
+狵	pui	1	pui	1
 狶	phz	0	phz	0
 狷	pjv	0	pjv	0
 狸	pml	1	pml	0
@@ -9900,7 +9900,7 @@
 瑣	qdt	0	qdt	0
 瑤	qvb	0	qvb	0
 瑥	qdc	2	qdc	2
-瑦	qzn	2	qzn	2
+瑦	qzx	1	qzx	1
 瑧	vqw	0	vqw	0
 瑨	ved	0	ved	0
 瑩	xxl	0	xxl	0
@@ -10287,7 +10287,7 @@
 痫	ues	0	ues	0
 痬	udi	0	udi	0
 痭	uvv	2	uvv	2
-痮	uei	0	uei	0
+痮	uic	0	uic	0
 痯	uld	1	uld	1
 痰	uxx	1	uxx	0
 痱	upf	0	upf	0
@@ -10349,7 +10349,7 @@
 瘩	ubg	0	ubg	0
 瘪	udw	1	udw	1
 瘫	urr	0	urr	0
-瘬	uie	2	uie	2
+瘬	uii	2	uii	1
 瘭	uul	0	uul	0
 瘮	uoi	3	uoi	3
 瘯	uyv	1	uyv	1
@@ -10501,7 +10501,7 @@
 盁	vcm	0	vcm	0
 盂	euc	0	euc	0
 盃	jcm	0	jcm	0
-盄	icc	4	icc	3
+盄	icc	5	icc	4
 盅	rcm	0	rcm	0
 盆	tpc	0	tpc	0
 盇	kzc	0	kzc	0
@@ -12028,7 +12028,7 @@
 粸	doq	0	doq	0
 粹	dpu	0	dpu	0
 粺	dgu	2	dgu	2
-粻	dei	0	dei	0
+粻	dic	2	dic	2
 粼	dxg	2	dxg	2
 粽	dll	0	dll	0
 精	dqv	0	dq	0
@@ -13178,7 +13178,7 @@
 脶	vjr	0	vjr	0
 脷	vwp	0	vwp	0
 脸	vgd	0	vg	0
-脹	vei	1	vei	1
+脹	vic	2	vic	2
 脺	vpu	0	vpu	0
 脻	vxh	1	vxh	1
 脼	vek	0	vek	0
@@ -13274,7 +13274,7 @@
 膖	vlo	1	vlo	1
 膗	ver	1	ver	1
 膘	vul	0	vul	0
-膙	vic	2	vic	2
+膙	vic	3	vic	3
 膚	xbv	0	xbv	0
 膛	vda	0	vda	0
 膜	vlm	0	vlm	0
@@ -13896,7 +13896,7 @@
 萄	bfb	0	bfb	0
 萅	bed	0	bed	0
 萆	bgu	1	bgu	1
-萇	bei	1	bei	1
+萇	bic	3	bic	3
 萈	bfz	2	bfz	2
 萉	bvo	1	bvo	1
 萊	bsk	0	bsk	0
@@ -13982,7 +13982,7 @@
 葚	bow	0	bow	0
 葛	bdp	0	bdp	0
 葜	bqk	0	bqk	0
-葝	bei	2	bei	2
+葝	bei	1	bei	1
 葞	bif	1	bif	1
 葟	bnv	1	bnv	1
 葠	bmr	1	bmr	1
@@ -14801,7 +14801,7 @@
 融	ucc	0	ucc	0
 螎	cug	1	cug	1
 螏	cuv	1	cuv	1
-螐	czn	4	czn	4
+螐	czx	2	czx	1
 螑	cdp	1	cdp	1
 螒	udc	1	udc	1
 螓	cqw	0	cqw	0
@@ -14868,7 +14868,7 @@
 蟐	cdz	1	cdz	1
 蟑	csu	0	csu	0
 蟒	cbb	0	cbb	0
-蟓	czx	2	czx	1
+蟓	czx	3	czx	2
 蟔	csh	0	csh	0
 蟕	cjq	0	cjq	0
 蟖	col	0	col	0
@@ -15457,7 +15457,7 @@
 訝	iay	1	iay	1
 訞	imt	0	imt	0
 訟	ito	1	ito	1
-訠	iic	1	iic	1
+訠	iic	2	iic	2
 訡	irw	0	irw	0
 訢	ilj	0	ilj	0
 訣	iak	1	iak	1
@@ -15804,7 +15804,7 @@
 譸	iau	1	iau	1
 譹	icr	1	icr	1
 譺	iwh	2	iwh	2
-譻	fti	1	fti	1
+譻	fti	2	fti	2
 譼	eki	4	eki	4
 譽	yei	0	yei	0
 譾	isn	7	isn	7
@@ -16143,14 +16143,14 @@
 賋	fth	1	fth	1
 賌	pft	1	pft	1
 賍	fta	4	fta	3
-賎	fte	5	fte	5
+賎	fte	4	fte	4
 賏	ftt	3	ftt	3
 賐	ftl	4	ftl	4
 賑	ftz	3	ftz	3
 賒	ftl	5	ftl	5
 賓	let	0	let	0
 賔	lnt	3	lnt	3
-賕	fti	4	fti	4
+賕	fti	5	fti	5
 賖	ftw	0	ftw	0
 賗	ftr	2	ftr	2
 賘	ftz	6	ftz	6
@@ -16173,7 +16173,7 @@
 賩	ftl	6	ftl	6
 質	llt	1	llt	1
 賫	fkt	2	fkt	2
-賬	fte	2	fte	2
+賬	fti	1	fti	1
 賭	fta	2	fta	1
 賮	xet	1	xet	1
 賯	ftu	2	ftu	2
@@ -16192,10 +16192,10 @@
 購	fta	3	fta	2
 賽	lwt	0	lwt	0
 賾	eqt	3	eqt	3
-賿	fti	5	fti	5
+賿	fti	6	fti	6
 贀	avt	1	avt	1
 贁	ftl	7	ftl	7
-贂	fti	2	fti	2
+贂	fti	3	fti	3
 贃	ftn	5	ftn	5
 贄	ait	0	ait	0
 贅	qpt	2	qpt	2
@@ -16206,22 +16206,22 @@
 贊	fkt	0	fkt	0
 贋	wmt	4	wmt	4
 贌	ftz	0	ftz	0
-贍	fti	3	fti	3
+贍	fti	4	fti	4
 贎	ftr	3	ftr	3
 贏	pjt	1	pjt	1
 贐	ftc	1	ftc	1
 贑	sut	4	sut	4
 贒	ert	3	ert	3
-贓	fte	3	fte	3
+贓	fte	2	fte	2
 贔	ftt	1	ftt	1
 贕	yat	3	yat	3
 贖	ftt	0	ftt	0
 贗	wmt	2	wmt	2
 贘	ftt	4	ftt	4
 贙	xbt	5	xbt	5
-贚	fte	6	fte	6
+贚	fte	5	fte	5
 贛	sut	2	sut	2
-贜	fte	4	fte	4
+贜	fte	3	fte	3
 贝	qbb	0	qb	0
 贞	hqb	0	hqb	0
 负	qqb	0	qq	0
@@ -16637,7 +16637,7 @@
 躹	gfd	1	gfd	1
 躺	gdj	0	gdj	0
 躻	gre	1	gre	1
-躼	gei	1	gei	1
+躼	gic	1	gic	1
 躽	gag	1	gag	1
 躾	gik	1	gik	1
 躿	gxi	2	gxi	2
@@ -17237,7 +17237,7 @@
 鄑	enf	3	enf	3
 鄒	fjf	1	fjf	1
 鄓	dpf	1	dpf	1
-鄔	zfe	2	zfe	2
+鄔	zxf	0	zxf	0
 鄕	ynf	0	ynf	0
 鄖	jff	2	jff	2
 鄗	cfe	3	cfe	3
@@ -17254,7 +17254,7 @@
 鄢	bef	0	bef	0
 鄣	suf	0	suf	0
 鄤	qfe	1	qfe	1
-鄥	zfe	3	zfe	3
+鄥	zfe	2	zfe	2
 鄦	cfe	5	cfe	5
 鄧	taf	1	taf	1
 鄨	wlo	0	wlo	0
@@ -17282,7 +17282,7 @@
 鄾	tnf	1	tnf	1
 鄿	bdf	1	bdf	1
 酀	ujf	0	ujf	0
-酁	zxf	0	zxf	0
+酁	zxf	1	zxf	1
 酂	fkf	1	fkf	1
 酃	rdf	0	rdf	0
 酄	bdf	2	bdf	2
@@ -17415,7 +17415,7 @@
 釃	zea	0	zea	0
 釄	zxp	1	zxp	1
 釅	zdl	1	zdl	1
-釆	icc	2	icc	1
+釆	icc	3	icc	2
 采	icc	1	icc	0
 釈	inz	1	inz	1
 釉	igy	0	igy	0
@@ -17488,7 +17488,7 @@
 鈌	tak	0	tak	0
 鈍	tej	1	tej	1
 鈎	tfo	1	tfo	1
-鈏	tic	1	tic	1
+鈏	tic	2	tic	2
 鈐	trw	1	trw	1
 鈑	twr	1	twr	1
 鈒	trj	2	trj	2
@@ -17504,7 +17504,7 @@
 鈜	tuo	1	tuo	1
 鈝	tfn	3	tfn	3
 鈞	tff	2	tff	1
-鈟	tic	2	tic	2
+鈟	tic	3	tic	3
 鈠	tts	1	tts	1
 鈡	tro	1	tro	0
 鈢	tsm	1	tsm	1
@@ -17663,7 +17663,7 @@
 銻	tsq	1	tsq	1
 銼	tka	1	tka	1
 銽	tyj	1	tyj	1
-銾	tei	3	tei	3
+銾	tei	2	tei	2
 銿	toe	1	toe	1
 鋀	tad	2	tad	2
 鋁	tjj	3	tjj	2
@@ -17722,7 +17722,7 @@
 鋶	ttg	1	ttg	1
 鋷	tfr	2	tfr	2
 鋸	tnx	1	tnx	1
-鋹	tei	1	tei	1
+鋹	tic	1	tic	1
 鋺	tlc	2	tlc	2
 鋻	ert	4	ert	4
 鋼	tge	0	tge	0
@@ -17891,7 +17891,7 @@
 鎟	trs	0	trs	0
 鎠	tcb	0	tcb	0
 鎡	tsy	2	tsy	2
-鎢	tzn	0	tzn	0
+鎢	tzx	0	tzx	0
 鎣	xxt	0	xxt	0
 鎤	tdl	2	tdl	1
 鎥	mct	1	mct	1
@@ -17978,7 +17978,7 @@
 鏶	trs	1	trs	1
 鏷	tnz	5	tnz	5
 鏸	ttn	2	ttn	2
-鏹	tic	3	tic	3
+鏹	tic	4	tic	4
 鏺	ttt	1	ttt	1
 鏻	tda	1	tda	1
 鏼	tkn	2	tkn	2
@@ -17997,7 +17997,7 @@
 鐉	tot	2	tot	2
 鐊	tfi	1	tfi	1
 鐋	toi	4	toi	4
-鐌	tzx	0	tzx	0
+鐌	tzx	1	tzx	1
 鐍	tcj	0	tcj	0
 鐎	trx	0	trx	0
 鐏	tzu	1	tzu	0
@@ -18360,8 +18360,8 @@
 镴	tgy	1	tgy	1
 镵	tzz	0	tzz	0
 镶	tyw	0	tyw	0
-長	eii	1	eii	0
-镸	icc	5	icc	4
+長	icc	2	icc	1
+镸	icc	6	icc	5
 镹	iqz	1	iqz	1
 镺	imt	2	imt	2
 镻	iam	1	iam	1
@@ -18647,14 +18647,14 @@
 隓	fue	2	fue	2
 隔	fug	0	fug	0
 隕	fjt	1	fjt	1
-隖	fzn	2	fzn	2
+隖	fzx	0	fzx	0
 隗	fgo	0	fgo	0
 隘	fsc	0	fsc	0
 隙	fhh	0	fhh	0
 隚	fda	3	fda	3
 際	ftl	2	ftl	2
 障	fsu	0	fsu	0
-隝	fzn	3	fzn	3
+隝	fzn	2	fzn	2
 隞	fql	1	fql	1
 隟	fgs	1	fgs	1
 隠	fan	2	fan	2
@@ -18872,7 +18872,7 @@
 靴	zmw	0	zmw	0
 靵	zwa	1	zwa	1
 靶	zob	0	zob	0
-靷	zic	1	zic	1
+靷	zic	2	zic	2
 靸	zrj	0	zrj	0
 靹	zrn	1	zrn	1
 靺	zpm	0	zpm	0
@@ -18965,7 +18965,7 @@
 韑	dlh	1	dlh	1
 韒	hdv	1	hdv	1
 韓	udh	1	udh	1
-韔	hei	1	hei	1
+韔	hic	3	hic	3
 韕	hcu	2	hcu	2
 韖	hcs	2	hcs	2
 韗	hcp	2	hcp	2
@@ -19303,7 +19303,7 @@
 餣	wku	0	wku	0
 餤	wxx	1	wxx	1
 餥	pws	0	pws	0
-餦	wei	2	wei	2
+餦	wic	1	wic	1
 餧	wwg	0	wwg	0
 館	wld	2	wld	1
 餩	wkp	0	wkp	0
@@ -19744,7 +19744,7 @@
 髜	cdb	1	cdb	1
 髝	cxi	0	cxi	0
 髞	cjs	0	cjs	0
-髟	icc	3	icc	2
+髟	icc	4	icc	3
 髠	ibj	1	ibj	1
 髡	ilu	0	ilu	0
 髢	idy	3	idy	3
@@ -20063,7 +20063,7 @@
 鰛	zdc	2	zdc	2
 鰜	zsn	1	zsn	1
 鰝	zcg	0	zcg	0
-鰞	zzn	1	zzn	1
+鰞	zzx	0	zzx	0
 鰟	zky	1	zky	1
 鰠	zrc	1	zrc	1
 鰡	zyb	0	zyb	0
@@ -20093,7 +20093,7 @@
 鰹	zea	1	zea	1
 鰺	zoi	5	zoi	5
 鰻	zqm	2	zqm	2
-鰼	znn	3	znn	2
+鰼	znn	2	znn	1
 鰽	zyd	1	zyd	1
 鰾	zul	3	zul	3
 鰿	zqt	1	zqt	1
@@ -20108,8 +20108,8 @@
 鱈	zro	2	zro	2
 鱉	wlz	2	wlz	2
 鱊	zcj	0	zcj	0
-鱋	zxn	0	zxn	0
-鱌	zzx	0	zzx	0
+鱋	zxn	1	zxn	1
+鱌	zzx	1	zzx	1
 鱍	ztt	1	ztt	1
 鱎	zmj	0	zmj	0
 鱏	zuu	2	zuu	2
@@ -20252,7 +20252,7 @@
 鳘	tnz	1	tnz	1
 鳙	zxe	0	zxe	0
 鳚	znu	0	znu	0
-鳛	znn	4	znn	3
+鳛	znn	3	znn	2
 鳜	zwn	0	zwn	0
 鳝	zij	0	zij	0
 鳞	zda	0	zda	0
@@ -20267,7 +20267,7 @@
 鳧	zbj	1	zbj	1
 鳨	zil	3	zil	3
 鳩	mzn	2	mzn	2
-鳪	hzn	3	hzn	3
+鳪	hzn	2	hzn	2
 鳫	wzn	1	wzn	1
 鳬	zbj	2	zbj	2
 鳭	pzn	1	pzn	1
@@ -20279,7 +20279,7 @@
 鳳	bez	0	bez	0
 鳴	jzn	1	jzn	0
 鳵	wuz	3	wuz	3
-鳶	qzn	3	qzn	3
+鳶	qzn	2	qzn	2
 鳷	urz	0	urz	0
 鳸	zzn	0	zzn	0
 鳹	rwz	0	rwz	0
@@ -20288,8 +20288,8 @@
 鳼	czn	1	czn	1
 鳽	czn	3	czn	3
 鳾	ezz	2	ezz	2
-鳿	qzn	4	qzn	4
-鴀	jzn	3	jzn	2
+鳿	qzn	3	qzn	3
+鴀	jzn	2	jzn	1
 鴁	mzn	5	mzn	5
 鴂	akz	0	akz	0
 鴃	zak	2	zak	2
@@ -20302,7 +20302,7 @@
 鴊	bzn	3	bzn	3
 鴋	yzn	1	yzn	1
 鴌	mzn	6	mzn	6
-鴍	czn	5	czn	5
+鴍	czn	4	czn	4
 鴎	ahz	1	ahz	1
 鴏	zmq	0	zmq	0
 鴐	ijz	0	ijz	0
@@ -20336,14 +20336,14 @@
 鴬	dzn	3	dzn	3
 鴭	adz	4	adz	4
 鴮	kez	1	kez	1
-鴯	hzn	4	hzn	4
-鴰	fzn	4	fzn	4
+鴯	hzn	3	hzn	3
+鴰	fzn	3	fzn	3
 鴱	bhz	0	bhz	0
 鴲	wdz	0	wdz	0
 鴳	lgz	0	lgz	0
 鴴	pzn	5	pzn	5
 鴵	kfz	1	kfz	1
-鴶	qzn	5	qzn	5
+鴶	qzn	4	qzn	4
 鴷	xpz	0	xpz	0
 鴸	apz	0	apz	0
 鴹	izn	2	izn	2
@@ -20361,17 +20361,17 @@
 鵅	ozn	0	ozn	0
 鵆	pzn	2	pzn	2
 鵇	taz	1	taz	1
-鵈	fzn	5	fzn	5
-鵉	qzn	6	qzn	6
+鵈	fzn	4	fzn	4
+鵉	qzn	5	qzn	5
 鵊	kkz	1	kkz	1
 鵋	anz	0	anz	0
 鵌	zkw	1	zkw	1
 鵍	ltz	2	ltz	2
 鵎	agz	0	agz	0
-鵏	tzn	1	tzn	1
+鵏	tzn	0	tzn	0
 鵐	ekz	3	ekz	3
 鵑	jvz	1	jvz	1
-鵒	czn	6	czn	6
+鵒	czn	5	czn	5
 鵓	fuz	1	fuz	1
 鵔	zol	2	zol	1
 鵕	otz	1	otz	1
@@ -20389,7 +20389,7 @@
 鵡	eqz	1	eqz	1
 鵢	gzn	7	gzn	7
 鵣	pzn	3	pzn	3
-鵤	qzn	7	qzn	7
+鵤	qzn	6	qzn	6
 鵥	shz	1	shz	1
 鵦	zoi	6	zoi	6
 鵧	scz	0	scz	0
@@ -20398,7 +20398,7 @@
 鵪	kuz	1	kuz	1
 鵫	hdz	0	hdz	0
 鵬	vvz	1	vvz	1
-鵭	tzn	2	tzn	2
+鵭	tzn	1	tzn	1
 鵮	qyz	2	qyz	2
 鵯	guz	1	guz	1
 鵰	gqz	0	gqz	0
@@ -20463,7 +20463,7 @@
 鶫	psz	1	psz	1
 鶬	rzz	0	rzz	0
 鶭	yyz	1	yyz	1
-鶮	czn	7	czn	7
+鶮	czn	6	czn	6
 鶯	xxz	0	xxz	0
 鶰	jfz	0	jfz	0
 鶱	lwz	0	lwz	0
@@ -20513,7 +20513,7 @@
 鷝	bbz	5	bbz	5
 鷞	khz	1	khz	1
 鷟	ytz	0	ytz	0
-鷠	zzn	2	zzn	2
+鷠	zzn	1	zzn	1
 鷡	czn	2	czn	2
 鷢	wsz	1	wsz	1
 鷣	udz	1	udz	1
@@ -20601,7 +20601,7 @@
 鸵	zlw	0	zlw	0
 鸶	yyz	0	yyz	0
 鸷	hmz	1	hmz	1
-鸸	hzn	2	hzn	2
+鸸	hzn	1	hzn	1
 鸹	fzn	0	fzn	0
 鸺	msz	0	msz	0
 鸻	pzn	4	pzn	4
@@ -20827,7 +20827,7 @@
 鼗	kfr	0	kfr	0
 鼘	puy	0	puy	0
 鼙	puu	0	puu	0
-鼚	pue	0	pue	0
+鼚	pui	0	pui	0
 鼛	puj	0	puj	0
 鼜	puc	2	puc	1
 鼝	oyr	4	oyr	4
@@ -21122,7 +21122,7 @@
 𬪩	zcy	1	zcy	1
 𬬩	tqi	1	tqi	1
 𬬭	tkw	1	tkw	1
-𬬮	tic	4	tic	4
+𬬮	tic	5	tic	5
 𬬱	tlj	2	tlj	2
 𬬸	tsz	2	tsz	2
 𬬹	tds	6	tds	6
@@ -21163,7 +21163,7 @@
 𬶨	mcz	3	mcz	3
 𬶭	ztl	4	ztl	4
 𬶮	zpj	1	zpj	1
-𬷕	tzn	3	tzn	3
+𬷕	tzn	2	tzn	2
 𬸘	adz	5	adz	5
 𬸚	piz	2	piz	2
 𬸣	lwz	1	lwz	1

@@ -1,10 +1,12 @@
 version: 0.0.2
 source: yima
 info:
-  name: elegant_0.1.0
+  name: elegant_0.2.0
   author: lantian
-  version: 0.1.0
-  description: v0.0.5-编码校验完成-基本字集输出全码
+  version: 0.2.0
+  description: |-
+    v0.1.0-编码校验完成-基本字集输出全码
+    v0.2.0-简化字根数
 data:
   repertoire: {}
   glyph_customization:
@@ -281,10 +283,6 @@ data:
       type: compound
       operator: ⿲
       operandList: [丶, 丿, 灬]
-    烏:
-      type: compound
-      operator: ⿰
-      operandList: [一, 一]
     爲:
       type: compound
       operator: ⿳
@@ -649,18 +647,11 @@ form:
     '6':
       - {element: '5', index: 0}
       - i
-    "\ue0be":
-      - {element: 母, index: 0}
-      - m
     "\ue010":
       - {element: 鱼, index: 0}
       - x
-    "\ue421":
-      - {element: 鼠, index: 0}
-      - j
     "\ue032": fk
     "\ue069": gb
-    "\ue0ed": gb
     "\ue8c6": ia
     "\ue063": nb
     "\ue0e3": nd
@@ -826,7 +817,6 @@ form:
     卜: hb
     而: he
     乂: hi
-    扌: hs
     止: ji
     不: jb
     屮: jc
@@ -921,80 +911,12 @@ form:
     天: mt
     "\ue800": me
     召: ma
-    門: em
-    耂: ae
     㐄: ay
-    爫: au
-    㸦: ay
-    卅: bc
-    卌: bc
-    卝: bc
-    廾: bc
-    㔾: cj
-    丩: cj
-    罒: cs
-    兂: cu
-    旡: cu
-    無: cu
-    冎: dg
-    㠯: dh
-    曰: dr
-    尢: dy
-    阝: fe
-    牜: fn
-    巛: gc
-    巜: gc
-    亼: gh
-    凵: gk
-    戋: hc
-    龰: hf
-    㐅: hi
-    乄: hi
-    龵: hs
-    韋: hw
-    釆: ic
-    乑: is
-    氺: is
-    戉: iu
-    訁: iy
-    讠: iy
-    亍: kk
-    入: kr
-    鬥: ld
-    礻: ls
-    衤: ls
-    丌: lu
-    夊: lx
-    攵: lx
-    圼: ml
-    夭: mt
-    朿: nb
-    囙: nh
-    回: nh
     尸: ns
-    忄: nx
     彑: oj
-    龴: os
-    車: pc
-    刂: pd
-    犭: pq
-    亾: pw
-    兦: pw
     䒑: sb
     朩: sm
     龷: un
-    襾: ux
-    覀: ux
-    壬: vr
-    冃: vy
-    攴: xd
-    歺: xd
-    灬: xh
-    肀: xv
-    戶: zh
-    戸: zh
-    烏: zn
-    魚: zv
     "\ue066": yc
   grouping:
     "\ue0d2": 月
@@ -1141,7 +1063,6 @@ form:
     冃: 月
     無: 无
     襾: 西
-    鬥: 斗
     馬: 马
     門: 门
     鼡: 鼠
@@ -1157,7 +1078,6 @@ form:
     "\ue121": 心
     糹: 纟
     戸: 户
-    長: '1'
     黒: 黑
     飠: 食
     訁: 言
@@ -1229,7 +1149,6 @@ form:
     "\ue420": 豕
     釆: 采
     "\ue80a": 衣
-    龹: 夫
     "\ue068": 右
     "\ue02e": 右
     "\ue0fc": 右
@@ -1270,6 +1189,13 @@ form:
     "\ue003": 丰
     "\ue430": 业
     "\ue18e": 水
+    "\ue421": 臼
+    "\ue0ed": "\ue069"
+    扌: 手
+    鬥: 斗
+    龹: 夫
+    "\ue159": 鸟
+    長: 长
 encoder:
   max_length: 3
   select_keys:

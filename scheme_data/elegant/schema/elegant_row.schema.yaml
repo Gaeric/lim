@@ -61,7 +61,8 @@ punctuator:
   import_preset: symbols
 
 key_binder:
-  - { when: has_menu, accept: Tab, send: Page_Down }
+  bindings:
+    - { when: has_menu, accept: Tab, send: Page_Down }
 
 recognizer:
   import_preset: default

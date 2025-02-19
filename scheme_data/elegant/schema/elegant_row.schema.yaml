@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 schema:
-  schema_id: graceful_row
+  schema_id: elegant_row
   name: 奕整
   version: '0.1.0'
   author:
@@ -48,7 +48,7 @@ speller:
   delimiter: " '"
 
 translator:
-  dictionary: graceful
+  dictionary: elegant
 
 reverse_lookup:
   dictionary: stroke

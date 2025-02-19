@@ -11,7 +11,7 @@ schema:
   description: |
     基于袖珍简化字拼音，加入模型改为奕码整句
   dependencies:
-    - stroke
+    - pinyin_simp
 
 switches:
   - name: ascii_mode
@@ -51,19 +51,17 @@ translator:
   dictionary: elegant
 
 reverse_lookup:
-  dictionary: stroke
+  dictionary: pinyin_simp
   enable_completion: true
   prefix: "`"
   suffix: "'"
-  tips: 〔笔画〕
-  preedit_format:
-    - xlit/hspnz/一丨丿丶乙/
+  tips: 简拼
 
 punctuator:
   import_preset: symbols
 
 key_binder:
-  import_preset: default
+  - { when: has_menu, accept: Tab, send: Page_Down }
 
 recognizer:
   import_preset: default

@@ -1,6 +1,7 @@
 name: elegant
 sort: original
 version: "0.2.0"
+vocabulary: essay-zh-hans
 
 columns:
   - text # 第一列字词

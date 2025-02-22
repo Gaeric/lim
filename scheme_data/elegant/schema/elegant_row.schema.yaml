@@ -49,6 +49,8 @@ speller:
 
 translator:
   dictionary: elegant
+  # disable user dict to fixed world sort
+  enable_user_dict: true
 
 reverse_lookup:
   dictionary: pinyin_simp

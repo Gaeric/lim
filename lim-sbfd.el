@@ -8,6 +8,7 @@
 ;; License: GPLv3
 (require 'lim-core)
 (require 'lim-advanced)
+(require 'lim-comm)
 
 (defun lim-handle-sbfd ()
   "sbfd handle current string"
@@ -34,11 +35,6 @@
           (setq unread-command-events (cons last-command-event unread-command-events))
           (setq current-item (car candidates)))
         (setq lim-current-word (car current-item)))))
-
-(autoload 'lim-use-package "lim-xixi" "Lightly input mehtod xixi")
-(autoload 'lim-orderless-regexp "lim-tools")
-(autoload 'lim-evil-find-mode "lim-tools")
-(autoload 'lim-count-words "lim-tools")
 
 (register-input-method
  "lim-sbfd" "euc-cn" 'lim-use-package

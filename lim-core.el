@@ -1,4 +1,4 @@
-;;; -*- coding: utf-8 -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 ;;; lim.el -- Ligthly Input Architecture
 
 ;; Compatibility: Emacs 26.1

@@ -1,4 +1,4 @@
-;;; -*- coding: utf-8 -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 ;;; lim.el -- Ligthly Input Architecture for lantian-xixi input method
 
 ;; Compatibility: Emacs 26.1

@@ -1,4 +1,4 @@
-;;; -*- coding: utf-8 -*-
+;;; -*- coding: utf-8; lexical-binding: t; -*-
 ;;; lim-tools -- lim-tools for chinese
 
 ;; 1. evil find enhance for chinese by lim.

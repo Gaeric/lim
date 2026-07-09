@@ -27,5 +27,5 @@ fn do_count(env: &Env, content: String) -> Result<Value<'_>> {
         }
     }
 
-    env.message(&format!("There are {} chinese, {} punc.", chinese, punc))
+    env.message(&format!("There are {} chinese, {} puncs.", chinese, punc))
 }

@@ -14,12 +14,11 @@
   (interactive)
   (let (start end)
     (if (region-active-p)
-        (progn
-          (setq start (region-beginning)
-                end (region-end)))
+        (setq start (region-beginning)
+              end (region-end))
       (setq start (point-min)
             end (point-max)))
-    (lim-do-count
-     (buffer-substring-no-properties start end))))
+    ;; (message "start: %d end: %d" start end)
+    (lim-do-count (buffer-substring-no-properties start end))))
 
 (provide 'lim-dylib)
